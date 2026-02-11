@@ -1,0 +1,64 @@
+// ============================================
+// DATABASE CONFIGURATION
+// ============================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// AUTH MODELS
+// ============================================
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@map("users")
+}
+
+// ============================================
+// FUTURE: SESSION MODELS
+// ============================================
+// Uncomment when implementing session management
+// model Session {
+//   id        String   @id @default(cuid())
+//   userId    String
+//   token     String   @unique
+//   expiresAt DateTime
+//   createdAt DateTime @default(now())
+//   
+//   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   
+//   @@index([userId])
+//   @@index([token])
+//   @@map("sessions")
+// }
+
+// ============================================
+// FUTURE: CONTENT MODELS
+// ============================================
+// Add your content models here (Posts, Comments, etc.)
+// model Post {
+//   id        String   @id @default(cuid())
+//   title     String
+//   content   String
+//   authorId  String
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   
+//   author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+//   
+//   @@index([authorId])
+//   @@map("posts")
+// }

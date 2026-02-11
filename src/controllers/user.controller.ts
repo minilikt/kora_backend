@@ -1,0 +1,22 @@
+import { Request, Response } from 'express';
+import { findUserById } from '../models/user.model';
+import { AppError } from '../middlewares/error.middleware';
+
+export const getProfile = (req: Request, res: Response) => {
+  if (!req.user) {
+    throw new AppError('Unauthorized', 401);
+  }
+
+  const user = findUserById(req.user.userId);
+
+  if (!user) {
+    throw new AppError('User not found', 404);
+  }
+
+  const { password, ...userWithoutPassword } = user;
+
+  res.status(200).json({
+    status: 'success',
+    data: { user: userWithoutPassword },
+  });
+};
