@@ -20,45 +20,423 @@ model User {
   email     String   @unique
   password  String
   name      String
+  
+  preferredName String?
+  gender        Gender?
+  age           Int?
+  weight        Float? // kg
+  targetWeight  Float? // kg
+  height        Float? // cm
+  bmi           Float?
+  sleepHours    Float?
+  waterDaily    Float? // liters
+
+  trainingLevel       ExperienceLevel?
+  trainingEnvironment ExerciseEnvironment? @default(GYM)
+  trainingDaysPerWeek Int?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  plans              UserPlan[]
+  userSessions       UserSession[]
+  userAdaptiveStates UserAdaptiveState[]
+  trainingProfile    UserTrainingProfile?
 
   @@index([email])
   @@map("users")
 }
 
-// ============================================
-// FUTURE: SESSION MODELS
-// ============================================
-// Uncomment when implementing session management
-// model Session {
-//   id        String   @id @default(cuid())
-//   userId    String
-//   token     String   @unique
-//   expiresAt DateTime
-//   createdAt DateTime @default(now())
-//   
-//   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-//   
-//   @@index([userId])
-//   @@index([token])
-//   @@map("sessions")
-// }
+model UserPlan {
+  id        String    @id @default(cuid())
+  userId    String
+  planJson  Json // The compiled mesocycle
+  startDate DateTime
+  endDate   DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  previousPlanId String?   @unique
+  previousPlan   UserPlan? @relation("PlanHistory", fields: [previousPlanId], references: [id])
+  nextPlan       UserPlan? @relation("PlanHistory")
+
+  user            User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessions        UserSession[]
+  blockEvaluation BlockEvaluation?
+
+  @@index([userId])
+  @@map("user_plans")
+}
+
+model UserSession {
+  id     String   @id @default(cuid())
+  userId String
+  user   User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  planId String
+  plan   UserPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  dayNumber Int
+  week      Int
+
+  planned   Json
+  completed Json?
+
+  exercisesCount   Int     @default(0)
+  totalTimeSec     Int     @default(0)
+  avgRPE           Float?
+  performanceScore Float?
+  fatigueScore     Float?
+  notes            String?
+  completedStatus  Boolean @default(false)
+
+  startedAt   DateTime?
+  completedAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  exercises UserExerciseLog[]
+
+  @@index([userId])
+  @@index([planId])
+  @@index([planId, week, dayNumber])
+  @@index([userId, createdAt])
+  @@map("user_sessions")
+}
+
+model UserExerciseLog {
+  id String @id @default(cuid())
+
+  sessionId String
+  session   UserSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  exerciseId String
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+
+  plannedSets Int
+  plannedReps String
+  plannedRpe  Float
+
+  actualSets    Int?
+  repsPerSet    Json? // Array of numbers
+  weightsPerSet Json? // Array of numbers
+  rpePerSet     Json? // Array of numbers
+
+  timeSpentSec  Int?
+  notes         String?
+  equipmentUsed Json?
+
+  performanceScore Float?
+
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([sessionId])
+  @@index([exerciseId])
+  @@index([exerciseId, createdAt])
+  @@map("user_exercise_logs")
+}
+
+model UserAdaptiveState {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  fatigueScore     Float
+  recoveryScore    Float
+  performanceScore Float
+
+  volumeMultiplier    Float @default(1)
+  intensityMultiplier Float @default(1)
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("user_adaptive_states")
+}
+
+model UserTrainingProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  fatigueIndex     Float @default(0)
+  performanceIndex Float @default(0)
+  consistencyScore Float @default(1.0)
+
+  // JSON structure for muscle-specific data: { "chest": { "mrv": 20, "mev": 10, "freq": 2 } }
+  muscleProfile Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("user_training_profiles")
+}
+
+model BlockEvaluation {
+  id     String   @id @default(cuid())
+  planId String   @unique
+  plan   UserPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  completionRate     Float
+  avgSessionDuration Float
+  avgRpe             Float
+  performanceTrend   Float
+
+  // Actions for next block: ["INCREASE_VOLUME", "CHANGE_SPLIT"]
+  actions Json
+
+  createdAt DateTime @default(now())
+
+  @@map("block_evaluations")
+}
 
 // ============================================
-// FUTURE: CONTENT MODELS
+// ENGINE MODELS
 // ============================================
-// Add your content models here (Posts, Comments, etc.)
-// model Post {
-//   id        String   @id @default(cuid())
-//   title     String
-//   content   String
-//   authorId  String
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-//   
-//   author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
-//   
-//   @@index([authorId])
-//   @@map("posts")
-// }
+
+model SplitTemplate {
+  id            String   @id
+  name          String
+  type          SplitType
+  daysPerWeek   Int
+
+  // constraints like maxExercisesPerDay, minMovementPatternsPerDay
+  constraints   Json
+
+  // full structure (days, muscles, movement patterns)
+  structure     Json
+
+  // versioning for future engine changes
+  version       Int      @default(1)
+
+  isActive      Boolean  @default(true)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([daysPerWeek])
+  @@index([type])
+  @@map("split_templates")
+}
+
+
+
+model VolumeProfile {
+  id              String @id
+  goal            TrainingGoal
+  priority        TrainingPriority
+  experienceLevel ExperienceLevel
+
+  weeklySets      Json
+  repRange        Json
+  intensityRange  Json
+
+  createdAt DateTime @default(now())
+}
+
+model ProgressionModel {
+  id             String   @id
+  name           String
+  type           ProgressionType
+  durationWeeks  Int
+
+  // weekly progression logic
+  weeks          Json
+
+  version        Int      @default(1)
+  isActive       Boolean  @default(true)
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([type])
+  @@index([isActive])
+  @@map("progression_models")
+}
+
+
+// ============================================
+// ONTOLOGY MODELS
+// ============================================
+
+model Exercise {
+  id      String       @id
+  name    String
+  type    ExerciseType
+  splitId Int?
+  split   Split?       @relation(fields: [splitId], references: [id])
+
+  categoryId Int?
+  category   Category? @relation(fields: [categoryId], references: [id])
+
+  movementPatternId Int?
+  movementPattern   MovementPattern? @relation(fields: [movementPatternId], references: [id])
+
+  instructions     String[]
+  gifUrl           String?
+  difficultyRpeMin Int?
+  difficultyRpeMax Int?
+  level            ExerciseLevel         @default(INTERMEDIATE)
+  environment      ExerciseEnvironment   @default(GYM)
+  alternativeIds   String[] // Keep for now to avoid migration breakage if needed, or remove later
+  alternatives     ExerciseAlternative[] @relation("ExerciseToAlternative")
+  asAlternativeTo  ExerciseAlternative[] @relation("AlternativeToExercise")
+  rawData          Json? // Original JSON source truth
+
+  muscles          ExerciseMuscle[]
+  equipment        ExerciseEquipment[]
+  userExerciseLogs UserExerciseLog[]
+
+  @@map("exercises")
+}
+
+model ExerciseAlternative {
+  exerciseId    String
+  alternativeId String
+
+  exercise    Exercise @relation("ExerciseToAlternative", fields: [exerciseId], references: [id])
+  alternative Exercise @relation("AlternativeToExercise", fields: [alternativeId], references: [id])
+
+  @@id([exerciseId, alternativeId])
+  @@map("exercise_alternatives")
+}
+
+model Muscle {
+  id        Int              @id @default(autoincrement())
+  name      String           @unique
+  exercises ExerciseMuscle[]
+
+  @@map("muscles")
+}
+
+model Equipment {
+  id        Int                 @id @default(autoincrement())
+  name      String              @unique
+  exercises ExerciseEquipment[]
+
+  @@map("equipment")
+}
+
+model MovementPattern {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  exercises Exercise[]
+
+  @@map("movement_patterns")
+}
+
+model Category {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  exercises Exercise[]
+
+  @@map("categories")
+}
+
+model Split {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  exercises Exercise[]
+
+  @@map("splits")
+}
+
+
+
+// ============================================
+// JOIN TABLES
+// ============================================
+
+model ExerciseMuscle {
+  exerciseId String
+  muscleId   Int
+  role       MuscleRole
+
+  exercise Exercise @relation(fields: [exerciseId], references: [id])
+  muscle   Muscle   @relation(fields: [muscleId], references: [id])
+
+  @@id([exerciseId, muscleId, role])
+  @@index([muscleId, role])
+  @@map("exercise_muscles")
+}
+
+model ExerciseEquipment {
+  exerciseId  String
+  equipmentId Int
+
+  exercise  Exercise  @relation(fields: [exerciseId], references: [id])
+  equipment Equipment @relation(fields: [equipmentId], references: [id])
+
+  @@id([exerciseId, equipmentId])
+  @@index([equipmentId])
+  @@map("exercise_equipment")
+}
+
+// ============================================
+// ENUMS
+// ============================================
+
+enum ExerciseType {
+  COMPOUND
+  ISOLATION
+}
+
+enum MuscleRole {
+  PRIMARY
+  SECONDARY
+  STABILIZER
+}
+
+enum ExerciseLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum ExerciseEnvironment {
+  GYM
+  HOME
+  OUTDOOR
+  ANY
+}
+
+enum SplitType {
+  FULL_BODY
+  PUSH_PULL_LEGS
+  UPPER_LOWER
+  UPPER_LOWER_FULL
+  BODY_PART
+  HYBRID
+}
+enum ProgressionType {
+  LINEAR
+  DOUBLE_PROGRESSION
+  UNDULATING
+  BLOCK
+}
+
+enum TrainingGoal {
+  HYPERTROPHY
+  STRENGTH
+  POWERBUILDING
+  FAT_LOSS
+  MAINTENANCE
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+  PREFER_NOT_TO_SAY
+}
+
+enum TrainingPriority {
+  BALANCED
+  GLUTE_FOCUS
+}
+
+enum ExperienceLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}

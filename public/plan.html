@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex - My Workout Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #57ff8f;
+            --primary-dark: #3ddb74;
+            --bg: #0a111a;
+            --surface: rgba(255, 255, 255, 0.05);
+            --surface-hover: rgba(255, 255, 255, 0.1);
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #ffffff;
+            --text-dim: #a0aec0;
+            --accent: #16364d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .plan-header {
+            background: var(--surface);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .header-item span {
+            display: block;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .header-item p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Weeks & Sessions */
+        .week-container {
+            margin-bottom: 60px;
+        }
+
+        .week-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .week-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .sessions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .session-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .session-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .session-header {
+            padding: 15px 20px;
+            background: var(--accent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .session-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .session-focus {
+            font-size: 0.8rem;
+            color: var(--primary);
+            background: rgba(87, 255, 143, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .exercise-list {
+            padding: 15px 20px;
+        }
+
+        .exercise-item {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+        }
+
+        .exercise-item:last-child {
+            border-bottom: none;
+        }
+
+        .exercise-name {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .exercise-meta {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Modal / Details */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 30px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dim);
+        }
+
+        .exercise-detail-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .exercise-gif {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background: var(--surface);
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        .detail-section {
+            margin-bottom: 20px;
+        }
+
+        .detail-section h4 {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .instruction-list {
+            list-style: decimal;
+            padding-left: 20px;
+        }
+
+        .instruction-list li {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        /* Loading & Empty states */
+        .loading-spinner {
+            text-align: center;
+            padding: 100px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .btn-start {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--bg);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(87, 255, 143, 0.2);
+        }
+
+        .btn-start:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(87, 255, 143, 0.3);
+        }
+
+        #nextWorkoutCTA {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--accent), #0a111a);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cta-box h2 {
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+
+        .session-card.completed {
+            opacity: 0.6;
+            border-color: var(--accent);
+        }
+
+        .session-card.completed .session-header {
+            background: #0a111a;
+        }
+
+        .completed-badge {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My Mesocycle</h1>
+            <nav class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="exercises.html">Exercises</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </nav>
+        </header>
+
+        <div id="planOverview" class="plan-header">
+            <!-- Loaded via JS -->
+        </div>
+
+        <div id="nextWorkoutCTA">
+            <!-- Loaded via JS -->
+        </div>
+
+        <div id="planContent">
+            <div class="loading-spinner">Analyzing your progression tracks...</div>
+        </div>
+    </div>
+
+    <!-- Exercise Detail Modal -->
+    <div id="exerciseModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody">
+                <!-- Loaded via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="plan.js"></script>
+    <script>
+        function logout() {
+            localStorage.removeItem('flex_token');
+            window.location.href = 'login.html';
+        }
+
+        // Modal Close Logic
+        const modal = document.getElementById('exerciseModal');
+        const closeBtn = document.querySelector('.close-modal');
+        closeBtn.onclick = () => modal.style.display = 'none';
+        window.onclick = (event) => {
+            if (event.target == modal) modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+🚀 Starting Registration & Plan Verification...
+📝 Registering user: testuser_1771308863320@example.com
+✅ User registered with ID: cmlq7kc1t0000vwyw3n1md28q
+🔍 Checking for generated plan...
+✅ Plan found! ID: cmlq7l5mi0002vwywdcbjiite
+📅 Plan Period: 2026-02-17T06:15:02.716Z to 2026-03-17T06:15:02.716Z
+✅ 16 sessions were pre-populated.
+
+--- Plan JSON Structure Preview ---
+Version: 2
+Keys in Plan JSON: input, weeks, version, basePlan, exerciseLibrary
+
+Sample Week 1 (Day 1) Exercises:
+[
+  {
+    "sets": 5,
+    "muscleId": 12,
+    "patternId": 25,
+    "exerciseId": "cbb0e4c1-b512-4cdd-87d1-829ebf6f16ad"
+  },
+  {
+    "sets": 4,
+    "muscleId": 11,
+    "patternId": 3,
+    "exerciseId": "325e441d-99b0-4752-a368-b32662c751c9"
+  }
+]
+
+--- API Info ---
+Endpoint: GET /api/plans/active
+Authentication: Required (Bearer Token)

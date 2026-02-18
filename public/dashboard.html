@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><title>Flex - Dashboard</title></head>
+<body>
+    <h1>Dashboard</h1>
+    <div id="userProfile">Loading...</div>
+    <hr>
+    <ul>
+        <li><a href="plan.html">View My Workout Plan</a></li>
+        <li><a href="exercises.html">Search Exercises</a></li>
+    </ul>
+    <button onclick="logout()">Logout</button>
+
+    <script>
+        const token = localStorage.getItem('flex_token');
+        if (!token) window.location.href = 'login.html';
+
+        async function loadProfile() {
+            try {
+                const res = await fetch('/api/users/profile', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const json = await res.json();
+                if (json.status === 'success') {
+                    document.getElementById('userProfile').innerHTML = `
+                        <p><strong>Name:</strong> ${json.data.user.name}</p>
+                        <p><strong>Email:</strong> ${json.data.user.email}</p>
+                    `;
+                } else {
+                    console.error('Profile load failed:', json);
+                    alert('Profile error: ' + (json.message || 'Unknown error'));
+                    localStorage.removeItem('flex_token');
+                    window.location.href = 'login.html';
+                }
+            } catch (err) {
+                console.error('Fetch error:', err);
+                alert('Connection error');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('flex_token');
+            window.location.href = 'login.html';
+        }
+
+        loadProfile();
+    </script>
+</body>
+</html>

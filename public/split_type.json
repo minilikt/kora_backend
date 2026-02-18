@@ -1,0 +1,238 @@
+[
+  {
+    "id": "FULLBODY_3",
+    "type": "FULL_BODY",
+    "daysPerWeek": 3,
+    "constraints": {
+      "maxExercisesPerDay": 6,
+      "minMovementPatternsPerDay": 4
+    },
+    "structure": [
+      {
+        "day": 1,
+        "category": "FULL_BODY",
+        "primaryMuscles": ["QUADS", "CHEST"],
+        "secondaryMuscles": ["BACK", "SHOULDERS"],
+        "movementPatterns": [
+          { "pattern": "SQUAT", "priority": 1 },
+          { "pattern": "HORIZONTAL_PRESS", "priority": 2 },
+          { "pattern": "HORIZONTAL_PULL", "priority": 3 },
+          { "pattern": "CORE", "priority": 4 }
+        ]
+      },
+      {
+        "day": 2,
+        "category": "FULL_BODY",
+        "primaryMuscles": ["BACK", "HAMSTRINGS"],
+        "secondaryMuscles": ["CHEST", "SHOULDERS"],
+        "movementPatterns": [
+          { "pattern": "HINGE", "priority": 1 },
+          { "pattern": "VERTICAL_PULL", "priority": 2 },
+          { "pattern": "VERTICAL_PRESS", "priority": 3 },
+          { "pattern": "CORE", "priority": 4 }
+        ]
+      },
+      {
+        "day": 3,
+        "category": "FULL_BODY",
+        "primaryMuscles": ["GLUTES", "CHEST"],
+        "secondaryMuscles": ["BACK", "ARMS"],
+        "movementPatterns": [
+          { "pattern": "LUNGE", "priority": 1 },
+          { "pattern": "HORIZONTAL_PRESS", "priority": 2 },
+          { "pattern": "VERTICAL_PULL", "priority": 3 },
+          { "pattern": "CORE", "priority": 4 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": "PPL_3",
+    "type": "PUSH_PULL_LEGS",
+    "daysPerWeek": 3,
+    "constraints": {
+      "maxExercisesPerDay": 7,
+      "minMovementPatternsPerDay": 3
+    },
+    "structure": [
+      {
+        "day": 1,
+        "category": "PUSH",
+        "primaryMuscles": ["CHEST"],
+        "secondaryMuscles": ["SHOULDERS", "TRICEPS"],
+        "movementPatterns": [
+          { "pattern": "HORIZONTAL_PRESS", "priority": 1 },
+          { "pattern": "VERTICAL_PRESS", "priority": 2 }
+        ]
+      },
+      {
+        "day": 2,
+        "category": "PULL",
+        "primaryMuscles": ["BACK"],
+        "secondaryMuscles": ["BICEPS", "REAR_DELTS"],
+        "movementPatterns": [
+          { "pattern": "HORIZONTAL_PULL", "priority": 1 },
+          { "pattern": "VERTICAL_PULL", "priority": 2 }
+        ]
+      },
+      {
+        "day": 3,
+        "category": "LEGS",
+        "primaryMuscles": ["QUADS"],
+        "secondaryMuscles": ["HAMSTRINGS", "GLUTES", "CALVES"],
+        "movementPatterns": [
+          { "pattern": "SQUAT", "priority": 1 },
+          { "pattern": "HINGE", "priority": 2 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": "UPPER_LOWER_FULL_3",
+    "type": "UPPER_LOWER_FULL",
+    "daysPerWeek": 3,
+    "constraints": {
+      "maxExercisesPerDay": 7,
+      "minMovementPatternsPerDay": 3
+    },
+    "structure": [
+      {
+        "day": 1,
+        "category": "UPPER",
+        "primaryMuscles": ["CHEST", "BACK"],
+        "secondaryMuscles": ["SHOULDERS", "ARMS"],
+        "movementPatterns": [
+          { "pattern": "HORIZONTAL_PRESS", "priority": 1 },
+          { "pattern": "HORIZONTAL_PULL", "priority": 2 }
+        ]
+      },
+      {
+        "day": 2,
+        "category": "LOWER",
+        "primaryMuscles": ["QUADS", "GLUTES"],
+        "secondaryMuscles": ["HAMSTRINGS", "CALVES"],
+        "movementPatterns": [
+          { "pattern": "SQUAT", "priority": 1 },
+          { "pattern": "HINGE", "priority": 2 }
+        ]
+      },
+      {
+        "day": 3,
+        "category": "FULL_BODY",
+        "primaryMuscles": ["BACK", "QUADS"],
+        "secondaryMuscles": ["CHEST", "SHOULDERS"],
+        "movementPatterns": [
+          { "pattern": "VERTICAL_PULL", "priority": 1 },
+          { "pattern": "VERTICAL_PRESS", "priority": 2 },
+          { "pattern": "LUNGE", "priority": 3 }
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": "UPPER_LOWER_4",
+    "type": "UPPER_LOWER",
+    "daysPerWeek": 4,
+    "constraints": {
+      "maxExercisesPerDay": 8,
+      "minMovementPatternsPerDay": 3
+    },
+    "structure": [
+      { "day": 1, "category": "UPPER", "primaryMuscles": ["CHEST"], "secondaryMuscles": ["BACK"], "movementPatterns": [{ "pattern": "HORIZONTAL_PRESS", "priority": 1 }] },
+      { "day": 2, "category": "LOWER", "primaryMuscles": ["QUADS"], "secondaryMuscles": ["GLUTES"], "movementPatterns": [{ "pattern": "SQUAT", "priority": 1 }] },
+      { "day": 3, "category": "UPPER", "primaryMuscles": ["BACK"], "secondaryMuscles": ["CHEST"], "movementPatterns": [{ "pattern": "VERTICAL_PULL", "priority": 1 }] },
+      { "day": 4, "category": "LOWER", "primaryMuscles": ["HAMSTRINGS"], "secondaryMuscles": ["GLUTES"], "movementPatterns": [{ "pattern": "HINGE", "priority": 1 }] }
+    ]
+  },
+
+  {
+    "id": "PPL_UL_4",
+    "type": "HYBRID",
+    "daysPerWeek": 4,
+    "constraints": { "maxExercisesPerDay": 8, "minMovementPatternsPerDay": 3 },
+    "structure": [
+      { "day": 1, "category": "PUSH", "primaryMuscles": ["CHEST"], "secondaryMuscles": ["TRICEPS"], "movementPatterns": [{ "pattern": "HORIZONTAL_PRESS", "priority": 1 }] },
+      { "day": 2, "category": "PULL", "primaryMuscles": ["BACK"], "secondaryMuscles": ["BICEPS"], "movementPatterns": [{ "pattern": "VERTICAL_PULL", "priority": 1 }] },
+      { "day": 3, "category": "UPPER", "primaryMuscles": ["CHEST", "BACK"], "secondaryMuscles": ["SHOULDERS"], "movementPatterns": [{ "pattern": "HORIZONTAL_PULL", "priority": 1 }] },
+      { "day": 4, "category": "LOWER", "primaryMuscles": ["QUADS"], "secondaryMuscles": ["HAMSTRINGS"], "movementPatterns": [{ "pattern": "SQUAT", "priority": 1 }] }
+    ]
+  },
+
+  {
+    "id": "FULLBODY_4",
+    "type": "FULL_BODY",
+    "daysPerWeek": 4,
+    "constraints": { "maxExercisesPerDay": 6, "minMovementPatternsPerDay": 4 },
+    "structure": [
+      { "day": 1, "category": "FULL_BODY", "primaryMuscles": ["QUADS"], "secondaryMuscles": ["CHEST"], "movementPatterns": [{ "pattern": "SQUAT", "priority": 1 }] },
+      { "day": 2, "category": "FULL_BODY", "primaryMuscles": ["BACK"], "secondaryMuscles": ["GLUTES"], "movementPatterns": [{ "pattern": "HINGE", "priority": 1 }] },
+      { "day": 3, "category": "FULL_BODY", "primaryMuscles": ["CHEST"], "secondaryMuscles": ["BACK"], "movementPatterns": [{ "pattern": "HORIZONTAL_PRESS", "priority": 1 }] },
+      { "day": 4, "category": "FULL_BODY", "primaryMuscles": ["BACK"], "secondaryMuscles": ["SHOULDERS"], "movementPatterns": [{ "pattern": "VERTICAL_PULL", "priority": 1 }] }
+    ]
+  },
+
+  {
+    "id": "PPL_6",
+    "type": "PUSH_PULL_LEGS",
+    "daysPerWeek": 6,
+    "constraints": { "maxExercisesPerDay": 8, "minMovementPatternsPerDay": 3 },
+    "structure": [
+      { "day": 1, "category": "PUSH", "primaryMuscles": ["CHEST"], "secondaryMuscles": ["TRICEPS"], "movementPatterns": [{ "pattern": "HORIZONTAL_PRESS", "priority": 1 }] },
+      { "day": 2, "category": "PULL", "primaryMuscles": ["BACK"], "secondaryMuscles": ["BICEPS"], "movementPatterns": [{ "pattern": "VERTICAL_PULL", "priority": 1 }] },
+      { "day": 3, "category": "LEGS", "primaryMuscles": ["QUADS"], "secondaryMuscles": ["GLUTES"], "movementPatterns": [{ "pattern": "SQUAT", "priority": 1 }] },
+      { "day": 4, "category": "PUSH", "primaryMuscles": ["SHOULDERS"], "secondaryMuscles": ["TRICEPS"], "movementPatterns": [{ "pattern": "VERTICAL_PRESS", "priority": 1 }] },
+      { "day": 5, "category": "PULL", "primaryMuscles": ["BACK"], "secondaryMuscles": ["REAR_DELTS"], "movementPatterns": [{ "pattern": "HORIZONTAL_PULL", "priority": 1 }] },
+      { "day": 6, "category": "LEGS", "primaryMuscles": ["HAMSTRINGS"], "secondaryMuscles": ["GLUTES"], "movementPatterns": [{ "pattern": "HINGE", "priority": 1 }] }
+    ]
+  },
+
+  {
+    "id": "BRO_SPLIT_6",
+    "type": "BODY_PART",
+    "daysPerWeek": 6,
+    "constraints": { "maxExercisesPerDay": 8, "minMovementPatternsPerDay": 2 },
+    "structure": [
+      { "day": 1, "category": "CHEST", "primaryMuscles": ["CHEST"], "secondaryMuscles": ["TRICEPS"], "movementPatterns": [{ "pattern": "HORIZONTAL_PRESS", "priority": 1 }] },
+      { "day": 2, "category": "BACK", "primaryMuscles": ["BACK"], "secondaryMuscles": ["BICEPS"], "movementPatterns": [{ "pattern": "VERTICAL_PULL", "priority": 1 }] },
+      { "day": 3, "category": "LEGS", "primaryMuscles": ["QUADS"], "secondaryMuscles": ["GLUTES"], "movementPatterns": [{ "pattern": "SQUAT", "priority": 1 }] },
+      { "day": 4, "category": "SHOULDERS", "primaryMuscles": ["SHOULDERS"], "secondaryMuscles": ["TRICEPS"], "movementPatterns": [{ "pattern": "VERTICAL_PRESS", "priority": 1 }] },
+      { "day": 5, "category": "ARMS", "primaryMuscles": ["BICEPS"], "secondaryMuscles": ["TRICEPS"], "movementPatterns": [{ "pattern": "ISOLATION", "priority": 1 }] },
+      { "day": 6, "category": "ACCESSORY", "primaryMuscles": ["CORE"], "secondaryMuscles": ["CALVES"], "movementPatterns": [{ "pattern": "CORE", "priority": 1 }] }
+    ]
+  },
+
+  {
+    "id": "BODY_PART_7",
+    "type": "BODY_PART",
+    "daysPerWeek": 7,
+    "constraints": { "maxExercisesPerDay": 8, "minMovementPatternsPerDay": 2 },
+    "structure": [
+      { "day": 1, "category": "CHEST", "primaryMuscles": ["CHEST"], "secondaryMuscles": [], "movementPatterns": [{ "pattern": "HORIZONTAL_PRESS", "priority": 1 }] },
+      { "day": 2, "category": "BACK", "primaryMuscles": ["BACK"], "secondaryMuscles": [], "movementPatterns": [{ "pattern": "VERTICAL_PULL", "priority": 1 }] },
+      { "day": 3, "category": "LEGS", "primaryMuscles": ["QUADS"], "secondaryMuscles": [], "movementPatterns": [{ "pattern": "SQUAT", "priority": 1 }] },
+      { "day": 4, "category": "SHOULDERS", "primaryMuscles": ["SHOULDERS"], "secondaryMuscles": [], "movementPatterns": [{ "pattern": "VERTICAL_PRESS", "priority": 1 }] },
+      { "day": 5, "category": "ARMS", "primaryMuscles": ["BICEPS"], "secondaryMuscles": ["TRICEPS"], "movementPatterns": [{ "pattern": "ISOLATION", "priority": 1 }] },
+      { "day": 6, "category": "GLUTES", "primaryMuscles": ["GLUTES"], "secondaryMuscles": [], "movementPatterns": [{ "pattern": "HINGE", "priority": 1 }] },
+      { "day": 7, "category": "CORE", "primaryMuscles": ["CORE"], "secondaryMuscles": [], "movementPatterns": [{ "pattern": "CORE", "priority": 1 }] }
+    ]
+  },
+
+  {
+    "id": "PPL_7",
+    "type": "PUSH_PULL_LEGS",
+    "daysPerWeek": 7,
+    "constraints": { "maxExercisesPerDay": 8, "minMovementPatternsPerDay": 3 },
+    "structure": [
+      { "day": 1, "category": "PUSH", "primaryMuscles": ["CHEST"], "secondaryMuscles": [], "movementPatterns": [{ "pattern": "HORIZONTAL_PRESS", "priority": 1 }] },
+      { "day": 2, "category": "PULL", "primaryMuscles": ["BACK"], "secondaryMuscles": [], "movementPatterns": [{ "pattern": "VERTICAL_PULL", "priority": 1 }] },
+      { "day": 3, "category": "LEGS", "primaryMuscles": ["QUADS"], "secondaryMuscles": [], "movementPatterns": [{ "pattern": "SQUAT", "priority": 1 }] },
+      { "day": 4, "category": "PUSH", "primaryMuscles": ["SHOULDERS"], "secondaryMuscles": [], "movementPatterns": [{ "pattern": "VERTICAL_PRESS", "priority": 1 }] },
+      { "day": 5, "category": "PULL", "primaryMuscles": ["BACK"], "secondaryMuscles": [], "movementPatterns": [{ "pattern": "HORIZONTAL_PULL", "priority": 1 }] },
+      { "day": 6, "category": "LEGS", "primaryMuscles": ["HAMSTRINGS"], "secondaryMuscles": [], "movementPatterns": [{ "pattern": "HINGE", "priority": 1 }] },
+      { "day": 7, "category": "ACCESSORY", "primaryMuscles": ["ARMS"], "secondaryMuscles": ["CORE"], "movementPatterns": [{ "pattern": "ISOLATION", "priority": 1 }] }
+    ]
+  }
+]

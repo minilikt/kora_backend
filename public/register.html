@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head><title>Flex - Register</title></head>
+<body>
+    <h1>Register</h1>
+    <form id="regForm">
+        <input type="text" id="name" placeholder="Name" required><br>
+        <input type="email" id="email" placeholder="Email" required><br>
+        <input type="password" id="password" placeholder="Password" required value="password123"><br>
+        <select id="trainingLevel">
+            <option value="BEGINNER">Beginner</option>
+            <option value="INTERMEDIATE">Intermediate</option>
+            <option value="ADVANCED">Advanced</option>
+        </select> Training Level<br>
+        <select id="trainingEnvironment">
+            <option value="GYM" selected>Gym</option>
+            <option value="HOME">Home</option>
+        </select> Training Environment<br>
+        <input type="number" id="days" value="4"> Days Per Week<br>
+        <button type="submit">Register & Generate Plan</button>
+    </form>
+    <p><a href="login.html">Go to Login</a></p>
+    <div id="status" style="white-space: pre; margin-top: 20px;"></div>
+
+    <script>
+        document.getElementById('regForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const res = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                    trainingLevel: document.getElementById('trainingLevel').value,
+                    trainingEnvironment: document.getElementById('trainingEnvironment').value,
+                    trainingDaysPerWeek: parseInt(document.getElementById('days').value),
+                    goal: 'HYPERTROPHY'
+                })
+            });
+            const json = await res.json();
+            document.getElementById('status').innerText = JSON.stringify(json, null, 2);
+            if (json.status === 'success') {
+                localStorage.setItem('flex_token', json.data.token);
+                alert('Registration Successful! (Plan generated)');
+                window.location.href = 'dashboard.html';
+            }
+        };
+    </script>
+</body>
+</html>

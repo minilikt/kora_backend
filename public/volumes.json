@@ -1,0 +1,230 @@
+[
+  {
+    "id": "BEGINNER_HYPERTROPHY_BALANCED",
+    "goal": "HYPERTROPHY",
+    "priority": "BALANCED",
+    "experienceLevel": "BEGINNER",
+    "weeklySets": {
+      "CHEST": 10,
+      "BACK": 12,
+      "SHOULDERS": 10,
+      "TRICEPS": 8,
+      "BICEPS": 8,
+      "QUADS": 12,
+      "HAMSTRINGS": 10,
+      "GLUTES": 10,
+      "CALVES": 8
+    },
+    "repRange": { "compound": [8, 12], "isolation": [12, 15] },
+    "intensityRange": [60, 70]
+  },
+  {
+    "id": "BEGINNER_HYPERTROPHY_GLUTE_FOCUS",
+    "goal": "HYPERTROPHY",
+    "priority": "GLUTE_FOCUS",
+    "experienceLevel": "BEGINNER",
+    "weeklySets": {
+      "CHEST": 8,
+      "BACK": 10,
+      "SHOULDERS": 8,
+      "TRICEPS": 8,
+      "BICEPS": 8,
+      "QUADS": 12,
+      "HAMSTRINGS": 12,
+      "GLUTES": 16,
+      "CALVES": 8
+    },
+    "repRange": { "compound": [8, 12], "isolation": [12, 15] },
+    "intensityRange": [60, 70]
+  },
+  {
+    "id": "BEGINNER_STRENGTH_BALANCED",
+    "goal": "STRENGTH",
+    "priority": "BALANCED",
+    "experienceLevel": "BEGINNER",
+    "weeklySets": {
+      "CHEST": 8,
+      "BACK": 10,
+      "SHOULDERS": 8,
+      "TRICEPS": 6,
+      "BICEPS": 6,
+      "QUADS": 10,
+      "HAMSTRINGS": 8,
+      "GLUTES": 10,
+      "CALVES": 6
+    },
+    "repRange": { "compound": [5, 8], "isolation": [8, 12] },
+    "intensityRange": [65, 75]
+  },
+  {
+    "id": "BEGINNER_POWERBUILDING_BALANCED",
+    "goal": "POWERBUILDING",
+    "priority": "BALANCED",
+    "experienceLevel": "BEGINNER",
+    "weeklySets": {
+      "CHEST": 10,
+      "BACK": 12,
+      "SHOULDERS": 10,
+      "TRICEPS": 8,
+      "BICEPS": 8,
+      "QUADS": 12,
+      "HAMSTRINGS": 10,
+      "GLUTES": 12,
+      "CALVES": 8
+    },
+    "repRange": { "compound": [5, 10], "isolation": [10, 15] },
+    "intensityRange": [65, 75]
+  },
+  {
+    "id": "INTERMEDIATE_HYPERTROPHY_BALANCED",
+    "goal": "HYPERTROPHY",
+    "priority": "BALANCED",
+    "experienceLevel": "INTERMEDIATE",
+    "weeklySets": {
+      "CHEST": 16,
+      "BACK": 18,
+      "SHOULDERS": 14,
+      "TRICEPS": 12,
+      "BICEPS": 12,
+      "QUADS": 14,
+      "HAMSTRINGS": 12,
+      "GLUTES": 14,
+      "CALVES": 10
+    },
+    "repRange": { "compound": [6, 10], "isolation": [10, 15] },
+    "intensityRange": [65, 80]
+  },
+  {
+    "id": "INTERMEDIATE_HYPERTROPHY_GLUTE_FOCUS",
+    "goal": "HYPERTROPHY",
+    "priority": "GLUTE_FOCUS",
+    "experienceLevel": "INTERMEDIATE",
+    "weeklySets": {
+      "CHEST": 12,
+      "BACK": 16,
+      "SHOULDERS": 12,
+      "TRICEPS": 10,
+      "BICEPS": 10,
+      "QUADS": 16,
+      "HAMSTRINGS": 14,
+      "GLUTES": 20,
+      "CALVES": 12
+    },
+    "repRange": { "compound": [6, 10], "isolation": [10, 15] },
+    "intensityRange": [65, 80]
+  },
+  {
+    "id": "INTERMEDIATE_STRENGTH_BALANCED",
+    "goal": "STRENGTH",
+    "priority": "BALANCED",
+    "experienceLevel": "INTERMEDIATE",
+    "weeklySets": {
+      "CHEST": 12,
+      "BACK": 16,
+      "SHOULDERS": 10,
+      "TRICEPS": 10,
+      "BICEPS": 8,
+      "QUADS": 14,
+      "HAMSTRINGS": 12,
+      "GLUTES": 14,
+      "CALVES": 8
+    },
+    "repRange": { "compound": [3, 6], "isolation": [6, 10] },
+    "intensityRange": [75, 85]
+  },
+  {
+    "id": "INTERMEDIATE_POWERBUILDING_BALANCED",
+    "goal": "POWERBUILDING",
+    "priority": "BALANCED",
+    "experienceLevel": "INTERMEDIATE",
+    "weeklySets": {
+      "CHEST": 14,
+      "BACK": 18,
+      "SHOULDERS": 12,
+      "TRICEPS": 10,
+      "BICEPS": 10,
+      "QUADS": 16,
+      "HAMSTRINGS": 14,
+      "GLUTES": 16,
+      "CALVES": 10
+    },
+    "repRange": { "compound": [4, 8], "isolation": [8, 12] },
+    "intensityRange": [70, 85]
+  },
+  {
+    "id": "ADVANCED_HYPERTROPHY_BALANCED",
+    "goal": "HYPERTROPHY",
+    "priority": "BALANCED",
+    "experienceLevel": "ADVANCED",
+    "weeklySets": {
+      "CHEST": 18,
+      "BACK": 22,
+      "SHOULDERS": 18,
+      "TRICEPS": 14,
+      "BICEPS": 14,
+      "QUADS": 18,
+      "HAMSTRINGS": 16,
+      "GLUTES": 18,
+      "CALVES": 14
+    },
+    "repRange": { "compound": [5, 10], "isolation": [10, 20] },
+    "intensityRange": [70, 85]
+  },
+  {
+    "id": "ADVANCED_HYPERTROPHY_GLUTE_FOCUS",
+    "goal": "HYPERTROPHY",
+    "priority": "GLUTE_FOCUS",
+    "experienceLevel": "ADVANCED",
+    "weeklySets": {
+      "CHEST": 14,
+      "BACK": 18,
+      "SHOULDERS": 14,
+      "TRICEPS": 12,
+      "BICEPS": 12,
+      "QUADS": 20,
+      "HAMSTRINGS": 18,
+      "GLUTES": 24,
+      "CALVES": 14
+    },
+    "repRange": { "compound": [6, 10], "isolation": [12, 20] },
+    "intensityRange": [70, 85]
+  },
+  {
+    "id": "ADVANCED_STRENGTH_BALANCED",
+    "goal": "STRENGTH",
+    "priority": "BALANCED",
+    "experienceLevel": "ADVANCED",
+    "weeklySets": {
+      "CHEST": 14,
+      "BACK": 18,
+      "SHOULDERS": 12,
+      "TRICEPS": 12,
+      "BICEPS": 10,
+      "QUADS": 18,
+      "HAMSTRINGS": 16,
+      "GLUTES": 18,
+      "CALVES": 10
+    },
+    "repRange": { "compound": [1, 5], "isolation": [6, 10] },
+    "intensityRange": [80, 92]
+  },
+  {
+    "id": "ADVANCED_POWERBUILDING_BALANCED",
+    "goal": "POWERBUILDING",
+    "priority": "BALANCED",
+    "experienceLevel": "ADVANCED",
+    "weeklySets": {
+      "CHEST": 16,
+      "BACK": 20,
+      "SHOULDERS": 16,
+      "TRICEPS": 14,
+      "BICEPS": 12,
+      "QUADS": 20,
+      "HAMSTRINGS": 18,
+      "GLUTES": 20,
+      "CALVES": 12
+    },
+    "repRange": { "compound": [3, 8], "isolation": [8, 15] },
+    "intensityRange": [75, 90]
+  }
+]

@@ -1,0 +1,165 @@
+[
+  {
+    "id": "LINEAR_BEGINNER_4W",
+    "name": "Linear Beginner 4 Week",
+    "type": "LINEAR",
+    "durationWeeks": 4,
+    "weeks": [
+      { "week": 1, "intensityPercent": 60, "volumeModifier": 1.0 },
+      { "week": 2, "intensityPercent": 65, "volumeModifier": 1.0 },
+      { "week": 3, "intensityPercent": 70, "volumeModifier": 0.95 },
+      { "week": 4, "deload": true, "intensityPercent": 55, "volumeModifier": 0.6 }
+    ]
+  },
+
+  {
+    "id": "LINEAR_HYPERTROPHY_4W",
+    "name": "Linear Hypertrophy 4 Week",
+    "type": "LINEAR",
+    "durationWeeks": 4,
+    "weeks": [
+      { "week": 1, "intensityPercent": 65, "volumeModifier": 1.0 },
+      { "week": 2, "intensityPercent": 70, "volumeModifier": 1.05 },
+      { "week": 3, "intensityPercent": 75, "volumeModifier": 1.1 },
+      { "week": 4, "deload": true, "intensityPercent": 60, "volumeModifier": 0.7 }
+    ]
+  },
+
+  {
+    "id": "LINEAR_HYPERTROPHY_6W",
+    "name": "Linear Hypertrophy 6 Week",
+    "type": "LINEAR",
+    "durationWeeks": 6,
+    "weeks": [
+      { "week": 1, "intensityPercent": 65, "volumeModifier": 1.0 },
+      { "week": 2, "intensityPercent": 70, "volumeModifier": 1.05 },
+      { "week": 3, "intensityPercent": 75, "volumeModifier": 1.1 },
+      { "week": 4, "intensityPercent": 78, "volumeModifier": 1.05 },
+      { "week": 5, "intensityPercent": 82, "volumeModifier": 1.0 },
+      { "week": 6, "deload": true, "intensityPercent": 60, "volumeModifier": 0.6 }
+    ]
+  },
+
+  {
+    "id": "LINEAR_STRENGTH_5W",
+    "name": "Linear Strength 5 Week",
+    "type": "LINEAR",
+    "durationWeeks": 5,
+    "weeks": [
+      { "week": 1, "intensityPercent": 70, "volumeModifier": 1.0 },
+      { "week": 2, "intensityPercent": 75, "volumeModifier": 0.95 },
+      { "week": 3, "intensityPercent": 80, "volumeModifier": 0.9 },
+      { "week": 4, "intensityPercent": 85, "volumeModifier": 0.85 },
+      { "week": 5, "deload": true, "intensityPercent": 65, "volumeModifier": 0.6 }
+    ]
+  },
+
+  {
+    "id": "LINEAR_STRENGTH_6W",
+    "name": "Linear Strength 6 Week",
+    "type": "LINEAR",
+    "durationWeeks": 6,
+    "weeks": [
+      { "week": 1, "intensityPercent": 70, "volumeModifier": 1.0 },
+      { "week": 2, "intensityPercent": 75, "volumeModifier": 0.95 },
+      { "week": 3, "intensityPercent": 80, "volumeModifier": 0.9 },
+      { "week": 4, "intensityPercent": 85, "volumeModifier": 0.85 },
+      { "week": 5, "intensityPercent": 90, "volumeModifier": 0.8 },
+      { "week": 6, "deload": true, "intensityPercent": 65, "volumeModifier": 0.6 }
+    ]
+  },
+
+  {
+    "id": "DOUBLE_HYPERTROPHY_6W",
+    "name": "Double Progression Hypertrophy 6 Week",
+    "type": "DOUBLE_PROGRESSION",
+    "durationWeeks": 6,
+    "weeks": [
+      { "week": 1, "intensityPercent": 65, "volumeModifier": 1.0 },
+      { "week": 2, "intensityPercent": 65, "volumeModifier": 1.1 },
+      { "week": 3, "intensityPercent": 70, "volumeModifier": 1.0 },
+      { "week": 4, "intensityPercent": 70, "volumeModifier": 1.1 },
+      { "week": 5, "intensityPercent": 75, "volumeModifier": 1.0 },
+      { "week": 6, "deload": true, "intensityPercent": 60, "volumeModifier": 0.6 }
+    ]
+  },
+
+  {
+    "id": "DOUBLE_HYPERTROPHY_8W",
+    "name": "Double Progression Hypertrophy 8 Week",
+    "type": "DOUBLE_PROGRESSION",
+    "durationWeeks": 8,
+    "weeks": [
+      { "week": 1, "intensityPercent": 65, "volumeModifier": 1.0 },
+      { "week": 2, "intensityPercent": 65, "volumeModifier": 1.1 },
+      { "week": 3, "intensityPercent": 70, "volumeModifier": 1.0 },
+      { "week": 4, "intensityPercent": 70, "volumeModifier": 1.1 },
+      { "week": 5, "intensityPercent": 75, "volumeModifier": 1.0 },
+      { "week": 6, "intensityPercent": 75, "volumeModifier": 1.05 },
+      { "week": 7, "intensityPercent": 80, "volumeModifier": 0.95 },
+      { "week": 8, "deload": true, "intensityPercent": 60, "volumeModifier": 0.6 }
+    ]
+  },
+
+  {
+    "id": "UNDULATING_STRENGTH_4W",
+    "name": "Undulating Strength 4 Week",
+    "type": "UNDULATING",
+    "durationWeeks": 4,
+    "weeks": [
+      { "week": 1, "intensityPercent": 75, "volumeModifier": 1.0 },
+      { "week": 2, "intensityPercent": 80, "volumeModifier": 0.9 },
+      { "week": 3, "intensityPercent": 77, "volumeModifier": 1.05 },
+      { "week": 4, "deload": true, "intensityPercent": 65, "volumeModifier": 0.6 }
+    ]
+  },
+
+  {
+    "id": "UNDULATING_STRENGTH_6W",
+    "name": "Undulating Strength 6 Week",
+    "type": "UNDULATING",
+    "durationWeeks": 6,
+    "weeks": [
+      { "week": 1, "intensityPercent": 75, "volumeModifier": 1.0 },
+      { "week": 2, "intensityPercent": 82, "volumeModifier": 0.9 },
+      { "week": 3, "intensityPercent": 78, "volumeModifier": 1.05 },
+      { "week": 4, "intensityPercent": 85, "volumeModifier": 0.85 },
+      { "week": 5, "intensityPercent": 80, "volumeModifier": 0.9 },
+      { "week": 6, "deload": true, "intensityPercent": 65, "volumeModifier": 0.6 }
+    ]
+  },
+
+  {
+    "id": "BLOCK_STRENGTH_9W",
+    "name": "Block Strength 9 Week",
+    "type": "BLOCK",
+    "durationWeeks": 9,
+    "weeks": [
+      { "week": 1, "intensityPercent": 65, "volumeModifier": 1.2 },
+      { "week": 2, "intensityPercent": 70, "volumeModifier": 1.15 },
+      { "week": 3, "intensityPercent": 75, "volumeModifier": 1.1 },
+
+      { "week": 4, "intensityPercent": 80, "volumeModifier": 1.0 },
+      { "week": 5, "intensityPercent": 85, "volumeModifier": 0.95 },
+      { "week": 6, "intensityPercent": 90, "volumeModifier": 0.9 },
+
+      { "week": 7, "intensityPercent": 92, "volumeModifier": 0.8 },
+      { "week": 8, "intensityPercent": 95, "volumeModifier": 0.7 },
+
+      { "week": 9, "deload": true, "intensityPercent": 65, "volumeModifier": 0.5 }
+    ]
+  },
+
+  {
+    "id": "RECOVERY_LINEAR_4W",
+    "name": "Recovery Linear 4 Week",
+    "type": "LINEAR",
+    "durationWeeks": 4,
+    "weeks": [
+      { "week": 1, "intensityPercent": 60, "volumeModifier": 0.9 },
+      { "week": 2, "intensityPercent": 65, "volumeModifier": 0.9 },
+      { "week": 3, "intensityPercent": 70, "volumeModifier": 0.85 },
+      { "week": 4, "deload": true, "intensityPercent": 55, "volumeModifier": 0.5 }
+    ]
+  }
+]

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><title>Flex - Login</title></head>
+<body>
+    <h1>Login</h1>
+    <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required value="kaleab@test.com"><br>
+        <input type="password" id="password" placeholder="Password" required value="password123"><br>
+        <button type="submit">Login</button>
+    </form>
+    <p><a href="register.html">Go to Register</a></p>
+    <div id="response" style="white-space: pre; border: 1px solid black; padding: 10px; margin-top: 20px;"></div>
+
+    <script>
+        document.getElementById('loginForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value
+                })
+            });
+            const json = await res.json();
+            document.getElementById('response').innerText = JSON.stringify(json, null, 2);
+            if (json.status === 'success') {
+                localStorage.setItem('flex_token', json.data.token);
+                alert('Login Successful!');
+                window.location.href = 'dashboard.html';
+            }
+        };
+    </script>
+</body>
+</html>
