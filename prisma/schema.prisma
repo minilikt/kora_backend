@@ -34,6 +34,7 @@ model User {
   trainingLevel       ExperienceLevel?
   trainingEnvironment ExerciseEnvironment? @default(GYM)
   trainingDaysPerWeek Int?
+  workoutDays         DayOfWeek[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -42,6 +43,7 @@ model User {
   userSessions       UserSession[]
   userAdaptiveStates UserAdaptiveState[]
   trainingProfile    UserTrainingProfile?
+  dailyActivities    DailyActivity[]
 
   @@index([email])
   @@map("users")
@@ -92,6 +94,7 @@ model UserSession {
   startedAt   DateTime?
   completedAt DateTime?
   createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   exercises UserExerciseLog[]
 
@@ -188,6 +191,23 @@ model BlockEvaluation {
   createdAt DateTime @default(now())
 
   @@map("block_evaluations")
+}
+
+model DailyActivity {
+  id             String @id @default(cuid())
+  userId         String
+  user           User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date           DateTime @db.Date
+  activeMinutes  Int    @default(0)
+  workoutsCount  Int    @default(0)
+  successScore   Float  @default(0)
+  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@unique([userId, date])
+  @@index([userId, date])
+  @@map("daily_activities")
 }
 
 // ============================================
@@ -391,6 +411,16 @@ enum ExerciseLevel {
   BEGINNER
   INTERMEDIATE
   ADVANCED
+}
+
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
 }
 
 enum ExerciseEnvironment {

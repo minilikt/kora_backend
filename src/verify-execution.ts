@@ -27,7 +27,7 @@ async function main() {
     days: 3,
     goal: "HYPERTROPHY",
     level: "INTERMEDIATE",
-    progressionId: "linear-overload-4w",
+    progressionId: "LINEAR_HYPERTROPHY_4W",
     environment: "GYM",
     equipment: [
       "Barbell",
@@ -71,18 +71,20 @@ async function main() {
     // Let's check PlanCompiler output.
     // It puts 'exerciseId' and 'exerciseName'.
 
-    await SessionService.completeSession({
-      userId: user.id,
-      sessionId: sessionToComplete.id,
-      durationSeconds: 3600,
-      fatigueRating: 7,
+    await SessionService.completeSession(user.id, {
+      planId: plan.id,
+      week: sessionToComplete.week,
+      day: sessionToComplete.dayNumber,
+      startedAt: new Date(Date.now() - 3600000).toISOString(),
+      completedAt: new Date().toISOString(),
+      notes: "Verification session",
       exercises: [
         {
           exerciseId: firstExercise.exerciseId,
           sets: [
-            { weight: 135, reps: 10, rpe: 8 },
-            { weight: 135, reps: 10, rpe: 8.5 },
-            { weight: 135, reps: 9, rpe: 9 },
+            { setIndex: 0, weight: 135, reps: 10, rpe: 8 },
+            { setIndex: 1, weight: 135, reps: 10, rpe: 8.5 },
+            { setIndex: 2, weight: 135, reps: 9, rpe: 9 },
           ],
         },
       ],

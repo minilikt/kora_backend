@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { BlockEvaluationService } from "./BlockEvaluationService";
 import { PlanEvolutionEngine } from "../engines/PlanEvolutionEngine";
+import { ActivityService } from "./ActivityService";
 
 const prisma = new PrismaClient();
 
@@ -158,6 +159,14 @@ export class SessionService {
         },
       });
 
+      // 4. Update Daily Activity via dedicated service
+      await ActivityService.recordActivity(
+        userId,
+        totalTimeSec,
+        performanceScore,
+        tx,
+      );
+
       return updatedSession;
     });
 
@@ -236,5 +245,35 @@ export class SessionService {
       // - Queue a retry job
       // - Notify admins
     }
+  }
+
+  /**
+   * Gets the next uncompleted session for the user.
+   */
+  static async getCurrentSession(userId: string) {
+    // 1. Get the current active plan
+    const activePlan = await prisma.userPlan.findFirst({
+      where: { userId },
+      orderBy: { createdAt: "desc" },
+    });
+
+    if (!activePlan) return null;
+
+    // 2. Find the first uncompleted session
+    return prisma.userSession.findFirst({
+      where: {
+        userId,
+        planId: activePlan.id,
+        completedStatus: false,
+      },
+      orderBy: [{ week: "asc" }, { dayNumber: "asc" }],
+      include: {
+        exercises: {
+          include: {
+            exercise: true,
+          },
+        },
+      },
+    });
   }
 }

@@ -13,14 +13,31 @@ export class ExerciseSelector {
       minRpe?: number;
       maxRpe?: number;
     } = {},
-  ) {
+  ): Promise<any[]> {
+    // Normalize equipment names to match DB (pluralization issues)
+    const normalizedEquipment = equipmentNames.map((e) => {
+      const lower = e.toLowerCase();
+      if (lower === "dumbbell") return "Dumbbells";
+      if (lower === "barbell") return "Barbell"; // Usually singular in DB
+      if (lower === "kettlebell") return "Kettlebells";
+      return e;
+    });
+
+    console.log(`[ExerciseSelector] Searching for pattern: "${patternName}"`);
+    console.log(
+      `[ExerciseSelector] Equipment allowed: ${JSON.stringify([...normalizedEquipment, ...equipmentNames])}`,
+    );
+    console.log(`[ExerciseSelector] Options: ${JSON.stringify(options)}`);
+
     const exercises = await prisma.exercise.findMany({
       where: {
         movementPattern: {
           name: patternName,
         },
         type: options.type,
-        level: options.level,
+        level: options.level
+          ? { in: [options.level, "BEGINNER", "INTERMEDIATE"] }
+          : undefined,
         environment: options.environment
           ? { in: [options.environment, "ANY"] }
           : undefined,
@@ -30,7 +47,7 @@ export class ExerciseSelector {
           every: {
             equipment: {
               name: {
-                in: equipmentNames,
+                in: [...normalizedEquipment, ...equipmentNames], // Try both
               },
             },
           },
@@ -41,6 +58,28 @@ export class ExerciseSelector {
         equipment: { include: { equipment: true } },
       },
     });
+
+    console.log(
+      `[ExerciseSelector] Query returned ${exercises.length} total possible exercises`,
+    );
+    if (exercises.length > 0) {
+      console.log(
+        `[ExerciseSelector] First 3 results: ${exercises
+          .slice(0, 3)
+          .map((ex: any) => ex.name)
+          .join(", ")}`,
+      );
+    }
+
+    if (exercises.length === 0 && options.type === "COMPOUND") {
+      console.log(
+        `[ExerciseSelector] Retrying ${patternName} without type restriction...`,
+      );
+      return this.getByPattern(patternName, equipmentNames, {
+        ...options,
+        type: undefined,
+      });
+    }
 
     // Sort: Compound first
     return exercises.sort((a: any, b: any) => {

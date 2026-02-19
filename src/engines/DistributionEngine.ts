@@ -82,15 +82,15 @@ export class DistributionEngine {
   private static mapMuscleToDefaultPattern(muscle: string): string {
     const map: Record<string, string> = {
       CHEST: "Horizontal Push",
-      BACK: "Vertical Pull",
-      QUADS: "Vertical Push/Squat",
-      HAMSTRINGS: "Vertical Push/Squat", // Deadlift patterns often fall here or in specific hip ones
-      GLUTES: "Vertical Push/Squat",
+      BACK: "Horizontal Pull", // Fallback to horizontal if vertical isn't found
+      QUADS: "Squat",
+      HAMSTRINGS: "Hinge",
+      GLUTES: "Hinge",
       SHOULDERS: "Vertical Push",
-      BICEPS: "Elbow Flexion",
-      TRICEPS: "Elbow Extension",
-      CORE: "Core",
-      CALVES: "Ankle Extension",
+      BICEPS: "Bicep Curl Arc",
+      TRICEPS: "Overhead Arc", // Often triceps dominant in the arc or isolation
+      CORE: "Spinal Flexion",
+      CALVES: "Plantar Flexion",
     };
     return map[muscle] || "Horizontal Push"; // Safe fallback
   }

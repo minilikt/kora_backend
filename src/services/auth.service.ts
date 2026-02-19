@@ -3,9 +3,14 @@ import {
   Gender,
   ExperienceLevel,
   ExerciseEnvironment,
+  DayOfWeek,
 } from "@prisma/client";
 import { hashPassword, comparePassword } from "../utils/password.utils";
-import { generateToken } from "../utils/jwt.utils";
+import {
+  generateToken,
+  generateRefreshToken,
+  verifyToken,
+} from "../utils/jwt.utils";
 import { AppError } from "../middlewares/error.middleware";
 
 const prisma = new PrismaClient();
@@ -26,6 +31,7 @@ export interface RegisterDto {
   trainingLevel?: ExperienceLevel;
   trainingEnvironment?: ExerciseEnvironment;
   trainingDaysPerWeek?: number;
+  workoutDays?: DayOfWeek[];
 }
 
 export interface LoginDto {
@@ -35,7 +41,7 @@ export interface LoginDto {
 
 export const register = async (
   dto: RegisterDto,
-): Promise<{ user: any; token: string }> => {
+): Promise<{ user: any; accessToken: string; refreshToken: string }> => {
   const existingUser = await prisma.user.findUnique({
     where: { email: dto.email },
   });
@@ -63,19 +69,24 @@ export const register = async (
       trainingLevel: dto.trainingLevel,
       trainingEnvironment: dto.trainingEnvironment,
       trainingDaysPerWeek: dto.trainingDaysPerWeek,
+      workoutDays: dto.workoutDays ?? [],
     },
   });
 
-  const token = generateToken({ userId: user.id, email: user.email });
+  const accessToken = generateToken({ userId: user.id, email: user.email });
+  const refreshToken = generateRefreshToken({
+    userId: user.id,
+    email: user.email,
+  });
 
   const { password, ...userWithoutPassword } = user;
 
-  return { user: userWithoutPassword, token };
+  return { user: userWithoutPassword, accessToken, refreshToken };
 };
 
 export const login = async (
   dto: LoginDto,
-): Promise<{ user: any; token: string }> => {
+): Promise<{ user: any; accessToken: string; refreshToken: string }> => {
   const user = await prisma.user.findUnique({
     where: { email: dto.email },
   });
@@ -91,8 +102,27 @@ export const login = async (
   }
 
   const token = generateToken({ userId: user.id, email: user.email });
+  const refreshToken = generateRefreshToken({
+    userId: user.id,
+    email: user.email,
+  });
 
   const { password, ...userWithoutPassword } = user;
 
-  return { user: userWithoutPassword, token };
+  return { user: userWithoutPassword, accessToken: token, refreshToken };
+};
+
+export const refreshAccessToken = async (
+  token: string,
+): Promise<{ accessToken: string }> => {
+  try {
+    const payload = verifyToken(token);
+    const accessToken = generateToken({
+      userId: payload.userId,
+      email: payload.email,
+    });
+    return { accessToken };
+  } catch {
+    throw new AppError("Invalid or expired refresh token", 401);
+  }
 };

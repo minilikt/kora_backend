@@ -15,7 +15,7 @@ export class UserService {
     console.log(`👤 UserService: Registering user ${dto.email}...`);
 
     // 1. Register the user
-    const { user, token } = await authService.register(dto);
+    const { user, accessToken, refreshToken } = await authService.register(dto);
 
     // 2. Map training goal if provided (default to HYPERTROPHY for now if not specified or doesn't match)
     // In a real app, this mapping would be more sophisticated.
@@ -24,7 +24,13 @@ export class UserService {
     // 3. Prepare Plan Input from User Profile (with defaults if missing)
     const level =
       user.trainingLevel || dto.trainingLevel || ExperienceLevel.INTERMEDIATE;
-    const days = user.trainingDaysPerWeek || dto.trainingDaysPerWeek || 3;
+    const days =
+      (dto.workoutDays && dto.workoutDays.length > 0
+        ? dto.workoutDays.length
+        : null) ??
+      user.trainingDaysPerWeek ??
+      dto.trainingDaysPerWeek ??
+      3;
     const env =
       user.trainingEnvironment ||
       dto.trainingEnvironment ||
@@ -44,18 +50,18 @@ export class UserService {
         progressionId: "LINEAR_BEGINNER_4W",
         equipment: [
           "Barbell",
-          "Dumbbell",
+          "Dumbbells",
+          "Kettlebells",
           "Cable Machine",
           "Flat Bench",
+          "Incline Bench",
+          "Decline Bench",
           "Pull-up Bar",
           "Squat Rack",
-          "Incline Bench",
-          "Adjustable Bench",
-          "Leg Press",
+          "Leg Press Machine",
           "Smith Machine",
           "Lat Pulldown Machine",
           "Dip Bar",
-          "Kettlebell",
         ],
       });
       console.log(`✅ UserService: Auto-plan generated for user ${user.id}`);
@@ -66,6 +72,6 @@ export class UserService {
       );
     }
 
-    return { user, token };
+    return { user, accessToken, refreshToken };
   }
 }

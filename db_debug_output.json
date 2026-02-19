@@ -1,0 +1,960 @@
+{
+  "patterns": [
+    {
+      "name": "Incline Push"
+    },
+    {
+      "name": "Decline Push"
+    },
+    {
+      "name": "Horizontal Push"
+    },
+    {
+      "name": "Overhead Arc"
+    },
+    {
+      "name": "Decline Fly"
+    },
+    {
+      "name": "Incline Fly"
+    },
+    {
+      "name": "Horizontal Fly"
+    },
+    {
+      "name": "Lateral Raise Arc"
+    },
+    {
+      "name": "Explosive Horizontal Push"
+    },
+    {
+      "name": "Short-Range Horizontal Push"
+    },
+    {
+      "name": "Dynamic Horizontal Push"
+    },
+    {
+      "name": "Vertical Push"
+    },
+    {
+      "name": "Vertical Push (Downward)"
+    },
+    {
+      "name": "Vertical Push/Pull Hybrid"
+    },
+    {
+      "name": "Vertical Push/Squat"
+    },
+    {
+      "name": "Vertical Push Arc"
+    },
+    {
+      "name": "Hip Hinge"
+    },
+    {
+      "name": "Isolation Arc"
+    },
+    {
+      "name": "Horizontal Abduction"
+    },
+    {
+      "name": "Horizontal Abduction with Rotation"
+    },
+    {
+      "name": "Hybrid Push/Extension"
+    },
+    {
+      "name": "Partial Horizontal Push"
+    },
+    {
+      "name": "Extension"
+    },
+    {
+      "name": "Bicep Curl Arc"
+    },
+    {
+      "name": "Vertical Pull"
+    },
+    {
+      "name": "Vertical Pull to Push"
+    },
+    {
+      "name": "Momentum Vertical Pull/Push"
+    },
+    {
+      "name": "Vertical Pull/Push"
+    },
+    {
+      "name": "Vertical Pull (Unilateral Focus)"
+    },
+    {
+      "name": "Horizontal Pull"
+    },
+    {
+      "name": "Horizontal Pull (Wide)"
+    },
+    {
+      "name": "Horizontal Pull (Wide Elbows)"
+    },
+    {
+      "name": "Horizontal Pull in Plank"
+    },
+    {
+      "name": "Vertical Explosive Pull"
+    },
+    {
+      "name": "Overhead Arc to Extension"
+    },
+    {
+      "name": "Vertical Bicep Drag"
+    },
+    {
+      "name": "Neutral Bicep Curl"
+    },
+    {
+      "name": "External Rotation Curl"
+    },
+    {
+      "name": "Rotational Bicep Curl"
+    },
+    {
+      "name": "Wrist Flexion"
+    },
+    {
+      "name": "Wrist Extension"
+    },
+    {
+      "name": "Scapular Elevation"
+    },
+    {
+      "name": "Squat"
+    },
+    {
+      "name": "Squat (Posterior Bias)"
+    },
+    {
+      "name": "Squat (Anterior Bias)"
+    },
+    {
+      "name": "Explosive Squat"
+    },
+    {
+      "name": "Partial Squat"
+    },
+    {
+      "name": "Lunge"
+    },
+    {
+      "name": "Single Leg Squat"
+    },
+    {
+      "name": "Hinge"
+    },
+    {
+      "name": "Lateral Lunge/Squat"
+    },
+    {
+      "name": "Step Pattern"
+    },
+    {
+      "name": "Hinge/Squat Hybrid"
+    },
+    {
+      "name": "Bridge"
+    },
+    {
+      "name": "Abduction"
+    },
+    {
+      "name": "Hinge (Reverse)"
+    },
+    {
+      "name": "Dynamic Stretch"
+    },
+    {
+      "name": "Plantar Flexion"
+    },
+    {
+      "name": "Dynamic Plantar/Dorsi Flexion"
+    },
+    {
+      "name": "Knee Flexion"
+    },
+    {
+      "name": "Knee Flexion (Nordic Style)"
+    },
+    {
+      "name": "Adduction"
+    },
+    {
+      "name": "Vertical Push/Core Flexion"
+    },
+    {
+      "name": "Plantar Flexion (Bent Over)"
+    },
+    {
+      "name": "Explosive Hinge/Push"
+    },
+    {
+      "name": "Hinge (Wide Stance)"
+    },
+    {
+      "name": "Spinal Flexion"
+    },
+    {
+      "name": "Total Core Flexion"
+    },
+    {
+      "name": "Posterior Pelvic Tilt"
+    },
+    {
+      "name": "Rotational Flexion"
+    },
+    {
+      "name": "Lateral Flexion"
+    },
+    {
+      "name": "Anti-Extension"
+    },
+    {
+      "name": "Isometric Hold"
+    },
+    {
+      "name": "Isometric Lateral Hold"
+    },
+    {
+      "name": "Isometric Lateral Hold / Adduction"
+    },
+    {
+      "name": "Locomotion"
+    },
+    {
+      "name": "Plyometric Jumps"
+    },
+    {
+      "name": "Lateral Locomotion"
+    },
+    {
+      "name": "Rotational Momentum"
+    },
+    {
+      "name": "Explosive Locomotion"
+    },
+    {
+      "name": "Reciprocal Leg Drive"
+    },
+    {
+      "name": "Vertical Push (Explosive)"
+    },
+    {
+      "name": "Squat to Vertical Push"
+    },
+    {
+      "name": "Multi-Planar Transition"
+    },
+    {
+      "name": "Lateral Hinge / Press"
+    },
+    {
+      "name": "Push / Rotation"
+    },
+    {
+      "name": "Triple Extension / Vertical Push"
+    },
+    {
+      "name": "Vertical Press Hold"
+    },
+    {
+      "name": "Isometric Extension"
+    },
+    {
+      "name": "Isometric Press Hold"
+    },
+    {
+      "name": "Hinge / Push Hybrid"
+    },
+    {
+      "name": "Dynamic Transition"
+    }
+  ],
+  "equipment": [
+    {
+      "name": "Barbell"
+    },
+    {
+      "name": "Incline Bench"
+    },
+    {
+      "name": "Decline Bench"
+    },
+    {
+      "name": "Flat Bench"
+    },
+    {
+      "name": "Dumbbells"
+    },
+    {
+      "name": "Dumbbell"
+    },
+    {
+      "name": "Exercise Ball"
+    },
+    {
+      "name": "Bodyweight"
+    },
+    {
+      "name": "Suspension Trainer (TRX)"
+    },
+    {
+      "name": "Wall"
+    },
+    {
+      "name": "Straight Bar"
+    },
+    {
+      "name": "Smith Machine"
+    },
+    {
+      "name": "Seat"
+    },
+    {
+      "name": "Power Rack"
+    },
+    {
+      "name": "EZ-Bar"
+    },
+    {
+      "name": "Pull-up Bar"
+    },
+    {
+      "name": "Weight Belt"
+    },
+    {
+      "name": "Resistance Band"
+    },
+    {
+      "name": "Assisted Pull-up Machine"
+    },
+    {
+      "name": "Leverage Machine"
+    },
+    {
+      "name": "T-Bar Machine"
+    },
+    {
+      "name": "Kettlebells"
+    },
+    {
+      "name": "Cable Machine"
+    },
+    {
+      "name": "Rope Attachment"
+    },
+    {
+      "name": "Lat Bar"
+    },
+    {
+      "name": "Arm Blaster"
+    },
+    {
+      "name": "Preacher Bench"
+    },
+    {
+      "name": "Squat Rack"
+    },
+    {
+      "name": "Step Box"
+    },
+    {
+      "name": "Dumbbells (Optional)"
+    },
+    {
+      "name": "Kettlebell"
+    },
+    {
+      "name": "Stability Ball"
+    },
+    {
+      "name": "Step/Block"
+    },
+    {
+      "name": "Block"
+    },
+    {
+      "name": "Angled Calf Machine"
+    },
+    {
+      "name": "Leg Press Machine"
+    },
+    {
+      "name": "Hack Squat Machine"
+    },
+    {
+      "name": "Lying Leg Curl Machine"
+    },
+    {
+      "name": "Seated Leg Curl Machine"
+    },
+    {
+      "name": "Kneeling Leg Curl Machine"
+    },
+    {
+      "name": "Ankle Straps"
+    },
+    {
+      "name": "Mat"
+    },
+    {
+      "name": "Hip Abduction Machine"
+    },
+    {
+      "name": "Hip Adduction Machine"
+    },
+    {
+      "name": "Bosu Ball"
+    },
+    {
+      "name": "Weighted Belt or Machine"
+    },
+    {
+      "name": "Step"
+    },
+    {
+      "name": "Large Tire"
+    },
+    {
+      "name": "Plate"
+    },
+    {
+      "name": "Abdominal Machine"
+    },
+    {
+      "name": "Plates"
+    },
+    {
+      "name": "Ab Wheel"
+    },
+    {
+      "name": "Ab Roller / Sliders"
+    },
+    {
+      "name": "Bench / Elevated Surface"
+    },
+    {
+      "name": "Running Shoes"
+    },
+    {
+      "name": "Mace / Kettlebell"
+    },
+    {
+      "name": "Open Track / Field"
+    },
+    {
+      "name": "Stationary Bike"
+    },
+    {
+      "name": "Wall / Floor"
+    },
+    {
+      "name": "Floor / Parallettes"
+    },
+    {
+      "name": "Tire"
+    }
+  ],
+  "exerciseCount": 196,
+  "sampleExercises": [
+    {
+      "id": "01a3a5ce-cc1a-4d1a-b70b-05dc20e3c48d",
+      "name": "Dumbbell Pullover",
+      "type": "ISOLATION",
+      "splitId": 3,
+      "categoryId": 4,
+      "movementPatternId": 4,
+      "instructions": [
+        "Step:1 Lie flat on a bench with your head at one end and your feet on the floor.",
+        "Step:2 Hold a dumbbell with both hands and extend your arms straight above your chest.",
+        "Step:3 Keeping a slight bend in your elbows, slowly lower the dumbbell behind your head until you feel a stretch in your chest and shoulders.",
+        "Step:4 Pause for a moment, then raise the dumbbell back to the starting position.",
+        "Step:5 Repeat for the desired number of repetitions."
+      ],
+      "gifUrl": "https://static.exercisedb.dev/media/9XjtHvS.gif",
+      "difficultyRpeMin": 5,
+      "difficultyRpeMax": 8,
+      "level": "INTERMEDIATE",
+      "environment": "GYM",
+      "alternativeIds": [],
+      "rawData": {
+        "id": "01a3a5ce-cc1a-4d1a-b70b-05dc20e3c48d",
+        "name": "Dumbbell Pullover",
+        "gifUrl": "https://static.exercisedb.dev/media/9XjtHvS.gif",
+        "anatomy": {
+          "primary": [
+            "Latissimus Dorsi",
+            "Pectoralis Major"
+          ],
+          "secondary": [
+            "Serratus Anterior",
+            "Triceps Brachii (Long Head)"
+          ],
+          "stabilizers": [
+            "Core"
+          ]
+        },
+        "programming": {
+          "default_reps": "10-15",
+          "default_sets": 3,
+          "load_formula": "1RM * 0.40",
+          "rest_minutes": {
+            "max": 2,
+            "min": 1.5
+          }
+        },
+        "instructions": [
+          "Step:1 Lie flat on a bench with your head at one end and your feet on the floor.",
+          "Step:2 Hold a dumbbell with both hands and extend your arms straight above your chest.",
+          "Step:3 Keeping a slight bend in your elbows, slowly lower the dumbbell behind your head until you feel a stretch in your chest and shoulders.",
+          "Step:4 Pause for a moment, then raise the dumbbell back to the starting position.",
+          "Step:5 Repeat for the desired number of repetitions."
+        ],
+        "logic_assets": {
+          "tags": [
+            "lat-stretch",
+            "chest-expansion",
+            "classic"
+          ],
+          "alternatives": [
+            "7c71841b-d570-4033-85bc-dd6841ab9890",
+            "6fd37e23-eda3-4e76-980f-77aec6ae4f01",
+            "7fbe858b-e093-4c67-ab53-a49769f8aee2"
+          ]
+        },
+        "requirements": {
+          "equipment": [
+            "Dumbbell",
+            "Flat Bench"
+          ],
+          "difficulty_rpe": {
+            "max": 8,
+            "min": 5
+          }
+        },
+        "classification": {
+          "type": "Isolation",
+          "split": "Pull",
+          "category": "Back",
+          "movement_pattern": "Overhead Arc"
+        }
+      },
+      "movementPattern": {
+        "id": 4,
+        "name": "Overhead Arc"
+      },
+      "equipment": [
+        {
+          "exerciseId": "01a3a5ce-cc1a-4d1a-b70b-05dc20e3c48d",
+          "equipmentId": 6,
+          "equipment": {
+            "id": 6,
+            "name": "Dumbbell"
+          }
+        },
+        {
+          "exerciseId": "01a3a5ce-cc1a-4d1a-b70b-05dc20e3c48d",
+          "equipmentId": 4,
+          "equipment": {
+            "id": 4,
+            "name": "Flat Bench"
+          }
+        }
+      ]
+    },
+    {
+      "id": "02780669-86e1-4c2a-b8a3-aa395ad7ebd3",
+      "name": "Roller Body Saw",
+      "type": "ISOLATION",
+      "splitId": 10,
+      "categoryId": 19,
+      "movementPatternId": 72,
+      "instructions": [
+        "Step:1 Start in a plank position with your forearms on the roller and your body in a straight line.",
+        "Step:2 Engage your core and slowly roll the roller forward, extending your body as far as you can while maintaining control.",
+        "Step:3 Pause for a moment at the furthest point, then slowly roll the roller back towards your starting position.",
+        "Step:4 Repeat for the desired number of repetitions."
+      ],
+      "gifUrl": "https://static.exercisedb.dev/media/XeMvLgE.gif",
+      "difficultyRpeMin": 7,
+      "difficultyRpeMax": 9,
+      "level": "INTERMEDIATE",
+      "environment": "GYM",
+      "alternativeIds": [],
+      "rawData": {
+        "id": "02780669-86e1-4c2a-b8a3-aa395ad7ebd3",
+        "name": "Roller Body Saw",
+        "gifUrl": "https://static.exercisedb.dev/media/XeMvLgE.gif",
+        "anatomy": {
+          "primary": [
+            "Rectus Abdominis",
+            "Serratus Anterior"
+          ],
+          "secondary": [
+            "Transverse Abdominis"
+          ],
+          "stabilizers": [
+            "Shoulder Girdle"
+          ]
+        },
+        "programming": {
+          "default_reps": "10-15",
+          "default_sets": 3,
+          "load_formula": "Bodyweight * 1.10",
+          "rest_minutes": {
+            "max": 2,
+            "min": 1
+          }
+        },
+        "instructions": [
+          "Step:1 Start in a plank position with your forearms on the roller and your body in a straight line.",
+          "Step:2 Engage your core and slowly roll the roller forward, extending your body as far as you can while maintaining control.",
+          "Step:3 Pause for a moment at the furthest point, then slowly roll the roller back towards your starting position.",
+          "Step:4 Repeat for the desired number of repetitions."
+        ],
+        "logic_assets": {
+          "tags": [
+            "plank-variation",
+            "shoulder-health",
+            "tension"
+          ],
+          "alternatives": [
+            "953f5184-1842-4c19-856d-ce2b4457a13c",
+            "da09c10f-8d5e-43b2-ad39-1aa85c67cb95"
+          ]
+        },
+        "requirements": {
+          "equipment": [
+            "Ab Roller / Sliders"
+          ],
+          "difficulty_rpe": {
+            "max": 9,
+            "min": 7
+          }
+        },
+        "classification": {
+          "type": "Isolation",
+          "split": "Abs",
+          "category": "Core",
+          "movement_pattern": "Anti-Extension"
+        }
+      },
+      "movementPattern": {
+        "id": 72,
+        "name": "Anti-Extension"
+      },
+      "equipment": [
+        {
+          "exerciseId": "02780669-86e1-4c2a-b8a3-aa395ad7ebd3",
+          "equipmentId": 53,
+          "equipment": {
+            "id": 53,
+            "name": "Ab Roller / Sliders"
+          }
+        }
+      ]
+    },
+    {
+      "id": "0335b22e-34cf-4f93-b4b6-19963f0f36f4",
+      "name": "Smith Chair Squat",
+      "type": "COMPOUND",
+      "splitId": 6,
+      "categoryId": 10,
+      "movementPatternId": 43,
+      "instructions": [
+        "Step:1 Adjust the height of the smith machine bar to a comfortable position.",
+        "Step:2 Stand with your feet shoulder-width apart, toes slightly turned out.",
+        "Step:3 Place the barbell across your upper back, resting it on your traps.",
+        "Step:4 Engage your core and keep your chest up as you slowly lower your body by bending your knees and hips.",
+        "Step:5 Continue lowering until your thighs are parallel to the ground, or as low as you can comfortably go.",
+        "Step:6 Pause for a moment, then push through your heels to return to the starting position.",
+        "Step:7 Repeat for the desired number of repetitions."
+      ],
+      "gifUrl": "https://static.exercisedb.dev/media/Gu2rNJd.gif",
+      "difficultyRpeMin": 5,
+      "difficultyRpeMax": 8,
+      "level": "INTERMEDIATE",
+      "environment": "GYM",
+      "alternativeIds": [],
+      "rawData": {
+        "id": "0335b22e-34cf-4f93-b4b6-19963f0f36f4",
+        "name": "Smith Chair Squat",
+        "gifUrl": "https://static.exercisedb.dev/media/Gu2rNJd.gif",
+        "anatomy": {
+          "primary": [
+            "Quadriceps"
+          ],
+          "secondary": [
+            "Gluteus Maximus",
+            "Adductors"
+          ],
+          "stabilizers": [
+            "Core"
+          ]
+        },
+        "programming": {
+          "default_reps": "10-15",
+          "default_sets": 3,
+          "load_formula": "1RM * 0.60",
+          "rest_minutes": {
+            "max": 2,
+            "min": 1.5
+          }
+        },
+        "instructions": [
+          "Step:1 Adjust the height of the smith machine bar to a comfortable position.",
+          "Step:2 Stand with your feet shoulder-width apart, toes slightly turned out.",
+          "Step:3 Place the barbell across your upper back, resting it on your traps.",
+          "Step:4 Engage your core and keep your chest up as you slowly lower your body by bending your knees and hips.",
+          "Step:5 Continue lowering until your thighs are parallel to the ground, or as low as you can comfortably go.",
+          "Step:6 Pause for a moment, then push through your heels to return to the starting position.",
+          "Step:7 Repeat for the desired number of repetitions."
+        ],
+        "logic_assets": {
+          "tags": [
+            "quad-dominant",
+            "fixed-path",
+            "isolation-feel"
+          ],
+          "alternatives": [
+            "fbc7e7c1-8dc6-4883-9eff-18c8bc29d2bf",
+            "aa4f1179-69bb-42f9-b615-cfa2f50bbfe0"
+          ]
+        },
+        "requirements": {
+          "equipment": [
+            "Smith Machine"
+          ],
+          "difficulty_rpe": {
+            "max": 8,
+            "min": 5
+          }
+        },
+        "classification": {
+          "type": "Compound",
+          "split": "Legs/Push",
+          "category": "Legs",
+          "movement_pattern": "Squat"
+        }
+      },
+      "movementPattern": {
+        "id": 43,
+        "name": "Squat"
+      },
+      "equipment": [
+        {
+          "exerciseId": "0335b22e-34cf-4f93-b4b6-19963f0f36f4",
+          "equipmentId": 12,
+          "equipment": {
+            "id": 12,
+            "name": "Smith Machine"
+          }
+        }
+      ]
+    },
+    {
+      "id": "04cfde29-28ab-4164-a6ff-7822a5a2558b",
+      "name": "Dumbbell Seated Curl",
+      "type": "ISOLATION",
+      "splitId": 3,
+      "categoryId": 6,
+      "movementPatternId": 24,
+      "instructions": [
+        "Step:1 Sit on a bench with your feet flat on the ground and a dumbbell in each hand, palms facing forward.",
+        "Step:2 Keep your back straight and your elbows close to your torso.",
+        "Step:3 Exhale and curl the dumbbells up towards your shoulders, contracting your biceps.",
+        "Step:4 Pause for a moment at the top, then inhale and slowly lower the dumbbells back down to the starting position.",
+        "Step:5 Repeat for the desired number of repetitions."
+      ],
+      "gifUrl": "https://static.exercisedb.dev/media/TiaZTxx.gif",
+      "difficultyRpeMin": 5,
+      "difficultyRpeMax": 7,
+      "level": "INTERMEDIATE",
+      "environment": "GYM",
+      "alternativeIds": [],
+      "rawData": {
+        "id": "04cfde29-28ab-4164-a6ff-7822a5a2558b",
+        "name": "Dumbbell Seated Curl",
+        "gifUrl": "https://static.exercisedb.dev/media/TiaZTxx.gif",
+        "anatomy": {
+          "primary": [
+            "Biceps Brachii"
+          ],
+          "secondary": [
+            "Brachialis",
+            "Forearms"
+          ],
+          "stabilizers": [
+            "Core"
+          ]
+        },
+        "programming": {
+          "default_reps": "10-12",
+          "default_sets": 3,
+          "load_formula": "1RM * 0.35",
+          "rest_minutes": {
+            "max": 1.5,
+            "min": 1
+          }
+        },
+        "instructions": [
+          "Step:1 Sit on a bench with your feet flat on the ground and a dumbbell in each hand, palms facing forward.",
+          "Step:2 Keep your back straight and your elbows close to your torso.",
+          "Step:3 Exhale and curl the dumbbells up towards your shoulders, contracting your biceps.",
+          "Step:4 Pause for a moment at the top, then inhale and slowly lower the dumbbells back down to the starting position.",
+          "Step:5 Repeat for the desired number of repetitions."
+        ],
+        "logic_assets": {
+          "tags": [
+            "strict",
+            "no-momentum",
+            "hypertrophy"
+          ],
+          "alternatives": [
+            "b5654d44-5dda-4f52-87bd-20da5bab8797",
+            "04cfde29-28ab-4164-a6ff-7822a5a2558b",
+            "64790515-78a9-4046-83bc-243fad040d79"
+          ]
+        },
+        "requirements": {
+          "equipment": [
+            "Dumbbells",
+            "Seat"
+          ],
+          "difficulty_rpe": {
+            "max": 7,
+            "min": 5
+          }
+        },
+        "classification": {
+          "type": "Isolation",
+          "split": "Pull",
+          "category": "Biceps",
+          "movement_pattern": "Bicep Curl Arc"
+        }
+      },
+      "movementPattern": {
+        "id": 24,
+        "name": "Bicep Curl Arc"
+      },
+      "equipment": [
+        {
+          "exerciseId": "04cfde29-28ab-4164-a6ff-7822a5a2558b",
+          "equipmentId": 5,
+          "equipment": {
+            "id": 5,
+            "name": "Dumbbells"
+          }
+        },
+        {
+          "exerciseId": "04cfde29-28ab-4164-a6ff-7822a5a2558b",
+          "equipmentId": 13,
+          "equipment": {
+            "id": 13,
+            "name": "Seat"
+          }
+        }
+      ]
+    },
+    {
+      "id": "05dff0c5-39cc-4704-9618-edab4efbf62f",
+      "name": "Alternate Heel Touchers",
+      "type": "ISOLATION",
+      "splitId": 10,
+      "categoryId": 19,
+      "movementPatternId": 71,
+      "instructions": [
+        "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
+        "Step:2 Extend your arms straight out to the sides, parallel to the ground.",
+        "Step:3 Engaging your abs, lift your shoulders off the ground and reach your right hand towards your right heel.",
+        "Step:4 Return to the starting position and repeat on the left side, reaching your left hand towards your left heel.",
+        "Step:5 Continue alternating sides for the desired number of repetitions."
+      ],
+      "gifUrl": "https://static.exercisedb.dev/media/qaZVsGk.gif",
+      "difficultyRpeMin": 3,
+      "difficultyRpeMax": 6,
+      "level": "INTERMEDIATE",
+      "environment": "GYM",
+      "alternativeIds": [],
+      "rawData": {
+        "id": "05dff0c5-39cc-4704-9618-edab4efbf62f",
+        "name": "Alternate Heel Touchers",
+        "gifUrl": "https://static.exercisedb.dev/media/qaZVsGk.gif",
+        "anatomy": {
+          "primary": [
+            "Obliques"
+          ],
+          "secondary": [
+            "Rectus Abdominis"
+          ],
+          "stabilizers": [
+            "Neck Flexors"
+          ]
+        },
+        "programming": {
+          "default_reps": "20-30",
+          "default_sets": 3,
+          "load_formula": "Bodyweight * 0.50",
+          "rest_minutes": {
+            "max": 1,
+            "min": 0.5
+          }
+        },
+        "instructions": [
+          "Step:1 Lie flat on your back with your knees bent and feet flat on the ground.",
+          "Step:2 Extend your arms straight out to the sides, parallel to the ground.",
+          "Step:3 Engaging your abs, lift your shoulders off the ground and reach your right hand towards your right heel.",
+          "Step:4 Return to the starting position and repeat on the left side, reaching your left hand towards your left heel.",
+          "Step:5 Continue alternating sides for the desired number of repetitions."
+        ],
+        "logic_assets": {
+          "tags": [
+            "obliques",
+            "beginner",
+            "waist-shaping"
+          ],
+          "alternatives": [
+            "05dff0c5-39cc-4704-9618-edab4efbf62f",
+            "3825e18b-d1a9-4a51-be88-61e075321477"
+          ]
+        },
+        "requirements": {
+          "equipment": [
+            "Mat"
+          ],
+          "difficulty_rpe": {
+            "max": 6,
+            "min": 3
+          }
+        },
+        "classification": {
+          "type": "Isolation",
+          "split": "Abs",
+          "category": "Core",
+          "movement_pattern": "Lateral Flexion"
+        }
+      },
+      "movementPattern": {
+        "id": 71,
+        "name": "Lateral Flexion"
+      },
+      "equipment": [
+        {
+          "exerciseId": "05dff0c5-39cc-4704-9618-edab4efbf62f",
+          "equipmentId": 42,
+          "equipment": {
+            "id": 42,
+            "name": "Mat"
+          }
+        }
+      ]
+    }
+  ]
+}

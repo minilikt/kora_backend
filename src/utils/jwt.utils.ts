@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
-import { env } from '../config/env.config';
+import jwt from "jsonwebtoken";
+import { env } from "../config/env.config";
 
 export interface JwtPayload {
   userId: string;
@@ -8,7 +8,13 @@ export interface JwtPayload {
 
 export const generateToken = (payload: JwtPayload): string => {
   return jwt.sign(payload, env.JWT_SECRET, {
-    expiresIn: '7d',
+    expiresIn: "7d",
+  });
+};
+
+export const generateRefreshToken = (payload: JwtPayload): string => {
+  return jwt.sign(payload, env.JWT_SECRET, {
+    expiresIn: "30d",
   });
 };
 

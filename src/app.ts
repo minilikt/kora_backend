@@ -7,6 +7,7 @@ import userRoutes from "./routes/user.routes";
 import exerciseRoutes from "./routes/exercise.routes";
 import sessionRoutes from "./routes/session.routes";
 import planRoutes from "./routes/plan.routes";
+import analyticsRoutes from "./routes/analytics.routes";
 
 const app: Application = express();
 
@@ -29,7 +30,16 @@ app.use(
     },
   }),
 );
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:8081",
+      "http://localhost:3000",
+      "http://localhost:5000",
+    ],
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -45,6 +55,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/exercises", exerciseRoutes);
 app.use("/api/sessions", sessionRoutes);
 app.use("/api/plans", planRoutes);
+app.use("/api/analytics", analyticsRoutes);
 
 // Error Handling Middleware (must be last)
 app.use(errorHandler);

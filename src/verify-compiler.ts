@@ -26,7 +26,7 @@ async function main() {
       days: 3,
       goal: "HYPERTROPHY",
       level: "INTERMEDIATE",
-      progressionId: "linear-overload-4w",
+      progressionId: "LINEAR_HYPERTROPHY_4W",
       environment: "GYM",
       equipment: [
         "Barbell",
@@ -37,7 +37,7 @@ async function main() {
       ],
     });
 
-    console.log(`✨ Successfully generated plan: ${plan.id}`);
+    console.log(`✨ Successfully generated plan prototype`);
     console.log("--- Plan Preview ---");
     const planJson = plan.planJson as any;
     console.log(`Weeks: ${planJson.weeks.length}`);

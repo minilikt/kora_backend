@@ -7,6 +7,7 @@ const router = Router();
 router.use(authenticate);
 
 router.post("/:sessionId/start", sessionController.startSession);
+router.get("/current", sessionController.getCurrentSession);
 router.post("/complete", sessionController.completeSession);
 
 export default router;

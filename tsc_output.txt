@@ -1,0 +1,2 @@
+src/verify-compiler.ts(40,56): error TS2339: Property 'id' does not exist on type '{ planJson: { version: number; input: PlanInput; exerciseLibrary: Record<string, any>; basePlan: any[]; weeks: { week: number; intensity: number | undefined; rpe: number | undefined; deload: boolean; sessions: { ...; }[]; }[]; }; startDate: Date; endDate: Date; }'.
+src/verify-execution.ts(74,26): error TS2554: Expected 2 arguments, but got 1.

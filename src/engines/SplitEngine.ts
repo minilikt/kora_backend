@@ -8,7 +8,7 @@ export class SplitEngine {
     const template = await prisma.splitTemplate.findFirst({
       where: {
         daysPerWeek,
-        name: name,
+        ...(name && { name }),
       },
     });
 

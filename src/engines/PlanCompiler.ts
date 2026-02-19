@@ -51,14 +51,14 @@ export class PlanCompiler {
     const muscleTranslator: Record<string, string> = {
       CHEST: "Pectoralis Major",
       BACK: "Latissimus Dorsi",
-      QUADS: "Quadriceps (Rectus Femoris)",
-      HAMSTRINGS: "Biceps Femoris (Long Head)",
+      QUADS: "Quadriceps",
+      HAMSTRINGS: "Hamstrings",
       GLUTES: "Gluteus Maximus",
-      SHOULDERS: "Deltoids (Anterior)",
-      BICEPS: "Biceps Brachii (Long Head)",
-      TRICEPS: "Triceps Brachii (Long Head)",
-      CORE: "Rectus Abdominis",
-      CALVES: "Gastrocnemius (Medial Head)",
+      SHOULDERS: "Deltoids",
+      BICEPS: "Biceps Brachii",
+      TRICEPS: "Triceps Brachii",
+      CORE: "Abdominals",
+      CALVES: "Gastrocnemius",
     };
 
     // 4. Compile base plan and build Exercise Library

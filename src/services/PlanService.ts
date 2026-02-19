@@ -53,6 +53,21 @@ export class PlanService {
   }
 
   /**
+   * Retrieves all plans for a user.
+   */
+  static async getPlans(userId: string) {
+    return prisma.userPlan.findMany({
+      where: { userId },
+      orderBy: { createdAt: "desc" },
+      include: {
+        sessions: {
+          orderBy: [{ week: "asc" }, { dayNumber: "asc" }],
+        },
+      },
+    });
+  }
+
+  /**
    * Retrieves the active plan for a user.
    */
   static async getActivePlan(userId: string) {

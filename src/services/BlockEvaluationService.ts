@@ -51,23 +51,31 @@ export class BlockEvaluationService {
       avgRPE,
     );
 
-    // 4. Save Evaluation
-    const evaluation = await prisma.blockEvaluation.create({
-      data: {
-        planId: plan.id,
-        completionRate: compliance,
-        avgSessionDuration: this.calculateAvgDuration(trainingDays),
-        avgRpe: avgRPE,
-        performanceTrend: performanceTrend,
-        actions: actions,
-      },
-    });
+    // 4. Save Evaluation & Update Profile within a Transaction
+    const evaluation = await prisma.$transaction(async (tx: any) => {
+      const savedEval = await tx.blockEvaluation.create({
+        data: {
+          planId: plan.id,
+          completionRate: compliance,
+          avgSessionDuration: this.calculateAvgDuration(trainingDays),
+          avgRpe: avgRPE,
+          performanceTrend: performanceTrend,
+          actions: actions,
+        },
+      });
 
-    // 5. Update User Profile
-    await this.updateUserProfile(plan.userId, {
-      fatigue: fatigueTrend,
-      performance: performanceTrend,
-      compliance: compliance,
+      // 5. Update User Profile
+      await this.updateUserProfile(
+        plan.userId,
+        {
+          fatigue: fatigueTrend,
+          performance: performanceTrend,
+          compliance: compliance,
+        },
+        tx,
+      );
+
+      return savedEval;
     });
 
     return evaluation;
@@ -167,15 +175,16 @@ export class BlockEvaluationService {
     return actions;
   }
 
-  private static async updateUserProfile(userId: string, stats: any) {
+  private static async updateUserProfile(userId: string, stats: any, tx?: any) {
+    const db = tx || prisma;
     // Upsert profile
-    const existing = await prisma.userTrainingProfile.findUnique({
+    const existing = await db.userTrainingProfile.findUnique({
       where: { userId },
     });
 
     if (existing) {
       // Update running averages
-      await prisma.userTrainingProfile.update({
+      await db.userTrainingProfile.update({
         where: { userId },
         data: {
           fatigueIndex: (existing.fatigueIndex + stats.fatigue) / 2,
@@ -184,7 +193,7 @@ export class BlockEvaluationService {
         },
       });
     } else {
-      await prisma.userTrainingProfile.create({
+      await db.userTrainingProfile.create({
         data: {
           userId,
           fatigueIndex: stats.fatigue,

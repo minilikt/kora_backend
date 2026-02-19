@@ -9,7 +9,7 @@ export const searchExercises = async (
   next: NextFunction,
 ) => {
   try {
-    const { q, muscle, equipment } = req.query;
+    const { q, muscle, equipment, limit = "50" } = req.query;
 
     const exercises = await prisma.exercise.findMany({
       where: {
@@ -43,26 +43,18 @@ export const searchExercises = async (
         ],
       },
       include: {
-        muscles: {
-          include: {
-            muscle: true,
-          },
-        },
-        equipment: {
-          include: {
-            equipment: true,
-          },
-        },
+        muscles: { include: { muscle: true } },
+        equipment: { include: { equipment: true } },
         category: true,
         movementPattern: true,
       },
-      take: 20,
+      take: Math.min(parseInt(String(limit)), 500),
     });
 
     res.status(200).json({
       success: true,
       count: exercises.length,
-      data: exercises,
+      data: { exercises },
     });
   } catch (error) {
     next(error);
