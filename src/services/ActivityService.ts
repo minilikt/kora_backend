@@ -11,10 +11,11 @@ export class ActivityService {
     userId: string,
     totalTimeSec: number,
     performanceScore: number,
+    date?: Date,
     tx?: any,
   ) {
     const db = tx || prisma;
-    const activityDate = new Date();
+    const activityDate = new Date(date || Date.now());
     activityDate.setHours(0, 0, 0, 0);
 
     const activeMinutes = Math.floor(totalTimeSec / 60);

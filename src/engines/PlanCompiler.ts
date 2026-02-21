@@ -21,6 +21,7 @@ export interface PlanInput {
   progressionId: string;
   environment: ExerciseEnvironment;
   equipment: string[];
+  volumeOverrides?: Record<string, number>;
 }
 
 export class PlanCompiler {
@@ -45,6 +46,7 @@ export class PlanCompiler {
     const distribution = DistributionEngine.distribute(
       volume.weeklySets,
       split.structure,
+      input.volumeOverrides,
     );
 
     // Muscle mapping helper (Generic -> Scientific)

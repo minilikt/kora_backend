@@ -14,7 +14,19 @@ export class DistributionEngine {
   static distribute(
     weeklySets: VolumeProfile,
     splitStructure: SplitDay[],
+    volumeOverrides?: Record<string, number>,
   ): AllocatedSession[] {
+    const finalWeeklySets = { ...weeklySets };
+
+    // Apply overrides
+    if (volumeOverrides) {
+      Object.entries(volumeOverrides).forEach(([muscle, delta]) => {
+        if (finalWeeklySets[muscle] !== undefined) {
+          finalWeeklySets[muscle] = Math.max(0, finalWeeklySets[muscle] + delta);
+        }
+      });
+    }
+
     const trainingDays = splitStructure.filter((d) => !d.rest);
     const sessions: AllocatedSession[] = splitStructure.map((day) => ({
       day: day.day,
@@ -24,7 +36,7 @@ export class DistributionEngine {
     if (trainingDays.length === 0) return sessions;
 
     // Iterate through all muscles in volume profile
-    for (const [muscle, totalSets] of Object.entries(weeklySets)) {
+    for (const [muscle, totalSets] of Object.entries(finalWeeklySets)) {
       if (totalSets <= 0) continue;
 
       // Rule: Spread sets across ALL training days to avoid empty days/lopsidedness

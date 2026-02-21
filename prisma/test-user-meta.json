@@ -1,0 +1,285 @@
+{
+    "user": {
+        "email": "test@kora.ai",
+        "password": "hashed_password_here",
+        "name": "Test User",
+        "trainingLevel": "INTERMEDIATE",
+        "trainingDaysPerWeek": 4,
+        "workoutDays": [
+            "MONDAY",
+            "TUESDAY",
+            "THURSDAY",
+            "FRIDAY"
+        ],
+        "trainingEnvironment": "GYM",
+        "age": 28,
+        "weight": 82.5,
+        "height": 180,
+        "gender": "MALE",
+        "targetWeight": 85.0
+    },
+    "planMeta": {
+        "weeks": 4,
+        "goal": "HYPERTROPHY",
+        "priority": "BALANCED"
+    },
+    "exercises": [
+        {
+            "id": "7c71841b-d570-4033-85bc-dd6841ab9890",
+            "name": "Dumbbell Bench Press",
+            "muscles": [
+                1
+            ]
+        },
+        {
+            "id": "29a592d7-1e55-4532-b5cd-7ffc94354c11",
+            "name": "Dumbbell One Arm Row",
+            "muscles": [
+                2
+            ]
+        },
+        {
+            "id": "8105081e-4022-43ce-ba0a-cfc95a0d27bc",
+            "name": "Kettlebell Front Squat",
+            "muscles": [
+                4
+            ]
+        },
+        {
+            "id": "e4ecea4f-f20a-4611-bf45-0a0f07db3af0",
+            "name": "Dumbbell Standing Overhead Press",
+            "muscles": [
+                3
+            ]
+        },
+        {
+            "id": "9ea314db-eb88-491f-b984-e4803e955605",
+            "name": "Dumbbell Alternate Biceps Curl",
+            "muscles": [
+                5
+            ]
+        }
+    ],
+    "planJson": {
+        "id": "plan_block_1",
+        "name": "Foundational Hypertrophy",
+        "weeks": [
+            {
+                "week": 1,
+                "intensity": 0.7,
+                "sessions": [
+                    {
+                        "day": 1,
+                        "focus": "Upper Push",
+                        "exercises": [
+                            {
+                                "exerciseId": "7c71841b-d570-4033-85bc-dd6841ab9890",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "rpe": 7
+                            },
+                            {
+                                "exerciseId": "e4ecea4f-f20a-4611-bf45-0a0f07db3af0",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "rpe": 7
+                            }
+                        ]
+                    },
+                    {
+                        "day": 2,
+                        "focus": "Lower Legs",
+                        "exercises": [
+                            {
+                                "exerciseId": "8105081e-4022-43ce-ba0a-cfc95a0d27bc",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "rpe": 7
+                            }
+                        ]
+                    },
+                    {
+                        "day": 4,
+                        "focus": "Upper Pull",
+                        "exercises": [
+                            {
+                                "exerciseId": "29a592d7-1e55-4532-b5cd-7ffc94354c11",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "rpe": 7
+                            },
+                            {
+                                "exerciseId": "9ea314db-eb88-491f-b984-e4803e955605",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "rpe": 7
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "week": 2,
+                "intensity": 0.75,
+                "sessions": [
+                    {
+                        "day": 1,
+                        "focus": "Upper Push",
+                        "exercises": [
+                            {
+                                "exerciseId": "7c71841b-d570-4033-85bc-dd6841ab9890",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "rpe": 8
+                            },
+                            {
+                                "exerciseId": "e4ecea4f-f20a-4611-bf45-0a0f07db3af0",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "rpe": 8
+                            }
+                        ]
+                    },
+                    {
+                        "day": 2,
+                        "focus": "Lower Legs",
+                        "exercises": [
+                            {
+                                "exerciseId": "8105081e-4022-43ce-ba0a-cfc95a0d27bc",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "rpe": 8
+                            }
+                        ]
+                    },
+                    {
+                        "day": 4,
+                        "focus": "Upper Pull",
+                        "exercises": [
+                            {
+                                "exerciseId": "29a592d7-1e55-4532-b5cd-7ffc94354c11",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "rpe": 8
+                            },
+                            {
+                                "exerciseId": "9ea314db-eb88-491f-b984-e4803e955605",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "rpe": 8
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "week": 3,
+                "intensity": 0.8,
+                "sessions": [
+                    {
+                        "day": 1,
+                        "focus": "Upper Push",
+                        "exercises": [
+                            {
+                                "exerciseId": "7c71841b-d570-4033-85bc-dd6841ab9890",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "rpe": 9
+                            },
+                            {
+                                "exerciseId": "e4ecea4f-f20a-4611-bf45-0a0f07db3af0",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "rpe": 9
+                            }
+                        ]
+                    },
+                    {
+                        "day": 2,
+                        "focus": "Lower Legs",
+                        "exercises": [
+                            {
+                                "exerciseId": "8105081e-4022-43ce-ba0a-cfc95a0d27bc",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "rpe": 9
+                            }
+                        ]
+                    },
+                    {
+                        "day": 4,
+                        "focus": "Upper Pull",
+                        "exercises": [
+                            {
+                                "exerciseId": "29a592d7-1e55-4532-b5cd-7ffc94354c11",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "rpe": 9
+                            },
+                            {
+                                "exerciseId": "9ea314db-eb88-491f-b984-e4803e955605",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "rpe": 9
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "week": 4,
+                "intensity": 0.6,
+                "sessions": [
+                    {
+                        "day": 1,
+                        "focus": "Upper Push (Deload)",
+                        "exercises": [
+                            {
+                                "exerciseId": "7c71841b-d570-4033-85bc-dd6841ab9890",
+                                "sets": 2,
+                                "reps": "10-12",
+                                "rpe": 6
+                            },
+                            {
+                                "exerciseId": "e4ecea4f-f20a-4611-bf45-0a0f07db3af0",
+                                "sets": 2,
+                                "reps": "12-15",
+                                "rpe": 6
+                            }
+                        ]
+                    },
+                    {
+                        "day": 2,
+                        "focus": "Lower Legs (Deload)",
+                        "exercises": [
+                            {
+                                "exerciseId": "8105081e-4022-43ce-ba0a-cfc95a0d27bc",
+                                "sets": 2,
+                                "reps": "8-10",
+                                "rpe": 6
+                            }
+                        ]
+                    },
+                    {
+                        "day": 4,
+                        "focus": "Upper Pull (Deload)",
+                        "exercises": [
+                            {
+                                "exerciseId": "29a592d7-1e55-4532-b5cd-7ffc94354c11",
+                                "sets": 2,
+                                "reps": "10-12",
+                                "rpe": 6
+                            },
+                            {
+                                "exerciseId": "9ea314db-eb88-491f-b984-e4803e955605",
+                                "sets": 2,
+                                "reps": "12-15",
+                                "rpe": 6
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

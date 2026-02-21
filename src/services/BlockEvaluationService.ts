@@ -22,7 +22,19 @@ export class BlockEvaluationService {
       include: {
         sessions: {
           include: {
-            exercises: true,
+            exercises: {
+              include: {
+                exercise: {
+                  include: {
+                    muscles: {
+                      include: {
+                        muscle: true,
+                      },
+                    },
+                  },
+                },
+              },
+            },
           },
           orderBy: { createdAt: "asc" },
         },
@@ -42,6 +54,7 @@ export class BlockEvaluationService {
     const avgRPE = this.calculateAvgRPE(trainingDays);
     const fatigueTrend = this.calculateFatigueTrend(trainingDays);
     const performanceTrend = this.calculatePerformanceTrend(trainingDays);
+    const muscleMetrics = this.calculateMuscleMetrics(trainingDays);
 
     // 3. Determine Actions
     const actions = this.determineActions(
@@ -60,6 +73,7 @@ export class BlockEvaluationService {
           avgSessionDuration: this.calculateAvgDuration(trainingDays),
           avgRpe: avgRPE,
           performanceTrend: performanceTrend,
+          muscleMetrics: muscleMetrics,
           actions: actions,
         },
       });
@@ -71,6 +85,7 @@ export class BlockEvaluationService {
           fatigue: fatigueTrend,
           performance: performanceTrend,
           compliance: compliance,
+          muscleMetrics: muscleMetrics,
         },
         tx,
       );
@@ -139,6 +154,41 @@ export class BlockEvaluationService {
     return avgLast - avgFirst; // Positive = Performance improving
   }
 
+  private static calculateMuscleMetrics(sessions: UserSession[]): any {
+    const muscleStats: Record<string, { sets: number; volumeLoad: number }> = {};
+
+    sessions.forEach((session) => {
+      const logs = (session as any).exercises || [];
+      logs.forEach((log: any) => {
+        const actualSets = log.actualSets || 0;
+        const exercise = log.exercise;
+        if (!exercise || !exercise.muscles) return;
+
+        exercise.muscles.forEach((em: any) => {
+          const muscleName = em.muscle.name;
+          const multiplier = em.activationMultiplier || 1.0;
+          const effectiveSets = actualSets * multiplier;
+
+          if (!muscleStats[muscleName]) {
+            muscleStats[muscleName] = { sets: 0, volumeLoad: 0 };
+          }
+
+          muscleStats[muscleName].sets += effectiveSets;
+          // volumeLoad = sets * weight * reps (simplified)
+          const weights = (log.weightsPerSet as number[]) || [];
+          const reps = (log.repsPerSet as number[]) || [];
+          let logVolume = 0;
+          for (let i = 0; i < Math.min(weights.length, reps.length); i++) {
+            logVolume += weights[i] * reps[i];
+          }
+          muscleStats[muscleName].volumeLoad += logVolume * multiplier;
+        });
+      });
+    });
+
+    return muscleStats;
+  }
+
   private static determineActions(
     compliance: number,
     fatigueTrend: number,
@@ -184,12 +234,25 @@ export class BlockEvaluationService {
 
     if (existing) {
       // Update running averages
+      const prevProfile = (existing.muscleProfile as any) || {};
+      const nextProfile = { ...prevProfile };
+
+      // Update MEV/MRV logic (simplified)
+      Object.entries(stats.muscleMetrics || {}).forEach(([muscle, data]: [string, any]) => {
+        const prev = prevProfile[muscle] || { avgSets: 0, count: 0 };
+        nextProfile[muscle] = {
+          avgSets: (prev.avgSets * prev.count + data.sets) / (prev.count + 1),
+          count: prev.count + 1,
+        };
+      });
+
       await db.userTrainingProfile.update({
         where: { userId },
         data: {
           fatigueIndex: (existing.fatigueIndex + stats.fatigue) / 2,
           performanceIndex: (existing.performanceIndex + stats.performance) / 2,
           consistencyScore: (existing.consistencyScore + stats.compliance) / 2,
+          muscleProfile: nextProfile,
         },
       });
     } else {
@@ -199,6 +262,7 @@ export class BlockEvaluationService {
           fatigueIndex: stats.fatigue,
           performanceIndex: stats.performance,
           consistencyScore: stats.compliance,
+          muscleProfile: stats.muscleMetrics,
         },
       });
     }

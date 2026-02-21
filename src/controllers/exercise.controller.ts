@@ -9,36 +9,39 @@ export const searchExercises = async (
   next: NextFunction,
 ) => {
   try {
-    const { q, muscle, equipment, limit = "50" } = req.query;
+    const { q, muscle, equipment, ids, limit = "50" } = req.query;
+
+    const idList = ids ? String(ids).split(',') : null;
 
     const exercises = await prisma.exercise.findMany({
       where: {
         AND: [
+          idList ? { id: { in: idList } } : {},
           q ? { name: { contains: String(q), mode: "insensitive" } } : {},
           muscle
             ? {
-                muscles: {
-                  some: {
-                    muscle: {
-                      name: { contains: String(muscle), mode: "insensitive" },
-                    },
+              muscles: {
+                some: {
+                  muscle: {
+                    name: { contains: String(muscle), mode: "insensitive" },
                   },
                 },
-              }
+              },
+            }
             : {},
           equipment
             ? {
-                equipment: {
-                  some: {
-                    equipment: {
-                      name: {
-                        contains: String(equipment),
-                        mode: "insensitive",
-                      },
+              equipment: {
+                some: {
+                  equipment: {
+                    name: {
+                      contains: String(equipment),
+                      mode: "insensitive",
                     },
                   },
                 },
-              }
+              },
+            }
             : {},
         ],
       },

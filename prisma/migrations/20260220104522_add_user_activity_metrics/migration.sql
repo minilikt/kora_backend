@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "users" ADD COLUMN     "lastActiveAt" TIMESTAMP(3),
+ADD COLUMN     "longestStreak" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN     "streakCount" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN     "totalActiveHours" DOUBLE PRECISION NOT NULL DEFAULT 0;

@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import { BlockEvaluationService } from "./BlockEvaluationService";
 import { PlanEvolutionEngine } from "../engines/PlanEvolutionEngine";
 import { ActivityService } from "./ActivityService";
+import { MuscleAggregationService } from "./MuscleAggregationService";
 
 const prisma = new PrismaClient();
 
@@ -145,17 +146,22 @@ export class SessionService {
           avgRPE: avgRPE,
           performanceScore: performanceScore,
           fatigueScore: avgRPE ? avgRPE * 1.2 : 5.0, // Simplified fatigue proxy
+          totalTonnage: totalActualVolume,
           notes: input.notes,
         },
       });
 
       // 3. Update Adaptive State
+      const activityDate = new Date(end);
+      activityDate.setHours(0, 0, 0, 0);
+
       await tx.userAdaptiveState.create({
         data: {
           userId: userId,
           fatigueScore: avgRPE || 5,
           recoveryScore: 5,
           performanceScore: performanceScore,
+          date: activityDate,
         },
       });
 
@@ -164,6 +170,21 @@ export class SessionService {
         userId,
         totalTimeSec,
         performanceScore,
+        end,
+        tx,
+      );
+
+      // 5. Deep Telemetry: Aggregates Muscle Volume (Heatmaps) and Hourly Activity
+      await MuscleAggregationService.aggregateSessionVolume(
+        sessionRecord.id,
+        userId,
+        end,
+        tx,
+      );
+
+      await MuscleAggregationService.recordHourlyActivity(
+        userId,
+        end,
         tx,
       );
 

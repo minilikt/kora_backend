@@ -1,0 +1,65 @@
+🚀 Seeding process started for: testuser@kora.ai...
+🧹 Cleaning up old user...
+🔑 Creating user...
+🔨 Compiling plan (v2) for user cmlupj5ss0000ku7wmu7uxk92...
+[ExerciseSelector] Searching for pattern: "Horizontal Pull"
+[ExerciseSelector] Equipment allowed: ["Dumbbells","Barbell","BENCH","CABLE","MACHINE","DUMBBELL","BARBELL","BENCH","CABLE","MACHINE"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying Horizontal Pull without type restriction...
+[ExerciseSelector] Searching for pattern: "Horizontal Pull"
+[ExerciseSelector] Equipment allowed: ["Dumbbells","Barbell","BENCH","CABLE","MACHINE","DUMBBELL","BARBELL","BENCH","CABLE","MACHINE"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ No exercises found for pattern Horizontal Pull for user cmlupj5ss0000ku7wmu7uxk92
+[ExerciseSelector] Searching for pattern: "Horizontal Push"
+[ExerciseSelector] Equipment allowed: ["Dumbbells","Barbell","BENCH","CABLE","MACHINE","DUMBBELL","BARBELL","BENCH","CABLE","MACHINE"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying Horizontal Push without type restriction...
+[ExerciseSelector] Searching for pattern: "Horizontal Push"
+[ExerciseSelector] Equipment allowed: ["Dumbbells","Barbell","BENCH","CABLE","MACHINE","DUMBBELL","BARBELL","BENCH","CABLE","MACHINE"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ No exercises found for pattern Horizontal Push for user cmlupj5ss0000ku7wmu7uxk92
+[ExerciseSelector] Searching for pattern: "Squat"
+[ExerciseSelector] Equipment allowed: ["Dumbbells","Barbell","BENCH","CABLE","MACHINE","DUMBBELL","BARBELL","BENCH","CABLE","MACHINE"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying Squat without type restriction...
+[ExerciseSelector] Searching for pattern: "Squat"
+[ExerciseSelector] Equipment allowed: ["Dumbbells","Barbell","BENCH","CABLE","MACHINE","DUMBBELL","BARBELL","BENCH","CABLE","MACHINE"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ No exercises found for pattern Squat for user cmlupj5ss0000ku7wmu7uxk92
+[ExerciseSelector] Searching for pattern: "Bicep Curl Arc"
+[ExerciseSelector] Equipment allowed: ["Dumbbells","Barbell","BENCH","CABLE","MACHINE","DUMBBELL","BARBELL","BENCH","CABLE","MACHINE"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying Bicep Curl Arc without type restriction...
+[ExerciseSelector] Searching for pattern: "Bicep Curl Arc"
+[ExerciseSelector] Equipment allowed: ["Dumbbells","Barbell","BENCH","CABLE","MACHINE","DUMBBELL","BARBELL","BENCH","CABLE","MACHINE"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+❌ Seed failed: PrismaClientKnownRequestError: 
+Invalid `prisma.exercise.findMany()` invocation in
+/home/fugitora/Projects/Kora/kora_backend/src/engines/ExerciseSelector.ts:32:45
+
+  29 );
+  30 console.log(`[ExerciseSelector] Options: ${JSON.stringify(options)}`);
+  31 
+→ 32 const exercises = await prisma.exercise.findMany(
+The column `exercise_muscles.activationMultiplier` does not exist in the current database.
+    at ei.handleRequestError (/home/fugitora/Projects/Kora/kora_backend/node_modules/.pnpm/@prisma+client@6.19.2_prisma@6.19.2_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/RequestHandler.ts:228:13)
+    at ei.handleAndLogRequestError (/home/fugitora/Projects/Kora/kora_backend/node_modules/.pnpm/@prisma+client@6.19.2_prisma@6.19.2_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/fugitora/Projects/Kora/kora_backend/node_modules/.pnpm/@prisma+client@6.19.2_prisma@6.19.2_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at async a (/home/fugitora/Projects/Kora/kora_backend/node_modules/.pnpm/@prisma+client@6.19.2_prisma@6.19.2_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+    at async Function.getByPattern (/home/fugitora/Projects/Kora/kora_backend/src/engines/ExerciseSelector.ts:32:23)
+    at async Function.generate (/home/fugitora/Projects/Kora/kora_backend/src/engines/PlanCompiler.ts:82:28)
+    at async main (/home/fugitora/Projects/Kora/kora_backend/prisma/seed-test-user.ts:54:46) {
+  code: 'P2022',
+  meta: {
+    modelName: 'Exercise',
+    column: 'exercise_muscles.activationMultiplier'
+  },
+  clientVersion: '6.19.2'
+}

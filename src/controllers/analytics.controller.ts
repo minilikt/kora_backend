@@ -60,7 +60,7 @@ export const getSummary = async (
       where: {
         userId,
         completedStatus: true,
-        updatedAt: { gte: start, lte: end },
+        completedAt: { gte: start, lte: end },
       },
       include: { exercises: { include: { exercise: true } } },
     });
@@ -71,26 +71,13 @@ export const getSummary = async (
       0,
     );
     const caloriesBurned = Math.round((totalDuration / 60) * 5); // ~5 cal/min estimate
-    const totalTonnage = sessions.reduce((sum, s) => {
-      return (
-        sum +
-        s.exercises.reduce((eSum: number, log: any) => {
-          const weights = (log.weightsPerSet as number[]) || [];
-          const reps = (log.repsPerSet as number[]) || [];
-          const logVolume = weights.reduce(
-            (v, w, i) => v + w * (reps[i] || 0),
-            0,
-          );
-          return eSum + logVolume;
-        }, 0)
-      );
-    }, 0);
+    const totalTonnage = sessions.reduce((sum, s) => sum + (s.totalTonnage || 0), 0);
 
     // Streak
     const allSessions = await prisma.userSession.findMany({
       where: { userId, completedStatus: true },
-      orderBy: { updatedAt: "desc" },
-      select: { updatedAt: true },
+      orderBy: { completedAt: "desc" },
+      select: { completedAt: true },
     });
 
     let currentStreak = 0;
@@ -98,7 +85,8 @@ export const getSummary = async (
     today.setHours(0, 0, 0, 0);
     const seen = new Set<string>();
     for (const s of allSessions) {
-      const d = new Date(s.updatedAt);
+      if (!s.completedAt) continue;
+      const d = new Date(s.completedAt);
       d.setHours(0, 0, 0, 0);
       const key = d.toISOString();
       if (!seen.has(key)) {
@@ -162,38 +150,36 @@ export const getTrends = async (
       where: {
         userId,
         completedStatus: true,
-        updatedAt: { gte: start, lte: end },
+        completedAt: { gte: start, lte: end },
       },
-      orderBy: { updatedAt: "asc" },
-      include: { exercises: true },
+      orderBy: { completedAt: "asc" },
     });
 
-    const labels: string[] = [];
-    const dataPoints: number[] = [];
+    // Group by date to avoid multiple points for the same day
+    const groupedData: Record<string, number> = {};
+    const m = String(metric).toLowerCase();
 
     for (const s of sessions) {
-      const label = new Date(s.updatedAt).toLocaleDateString("en-US", {
+      if (!s.completedAt) continue;
+      const dateKey = new Date(s.completedAt).toLocaleDateString("en-US", {
         month: "short",
         day: "numeric",
       });
-      labels.push(label);
 
       let value = 0;
-      if (String(metric).toLowerCase() === "weight") {
-        value =
-          s.exercises.reduce((sum: number, log: any) => {
-            const weights = (log.weightsPerSet as number[]) || [];
-            if (weights.length === 0) return sum;
-            const maxWeight = Math.max(...weights);
-            return sum + maxWeight;
-          }, 0) / Math.max(s.exercises.length, 1);
-      } else if (String(metric).toLowerCase() === "calories") {
+      if (m === "weight" || m === "tonnage") {
+        value = s.totalTonnage || 0;
+      } else if (m === "calories") {
         value = Math.round(((s.totalTimeSec || 0) / 60) * 5);
-      } else if (String(metric).toLowerCase() === "time") {
+      } else if (m === "time") {
         value = Math.round((s.totalTimeSec || 0) / 60);
       }
-      dataPoints.push(Math.round(value));
+
+      groupedData[dateKey] = (groupedData[dateKey] || 0) + value;
     }
+
+    const labels = Object.keys(groupedData);
+    const dataPoints = Object.values(groupedData).map(v => Math.round(v));
 
     res.status(200).json({
       status: "success",
@@ -217,27 +203,18 @@ export const getMuscleDistribution = async (
     const { start, end } = getDateRange(String(filter));
     const userId = req.user.userId;
 
-    const sessionExercises = await prisma.userExerciseLog.findMany({
+    const volumeHistory = await prisma.muscleVolumeHistory.findMany({
       where: {
-        session: {
-          userId,
-          completedStatus: true,
-          updatedAt: { gte: start, lte: end },
-        },
+        userId,
+        date: { gte: start, lte: end },
       },
-      include: {
-        exercise: {
-          include: { muscles: { include: { muscle: true } } },
-        },
-      },
+      include: { muscle: true },
     });
 
     const distribution: Record<string, number> = {};
-    for (const se of sessionExercises) {
-      for (const m of se.exercise.muscles) {
-        const name = m.muscle.name;
-        distribution[name] = (distribution[name] || 0) + 1;
-      }
+    for (const record of volumeHistory) {
+      const name = record.muscle.name;
+      distribution[name] = (distribution[name] || 0) + record.volume;
     }
 
     res.status(200).json({
@@ -264,13 +241,14 @@ export const getHeatmap = async (
     start.setDate(start.getDate() - days);
 
     const sessions = await prisma.userSession.findMany({
-      where: { userId, completedStatus: true, updatedAt: { gte: start } },
-      select: { updatedAt: true },
+      where: { userId, completedStatus: true, completedAt: { gte: start } },
+      select: { completedAt: true },
     });
 
     const countByDate: Record<string, number> = {};
     for (const s of sessions) {
-      const key = new Date(s.updatedAt).toISOString().split("T")[0];
+      if (!s.completedAt) continue;
+      const key = new Date(s.completedAt).toISOString().split("T")[0];
       countByDate[key] = (countByDate[key] || 0) + 1;
     }
 
@@ -318,15 +296,16 @@ export const getProfileSummary = async (
     // Streak
     const allSessions = await prisma.userSession.findMany({
       where: { userId, completedStatus: true },
-      orderBy: { updatedAt: "desc" },
-      select: { updatedAt: true },
+      orderBy: { completedAt: "desc" },
+      select: { completedAt: true },
     });
     let currentStreak = 0;
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const seen = new Set<string>();
     for (const s of allSessions) {
-      const d = new Date(s.updatedAt);
+      if (!s.completedAt) continue;
+      const d = new Date(s.completedAt);
       d.setHours(0, 0, 0, 0);
       const key = d.toISOString();
       if (!seen.has(key)) {
@@ -409,7 +388,7 @@ export const getHistory = async (
 
     const sessions = await prisma.userSession.findMany({
       where: { userId, completedStatus: true },
-      orderBy: { updatedAt: "desc" },
+      orderBy: { completedAt: "desc" },
       skip: offset,
       take: limit,
       include: {
@@ -420,7 +399,7 @@ export const getHistory = async (
 
     const history = sessions.map((s) => ({
       id: s.id,
-      date: s.updatedAt,
+      date: s.completedAt || s.createdAt,
       duration: s.totalTimeSec || 0,
       exercisesCompleted: s.exercises.length,
       caloriesBurned: Math.round(((s.totalTimeSec || 0) / 60) * 5),
@@ -455,7 +434,7 @@ export const getPersonalRecords = async (
     // Get best weight per exercise using max weight from JSON
     const logs = await prisma.userExerciseLog.findMany({
       where: { session: { userId, completedStatus: true } },
-      include: { exercise: true, session: { select: { updatedAt: true } } },
+      include: { exercise: true, session: { select: { completedAt: true, createdAt: true } } },
     });
 
     const bestByExercise: Record<string, any> = {};
@@ -474,7 +453,7 @@ export const getPersonalRecords = async (
           exerciseName: log.exercise.name,
           weight: maxWeight,
           reps: reps[maxWeightIndex] || 0,
-          date: log.session.updatedAt,
+          date: log.session.completedAt || log.session.createdAt,
           icon: "🏅",
         };
       }
@@ -503,8 +482,8 @@ export const getStreak = async (
 
     const sessions = await prisma.userSession.findMany({
       where: { userId, completedStatus: true },
-      orderBy: { updatedAt: "desc" },
-      select: { updatedAt: true },
+      orderBy: { completedAt: "desc" },
+      select: { completedAt: true },
     });
 
     const today = new Date();
@@ -513,7 +492,8 @@ export const getStreak = async (
     const uniqueDays: Date[] = [];
     const seen = new Set<string>();
     for (const s of sessions) {
-      const d = new Date(s.updatedAt);
+      if (!s.completedAt) continue;
+      const d = new Date(s.completedAt);
       d.setHours(0, 0, 0, 0);
       const key = d.toISOString();
       if (!seen.has(key)) {
@@ -525,28 +505,34 @@ export const getStreak = async (
     let currentStreak = 0;
     let longestStreak = 0;
     let tempStreak = 0;
-    let lastWorkoutDate = uniqueDays[0] ? uniqueDays[0].toISOString() : "";
+    const lastWorkoutDate = uniqueDays[0] ? uniqueDays[0].toISOString() : "";
 
-    for (let i = 0; i < uniqueDays.length; i++) {
-      const diff =
-        i === 0
-          ? Math.round((today.getTime() - uniqueDays[0].getTime()) / 86400000)
-          : Math.round(
-              (uniqueDays[i - 1].getTime() - uniqueDays[i].getTime()) /
-                86400000,
-            );
-
-      if (i === 0 && diff <= 1) {
+    // Calculate current streak (must have workout today or yesterday)
+    if (uniqueDays.length > 0) {
+      const diffSinceLast = Math.round((today.getTime() - uniqueDays[0].getTime()) / 86400000);
+      if (diffSinceLast <= 1) {
         currentStreak = 1;
-        tempStreak = 1;
-      } else if (diff === 1) {
-        currentStreak++;
-        tempStreak++;
-      } else {
-        if (i === 0) currentStreak = 0;
-        tempStreak = 1;
+        for (let i = 1; i < uniqueDays.length; i++) {
+          const diff = Math.round((uniqueDays[i - 1].getTime() - uniqueDays[i].getTime()) / 86400000);
+          if (diff === 1) currentStreak++;
+          else break;
+        }
       }
-      longestStreak = Math.max(longestStreak, tempStreak);
+    }
+
+    // Calculate longest streak in history
+    if (uniqueDays.length > 0) {
+      tempStreak = 1;
+      longestStreak = 1;
+      for (let i = 1; i < uniqueDays.length; i++) {
+        const diff = Math.round((uniqueDays[i - 1].getTime() - uniqueDays[i].getTime()) / 86400000);
+        if (diff === 1) {
+          tempStreak++;
+        } else {
+          tempStreak = 1;
+        }
+        longestStreak = Math.max(longestStreak, tempStreak);
+      }
     }
 
     res.status(200).json({
@@ -571,7 +557,7 @@ export const getLastWorkout = async (
 
     const session = await prisma.userSession.findFirst({
       where: { userId, completedStatus: true },
-      orderBy: { updatedAt: "desc" },
+      orderBy: { completedAt: "desc" },
       include: {
         exercises: { include: { exercise: true } },
         plan: true,
@@ -586,7 +572,7 @@ export const getLastWorkout = async (
 
     const workout = {
       id: session.id,
-      date: session.updatedAt,
+      date: session.completedAt || session.createdAt,
       duration: session.totalTimeSec || 0,
       exercisesCompleted: session.exercises.length,
       totalExercises: session.exercises.length,

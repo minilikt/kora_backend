@@ -8,6 +8,7 @@ router.use(authenticate);
 
 router.get("/active", planController.getActivePlan);
 router.get("/my-plans", planController.getMyPlans);
+router.get("/evaluation/:planId", planController.getEvaluation);
 router.post("/evolve", planController.evolvePlan);
 
 export default router;

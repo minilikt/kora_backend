@@ -3,6 +3,9 @@ import { PlanService } from "../services/PlanService";
 import { BlockEvaluationService } from "../services/BlockEvaluationService";
 import { PlanEvolutionEngine } from "../engines/PlanEvolutionEngine";
 import { AppError } from "../middlewares/error.middleware";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export const getActivePlan = async (
   req: Request,
@@ -53,6 +56,34 @@ export const evolvePlan = async (
     const newPlan = await PlanEvolutionEngine.evolvePlan(activePlan.id);
 
     res.status(200).json({ status: "success", data: newPlan });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getEvaluation = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { planId } = req.params;
+    if (!planId) throw new AppError("Plan ID is required", 400);
+
+    const evaluation = await prisma.blockEvaluation.findUnique({
+      where: { planId: planId as string },
+    });
+
+    if (!evaluation) {
+      // If doesn't exist, try to evaluate it now if the plan exists
+      const plan = await prisma.userPlan.findUnique({ where: { id: planId as string } });
+      if (!plan) throw new AppError("Plan not found", 404);
+
+      const newEval = await BlockEvaluationService.evaluateBlock(planId as string);
+      return res.status(200).json({ status: "success", data: newEval });
+    }
+
+    res.status(200).json({ status: "success", data: evaluation });
   } catch (error) {
     next(error);
   }

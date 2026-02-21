@@ -69,42 +69,37 @@ export class PlanEvolutionEngine {
   ): any {
     const nextInput = { ...lastInput };
     const actions = evaluation.actions as string[];
+    const muscleMetrics = (evaluation as any).muscleMetrics || {};
+    const muscleOverrides: Record<string, number> = { ...(lastInput.volumeOverrides || {}) };
 
     // --- Volume Adjustment ---
-    // If "INCREASE_VOLUME", boost weekly sets by ~10-20%
     if (actions.includes("INCREASE_VOLUME")) {
-      // Example: Add 2 sets to major muscle groups
-      // Ideally we'd modify the specific muscleProfile in UserTrainingProfile
-      // For now, we don't have a direct "volume" slider in PlanInput other than "experienceLevel" or "goal"
-      // OR we can inject a custom volume override if PlanGenerator supports it.
-      // Assuming PlanGenerator reads from VolumeProfile based on Level:
-
-      // Strategy: Upgrade Experience Level if possible
-      if (lastInput.level === "BEGINNER") {
-        nextInput.level = "INTERMEDIATE";
-      } else if (lastInput.level === "INTERMEDIATE") {
-        // Can't just jump to advanced easily, maybe we need a custom volume modifier in input?
-        // For this iteration, let's assume we can pass a "volumeMultiplier"
-        nextInput.volumeMultiplier = (lastInput.volumeMultiplier || 1.0) * 1.1;
-      }
-    } else if (
-      actions.includes("DECREASE_VOLUME") ||
-      actions.includes("SIMPLIFY_VOLUME")
-    ) {
-      nextInput.volumeMultiplier = (lastInput.volumeMultiplier || 1.0) * 0.85;
+      // Strategy: Add 1-2 sets to frequently trained muscles
+      Object.keys(muscleMetrics).forEach((muscle) => {
+        const currentOverride = muscleOverrides[muscle] || 0;
+        // Safety bound: max +4 total override sets per muscle from baseline
+        if (currentOverride < 4) {
+          muscleOverrides[muscle] = currentOverride + 1;
+        }
+      });
+      nextInput.volumeOverrides = muscleOverrides;
+    } else if (actions.includes("DECREASE_VOLUME") || actions.includes("SIMPLIFY_VOLUME")) {
+      Object.keys(muscleMetrics).forEach((muscle) => {
+        const currentOverride = muscleOverrides[muscle] || 0;
+        muscleOverrides[muscle] = Math.max(-4, currentOverride - 1);
+      });
+      nextInput.volumeOverrides = muscleOverrides;
     }
 
     // --- Intensity Adjustment ---
-    // If "INCREASE_INTENSITY", bump the RPE targets
     if (actions.includes("INCREASE_INTENSITY")) {
-      // e.g. RPE 8 -> 9
-      nextInput.rpeOffset = (lastInput.rpeOffset || 0) + 1;
+      nextInput.rpeOffset = (lastInput.rpeOffset || 0) + 0.5;
     }
 
     // --- Frequency / Days ---
     if (actions.includes("DECREASE_FREQUENCY")) {
-      if (nextInput.daysPerWeek > 2) {
-        nextInput.daysPerWeek -= 1;
+      if (nextInput.days > 2) {
+        nextInput.days -= 1;
       }
     }
 
