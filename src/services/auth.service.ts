@@ -112,6 +112,12 @@ export const login = async (
   return { user: userWithoutPassword, accessToken: token, refreshToken };
 };
 
+export const findByEmail = async (email: string) => {
+  return prisma.user.findUnique({
+    where: { email },
+  });
+};
+
 export const refreshAccessToken = async (
   token: string,
 ): Promise<{ accessToken: string }> => {

@@ -42,9 +42,16 @@ export const ProgressionWeekSchema = z.object({
 
 export const ProgressionModelSchema = z.array(ProgressionWeekSchema);
 
+export const ProgressionTargetSchema = z.object({
+  weight: z.number().nonnegative(),
+  reps: z.string(),
+  rpe: z.number().min(0).max(10),
+});
+
 export type MovementBlock = z.infer<typeof MovementBlockSchema>;
 export type SplitDay = z.infer<typeof SplitDaySchema>;
 export type SplitTemplate = z.infer<typeof SplitTemplateSchema>;
 export type VolumeProfile = z.infer<typeof VolumeProfileSchema>;
 export type ProgressionWeek = z.infer<typeof ProgressionWeekSchema>;
 export type ProgressionModel = z.infer<typeof ProgressionModelSchema>;
+export type ProgressionTarget = z.infer<typeof ProgressionTargetSchema>;

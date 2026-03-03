@@ -7,6 +7,7 @@ import {
   Gender,
   ExperienceLevel,
   ExerciseEnvironment,
+  DayOfWeek,
 } from "@prisma/client";
 import { AppError } from "../middlewares/error.middleware";
 
@@ -27,6 +28,7 @@ const registerSchema = z.object({
   trainingEnvironment: z.nativeEnum(ExerciseEnvironment).optional(),
   trainingDaysPerWeek: z.number().int().min(1).max(7).optional(),
   goal: z.nativeEnum(TrainingGoal).optional(),
+  workoutDays: z.array(z.nativeEnum(DayOfWeek)).optional(),
 });
 
 const loginSchema = z.object({
@@ -52,7 +54,7 @@ export const register = async (
       next(
         new AppError(
           "Validation failed: " +
-            error.issues.map((e: any) => e.message).join(", "),
+          error.issues.map((e: any) => e.message).join(", "),
           400,
         ),
       );
@@ -80,13 +82,32 @@ export const login = async (
       next(
         new AppError(
           "Validation failed: " +
-            error.issues.map((e: any) => e.message).join(", "),
+          error.issues.map((e: any) => e.message).join(", "),
           400,
         ),
       );
     } else {
       next(error);
     }
+  }
+};
+
+export const checkEmail = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { email } = req.body;
+    if (!email) throw new AppError("Email is required", 400);
+
+    const existingUser = await UserService.findByEmail(email);
+    res.status(200).json({
+      status: "success",
+      available: !existingUser,
+    });
+  } catch (error) {
+    next(error);
   }
 };
 

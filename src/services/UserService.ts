@@ -74,4 +74,8 @@ export class UserService {
 
     return { user, accessToken, refreshToken };
   }
+
+  static async findByEmail(email: string) {
+    return authService.findByEmail(email);
+  }
 }

@@ -74,21 +74,31 @@ export class PlanEvolutionEngine {
 
     // --- Volume Adjustment ---
     if (actions.includes("INCREASE_VOLUME")) {
-      // Strategy: Add 1-2 sets to frequently trained muscles
-      Object.keys(muscleMetrics).forEach((muscle) => {
+      // Strategy: Add ~5% weekly sets to muscles tracked in evaluation
+      Object.entries(muscleMetrics).forEach(([muscle, data]: [string, any]) => {
         const currentOverride = muscleOverrides[muscle] || 0;
-        // Safety bound: max +4 total override sets per muscle from baseline
-        if (currentOverride < 4) {
-          muscleOverrides[muscle] = currentOverride + 1;
+        const baselineSets = data.sets; // This is what the user actually did
+        const increase = Math.max(1, Math.round(baselineSets * 0.05));
+
+        // Safety bound: max +6 total override sets per muscle from baseline
+        if (currentOverride < 6) {
+          muscleOverrides[muscle] = currentOverride + increase;
         }
       });
       nextInput.volumeOverrides = muscleOverrides;
     } else if (actions.includes("DECREASE_VOLUME") || actions.includes("SIMPLIFY_VOLUME")) {
-      Object.keys(muscleMetrics).forEach((muscle) => {
+      Object.entries(muscleMetrics).forEach(([muscle, data]: [string, any]) => {
         const currentOverride = muscleOverrides[muscle] || 0;
-        muscleOverrides[muscle] = Math.max(-4, currentOverride - 1);
+        const baselineSets = data.sets;
+        const decrease = Math.max(1, Math.round(baselineSets * 0.1));
+
+        muscleOverrides[muscle] = Math.max(-6, currentOverride - decrease);
       });
       nextInput.volumeOverrides = muscleOverrides;
+    }
+
+    if (actions.includes("DELOAD")) {
+      nextInput.isDeloadBlock = true; // Flag for PlanCompiler to potentially shift logic
     }
 
     // --- Intensity Adjustment ---

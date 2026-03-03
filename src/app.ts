@@ -9,6 +9,8 @@ import sessionRoutes from "./routes/session.routes";
 import planRoutes from "./routes/plan.routes";
 import analyticsRoutes from "./routes/analytics.routes";
 
+import { env } from "./config/env.config";
+
 const app: Application = express();
 
 // Global Middlewares
@@ -32,10 +34,9 @@ app.use(
 );
 app.use(
   cors({
-    origin: [
+    origin: env.NODE_ENV === "development" ? true : [
       "http://localhost:8081",
-      "http://localhost:3000",
-      "http://localhost:5000",
+      "https://kora-web.vercel.app", // Example production domain
     ],
     credentials: true,
   }),

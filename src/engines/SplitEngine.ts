@@ -4,12 +4,14 @@ import { SplitTemplateSchema } from "./validation";
 const prisma = new PrismaClient() as any;
 
 export class SplitEngine {
-  static async select(daysPerWeek: number, name?: string) {
+  static async select(daysPerWeek: number, options: { name?: string; type?: string } = {}) {
     const template = await prisma.splitTemplate.findFirst({
       where: {
         daysPerWeek,
-        ...(name && { name }),
+        ...(options.name && { name: options.name }),
+        ...(options.type && { type: options.type as any }),
       },
+      orderBy: { version: "desc" }, // Get latest version
     });
 
     if (!template) {
