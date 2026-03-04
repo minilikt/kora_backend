@@ -126,8 +126,8 @@ model UserAdaptiveState {
   performanceScore    Float
   volumeMultiplier    Float    @default(1)
   intensityMultiplier Float    @default(1)
-  date                DateTime @default(now()) @db.Date
   createdAt           DateTime @default(now())
+  date                DateTime @default(now()) @db.Date
   user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])

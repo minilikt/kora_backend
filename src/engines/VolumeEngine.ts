@@ -1,7 +1,6 @@
-import { PrismaClient, User, UserTrainingProfile, BlockEvaluation } from "@prisma/client";
+import { UserTrainingProfile, BlockEvaluation, TrainingGoal, ExperienceLevel } from "@prisma/client";
+import prisma from "../lib/prisma";
 import { VolumeProfileSchema } from "./validation";
-
-const prisma = new PrismaClient() as any;
 
 export class VolumeEngine {
   static async getProfile(
@@ -13,8 +12,11 @@ export class VolumeEngine {
       evaluation?: BlockEvaluation | null;
     }
   ) {
-    const profile = await prisma.volumeProfile.findFirst({
-      where: { goal, experienceLevel: level },
+    const profile = await (prisma.volumeProfile as any).findFirst({
+      where: {
+        goal: goal as TrainingGoal,
+        experienceLevel: level as ExperienceLevel
+      },
     });
 
     if (!profile) {

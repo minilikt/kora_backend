@@ -1,17 +1,15 @@
 import {
-  PrismaClient,
   TrainingGoal,
   ExperienceLevel,
   ExerciseEnvironment,
 } from "@prisma/client";
+import prisma from "../lib/prisma";
 import { SplitEngine } from "./SplitEngine";
 import { VolumeEngine } from "./VolumeEngine";
 import { ProgressionEngine } from "./ProgressionEngine";
 import { DistributionEngine } from "./DistributionEngine";
 import { ExerciseSelector } from "./ExerciseSelector";
 import { SplitDay, ProgressionWeek } from "./validation";
-
-const prisma = new PrismaClient();
 
 export interface PlanInput {
   userId: string;
@@ -120,17 +118,19 @@ export class PlanCompiler {
 
         if (candidates.length === 0) {
           console.warn(
-            `⚠️ No exercises found for pattern ${block.pattern} for user ${input.userId}`,
+            `⚠️ [PlanCompiler] No exercises found for pattern "${block.pattern}" (Type: ${block.type}, Level: ${input.level}, Env: ${input.environment})`,
           );
           continue;
         }
 
         // Avoid duplicates in the same session
         let selected = candidates.find((ex: any) => !usedExerciseIdsInSession.has(ex.id)) || candidates[0];
+        console.log(`✅ [PlanCompiler] Selected "${selected.name}" for pattern "${block.pattern}"`);
         usedExerciseIdsInSession.add(selected.id);
 
         // Add to library if not present
         if (!exerciseLibrary[selected.id]) {
+          console.log(`📚 [PlanCompiler] Adding "${selected.name}" to exercise library`);
           exerciseLibrary[selected.id] = {
             id: selected.id,
             name: selected.name,
@@ -142,7 +142,7 @@ export class PlanCompiler {
 
         const exerciseReps = block.type === "COMPOUND" ? repRange.compound : repRange.isolation;
 
-        const progression = await ProgressionEngine.applyProgression(
+        const progressionResult = await ProgressionEngine.applyProgression(
           input.userId,
           selected.id,
           exerciseReps as [number, number],
@@ -156,10 +156,10 @@ export class PlanCompiler {
           patternId: patternMap.get(block.pattern),
           sets: block.sets,
           exerciseId: selected.id,
-          reps: progression.reps, // Dynamic reps from progression engine
-          weight: progression.weight, // Load suggestion
+          reps: progressionResult.reps, // Dynamic reps from progression engine
+          weight: progressionResult.weight, // Load suggestion
           intensity: (intensityRange[0] + intensityRange[1]) / 2, // Midpoint intensity
-          note: progression.note,
+          note: progressionResult.note,
         });
       }
 
@@ -184,9 +184,6 @@ export class PlanCompiler {
           exercises: (session.exercises || []).map((ex: any) => {
             // Calculate progression-adjusted intensity
             const baseIntensity = ex.intensity;
-            // If weekDef.intensity is a multiplier (0-1), apply it. 
-            // If it's a relative offset, add it.
-            // For now, assume it's a relative factor if < 1.0
             const adjustedIntensity = weekDef.deload
               ? baseIntensity * 0.7
               : (weekDef.intensity ? baseIntensity + (weekDef.intensity * 10) : baseIntensity);
@@ -213,7 +210,7 @@ export class PlanCompiler {
       weeks, // Detailed weekly sessions
     };
 
-    console.log(`✅ Plan compilation (v2) complete for user ${input.userId}`);
+    console.log(`✅ [PlanCompiler] Plan compilation complete for user ${input.userId}`);
     return {
       planJson: fullPlanJson,
       startDate,

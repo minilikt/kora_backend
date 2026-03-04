@@ -178,7 +178,12 @@ async function seedVolumes() {
       update: {},
       create: {
         id: vp.id,
-        goal: vp.goal as TrainingGoal,
+        goal: (() => {
+          if (vp.goal === "MUSCLE_GAIN") return TrainingGoal.HYPERTROPHY;
+          if (vp.goal === "MAINTAIN") return TrainingGoal.MAINTENANCE;
+          if (vp.goal === "MUSCLE_LOSE") return TrainingGoal.FAT_LOSS;
+          return vp.goal as TrainingGoal;
+        })(),
         priority: vp.priority as TrainingPriority,
         experienceLevel: vp.experienceLevel as ExperienceLevel,
         weeklySets: vp.weeklySets,

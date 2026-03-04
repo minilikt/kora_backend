@@ -1,7 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../lib/prisma";
 import { PlanCompiler, PlanInput } from "../engines/PlanCompiler";
-
-const prisma = new PrismaClient();
 
 export class PlanService {
   /**
@@ -29,19 +27,19 @@ export class PlanService {
       });
 
       // Create session records for each day of the plan
-      for (const week of planJson.weeks) {
-        for (const session of week.sessions) {
-          await tx.userSession.create({
-            data: {
-              userId: input.userId,
-              planId: plan.id,
-              dayNumber: session.day,
-              week: week.week,
-              planned: session, // Store the optimized session JSON
-            },
-          });
-        }
-      }
+      const sessionData = planJson.weeks.flatMap((week: any) =>
+        week.sessions.map((session: any) => ({
+          userId: input.userId,
+          planId: plan.id,
+          dayNumber: session.day,
+          week: week.week,
+          planned: session, // Store the optimized session JSON
+        }))
+      );
+
+      await tx.userSession.createMany({
+        data: sessionData,
+      });
 
       return plan;
     });

@@ -1,0 +1,104 @@
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+🚀 Starting Registration & Plan Verification...
+📝 Registering user: testuser_1772618387973@example.com
+👤 UserService: Registering user testuser_1772618387973@example.com...
+📅 UserService: Automatically generating plan for user cmmbv7z7m0000ij2rlixdxnl5...
+🤖 PlanService: Generating optimized plan for user cmmbv7z7m0000ij2rlixdxnl5...
+🔨 Compiling plan (v2) for user cmmbv7z7m0000ij2rlixdxnl5...
+[ExerciseSelector] Searching for pattern: "Horizontal Pull"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 12 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Reverse Grip Incline Bench Row, Barbell Incline Row, Smith Bent Over Row
+✅ [PlanCompiler] Selected "Barbell Reverse Grip Incline Bench Row" for pattern "Horizontal Pull"
+📚 [PlanCompiler] Adding "Barbell Reverse Grip Incline Bench Row" to exercise library
+⚠️ UserService: Failed to generate auto-plan for user cmmbv7z7m0000ij2rlixdxnl5: PrismaClientValidationError: 
+Invalid `prisma.userExerciseLog.findFirst()` invocation in
+/home/fugitora/Projects/Kora/kora_backend/src/engines/ProgressionEngine.ts:43:52
+
+  40   baseIntensity: number
+  41 ) {
+  42   // 1. Fetch latest performance log for this user and exercise
+→ 43   const latestLog = await prisma.userExerciseLog.findFirst({
+         where: {
+           userId: "cmmbv7z7m0000ij2rlixdxnl5",
+           ~~~~~~
+           exerciseId: "0772d068-41f0-4331-9ce2-022b464a9206",
+           completed: true,
+       ?   AND?: UserExerciseLogWhereInput | UserExerciseLogWhereInput[],
+       ?   OR?: UserExerciseLogWhereInput[],
+       ?   NOT?: UserExerciseLogWhereInput | UserExerciseLogWhereInput[],
+       ?   id?: StringFilter | String,
+       ?   sessionId?: StringFilter | String,
+       ?   plannedSets?: IntFilter | Int,
+       ?   plannedReps?: StringFilter | String,
+       ?   plannedRpe?: FloatFilter | Float,
+       ?   actualSets?: IntNullableFilter | Int | Null,
+       ?   performanceScore?: FloatNullableFilter | Float | Null,
+       ?   createdAt?: DateTimeFilter | DateTime,
+       ?   equipmentUsed?: JsonNullableFilter,
+       ?   notes?: StringNullableFilter | String | Null,
+       ?   repsPerSet?: JsonNullableFilter,
+       ?   rpePerSet?: JsonNullableFilter,
+       ?   timeSpentSec?: IntNullableFilter | Int | Null,
+       ?   weightsPerSet?: JsonNullableFilter,
+       ?   exercise?: ExerciseScalarRelationFilter | ExerciseWhereInput,
+       ?   session?: UserSessionScalarRelationFilter | UserSessionWhereInput
+         },
+         orderBy: {
+           createdAt: "desc"
+         }
+       })
+
+Unknown argument `userId`. Available options are marked with ?.
+    at throwValidationException (/home/fugitora/Projects/Kora/kora_backend/node_modules/.pnpm/@prisma+client@6.19.2_prisma@6.19.2_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/core/errorRendering/throwValidationException.ts:45:9)
+    at ei.handleRequestError (/home/fugitora/Projects/Kora/kora_backend/node_modules/.pnpm/@prisma+client@6.19.2_prisma@6.19.2_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/RequestHandler.ts:202:7)
+    at ei.handleAndLogRequestError (/home/fugitora/Projects/Kora/kora_backend/node_modules/.pnpm/@prisma+client@6.19.2_prisma@6.19.2_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12)
+    at ei.request (/home/fugitora/Projects/Kora/kora_backend/node_modules/.pnpm/@prisma+client@6.19.2_prisma@6.19.2_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12)
+    at async a (/home/fugitora/Projects/Kora/kora_backend/node_modules/.pnpm/@prisma+client@6.19.2_prisma@6.19.2_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24)
+    at async Function.applyProgression (/home/fugitora/Projects/Kora/kora_backend/src/engines/ProgressionEngine.ts:43:23)
+    at async Function.generate (/home/fugitora/Projects/Kora/kora_backend/src/engines/PlanCompiler.ts:147:29)
+    at async Function.createPlan (/home/fugitora/Projects/Kora/kora_backend/src/services/PlanService.ts:17:46)
+    at async Function.registerAndGeneratePlan (/home/fugitora/Projects/Kora/kora_backend/src/services/UserService.ts:44:7)
+    at async main (/home/fugitora/Projects/Kora/kora_backend/src/verify-registration-plan.ts:32:20) {
+  clientVersion: '6.19.2'
+}
+❌ Verification failed with error: 
+Invalid `prisma.userExerciseLog.findFirst()` invocation in
+/home/fugitora/Projects/Kora/kora_backend/src/engines/ProgressionEngine.ts:43:52
+
+  40   baseIntensity: number
+  41 ) {
+  42   // 1. Fetch latest performance log for this user and exercise
+→ 43   const latestLog = await prisma.userExerciseLog.findFirst({
+         where: {
+           userId: "cmmbv7z7m0000ij2rlixdxnl5",
+           ~~~~~~
+           exerciseId: "0772d068-41f0-4331-9ce2-022b464a9206",
+           completed: true,
+       ?   AND?: UserExerciseLogWhereInput | UserExerciseLogWhereInput[],
+       ?   OR?: UserExerciseLogWhereInput[],
+       ?   NOT?: UserExerciseLogWhereInput | UserExerciseLogWhereInput[],
+       ?   id?: StringFilter | String,
+       ?   sessionId?: StringFilter | String,
+       ?   plannedSets?: IntFilter | Int,
+       ?   plannedReps?: StringFilter | String,
+       ?   plannedRpe?: FloatFilter | Float,
+       ?   actualSets?: IntNullableFilter | Int | Null,
+       ?   performanceScore?: FloatNullableFilter | Float | Null,
+       ?   createdAt?: DateTimeFilter | DateTime,
+       ?   equipmentUsed?: JsonNullableFilter,
+       ?   notes?: StringNullableFilter | String | Null,
+       ?   repsPerSet?: JsonNullableFilter,
+       ?   rpePerSet?: JsonNullableFilter,
+       ?   timeSpentSec?: IntNullableFilter | Int | Null,
+       ?   weightsPerSet?: JsonNullableFilter,
+       ?   exercise?: ExerciseScalarRelationFilter | ExerciseWhereInput,
+       ?   session?: UserSessionScalarRelationFilter | UserSessionWhereInput
+         },
+         orderBy: {
+           createdAt: "desc"
+         }
+       })
+
+Unknown argument `userId`. Available options are marked with ?.

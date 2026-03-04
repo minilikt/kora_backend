@@ -1,7 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../lib/prisma";
 import { ProgressionModelSchema } from "./validation";
-
-const prisma = new PrismaClient() as any;
 
 export class ProgressionEngine {
   static async getModel(idOrName: string) {
@@ -15,10 +13,9 @@ export class ProgressionEngine {
       throw new Error(`No progression model found for: ${idOrName}.`);
     }
 
-    const weeks = ProgressionModelSchema.parse(model.weeks);
-
+    const weeks = ProgressionModelSchema.parse(model.weeks) as any[];
     // Validate continuity
-    const weekNumbers = weeks.map((w) => w.week).sort((a, b) => a - b);
+    const weekNumbers = weeks.map((w: any) => w.week).sort((a: number, b: number) => a - b);
     for (let i = 0; i < weekNumbers.length; i++) {
       if (weekNumbers[i] !== i + 1) {
         throw new Error(
@@ -40,8 +37,12 @@ export class ProgressionEngine {
     baseIntensity: number
   ) {
     // 1. Fetch latest performance log for this user and exercise
-    const latestLog = await prisma.userExerciseLog.findFirst({
-      where: { userId, exerciseId, completed: true },
+    const latestLog = await (prisma.userExerciseLog as any).findFirst({
+      where: {
+        session: { userId },
+        exerciseId,
+        completed: true,
+      },
       orderBy: { createdAt: "desc" },
     });
 

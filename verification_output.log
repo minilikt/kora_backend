@@ -1,9 +1,9 @@
 🚀 Starting Registration & Plan Verification...
-📝 Registering user: testuser_1771308863320@example.com
-✅ User registered with ID: cmlq7kc1t0000vwyw3n1md28q
+📝 Registering user: testuser_1772619020390@example.com
+✅ User registered with ID: cmmbvlk5e0000ijv01z3yrqyd
 🔍 Checking for generated plan...
-✅ Plan found! ID: cmlq7l5mi0002vwywdcbjiite
-📅 Plan Period: 2026-02-17T06:15:02.716Z to 2026-03-17T06:15:02.716Z
+✅ Plan found! ID: cmmbvn21x0002ijv0z3hfvrpp
+📅 Plan Period: 2026-03-04T10:11:33.088Z to 2026-04-01T10:11:33.088Z
 ✅ 16 sessions were pre-populated.
 
 --- Plan JSON Structure Preview ---
@@ -13,14 +13,24 @@ Keys in Plan JSON: input, weeks, version, basePlan, exerciseLibrary
 Sample Week 1 (Day 1) Exercises:
 [
   {
-    "sets": 5,
+    "rpe": 7,
+    "note": "Initial session - find your baseline load.",
+    "reps": "6-10",
+    "sets": 3,
+    "weight": 0,
     "muscleId": 12,
-    "patternId": 25,
-    "exerciseId": "cbb0e4c1-b512-4cdd-87d1-829ebf6f16ad"
+    "intensity": 72.5,
+    "patternId": 30,
+    "exerciseId": "0772d068-41f0-4331-9ce2-022b464a9206"
   },
   {
-    "sets": 4,
+    "rpe": 7,
+    "note": "Initial session - find your baseline load.",
+    "reps": "6-10",
+    "sets": 3,
+    "weight": 0,
     "muscleId": 11,
+    "intensity": 72.5,
     "patternId": 3,
     "exerciseId": "325e441d-99b0-4752-a368-b32662c751c9"
   }

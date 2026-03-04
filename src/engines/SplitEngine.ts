@@ -1,7 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../lib/prisma";
 import { SplitTemplateSchema } from "./validation";
-
-const prisma = new PrismaClient() as any;
 
 export class SplitEngine {
   static async select(daysPerWeek: number, options: { name?: string; type?: string } = {}) {

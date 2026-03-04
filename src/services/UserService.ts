@@ -1,5 +1,6 @@
 import * as authService from "./auth.service";
 import { PlanService } from "./PlanService";
+import prisma from "../lib/prisma";
 import {
   TrainingGoal,
   ExperienceLevel,
@@ -70,6 +71,8 @@ export class UserService {
         `⚠️ UserService: Failed to generate auto-plan for user ${user.id}:`,
         error,
       );
+      // Re-throw to allow the caller (controller) to handle it and stop successful registration if plan failed
+      throw error;
     }
 
     return { user, accessToken, refreshToken };
