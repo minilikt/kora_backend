@@ -2,16 +2,35 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient() as any;
 
+// Maps generic muscle names from DistributionEngine to scientific names in the DB
+const MUSCLE_NAME_MAP: Record<string, string> = {
+  CHEST: "Pectoralis Major",
+  BACK: "Latissimus Dorsi",
+  QUADS: "Quadriceps",
+  HAMSTRINGS: "Hamstrings",
+  GLUTES: "Gluteus Maximus",
+  SHOULDERS: "Deltoids",
+  BICEPS: "Biceps Brachii",
+  TRICEPS: "Triceps Brachii",
+  CORE: "Abdominals",
+  CALVES: "Gastrocnemius",
+};
+
+// Split categories that don't have dedicated DB split tags — skip split filtering for these
+const SKIP_SPLIT_CATEGORIES = ["FULL_BODY", "UPPER", "LOWER"];
+
 export class ExerciseSelector {
   static async getByPattern(
     patternName: string,
     equipmentNames: string[],
     options: {
+      muscleName?: string;
       type?: "COMPOUND" | "ISOLATION";
       level?: "BEGINNER" | "INTERMEDIATE" | "ADVANCED";
       environment?: "GYM" | "HOME" | "OUTDOOR" | "ANY";
       minRpe?: number;
       maxRpe?: number;
+      splitCategory?: string;
     } = {},
   ): Promise<any[]> {
     // Normalize equipment names to match DB (pluralization issues)
@@ -29,11 +48,19 @@ export class ExerciseSelector {
     );
     console.log(`[ExerciseSelector] Options: ${JSON.stringify(options)}`);
 
+    const allPatterns = await prisma.movementPattern.findMany();
+    const normalize = (s: string) => s.toUpperCase().replace(/[^A-Z0-9]/g, "_").replace(/_+/g, "_");
+
+    const targetPattern = allPatterns.find((p: any) => normalize(p.name) === normalize(patternName));
+
+    if (!targetPattern) {
+      console.warn(`[ExerciseSelector] Pattern not found in DB: ${patternName}`);
+      return [];
+    }
+
     const exercises = await prisma.exercise.findMany({
       where: {
-        movementPattern: {
-          name: patternName,
-        },
+        movementPatternId: targetPattern.id,
         type: options.type,
         level: options.level
           ? { in: [options.level, "BEGINNER", "INTERMEDIATE"] }
@@ -43,6 +70,12 @@ export class ExerciseSelector {
           : undefined,
         difficultyRpeMin: options.minRpe ? { gte: options.minRpe } : undefined,
         difficultyRpeMax: options.maxRpe ? { lte: options.maxRpe } : undefined,
+        split: options.splitCategory ? {
+          name: {
+            contains: options.splitCategory.replace(/_/g, " "),
+            mode: 'insensitive'
+          }
+        } : undefined,
         equipment: {
           every: {
             equipment: {
@@ -56,6 +89,7 @@ export class ExerciseSelector {
       include: {
         muscles: { include: { muscle: true } },
         equipment: { include: { equipment: true } },
+        split: true,
       },
     });
 
@@ -79,6 +113,62 @@ export class ExerciseSelector {
         ...options,
         type: undefined,
       });
+    }
+
+    if (exercises.length === 0 && options.muscleName) {
+      // Translate generic muscle name (e.g. "BACK") to scientific name (e.g. "Latissimus Dorsi")
+      const dbMuscleName = MUSCLE_NAME_MAP[options.muscleName.toUpperCase()] || options.muscleName;
+      // Skip split filter for categories not directly indexed in DB (e.g. FULL_BODY)
+      const useSplitFilter =
+        options.splitCategory && !SKIP_SPLIT_CATEGORIES.includes(options.splitCategory.toUpperCase());
+
+      console.log(
+        `[ExerciseSelector] Pattern "${patternName}" failed, falling back to muscle search for "${dbMuscleName}" in split "${useSplitFilter ? options.splitCategory : 'ANY'}"`
+      );
+
+      const muscleExercises = await prisma.exercise.findMany({
+        where: {
+          muscles: {
+            some: {
+              muscle: {
+                name: {
+                  contains: dbMuscleName,
+                  mode: 'insensitive'
+                }
+              }
+            }
+          },
+          split: useSplitFilter ? {
+            name: {
+              contains: options.splitCategory!.replace(/_/g, " "),
+              mode: 'insensitive'
+            }
+          } : undefined,
+          level: options.level
+            ? { in: [options.level, "BEGINNER", "INTERMEDIATE"] }
+            : undefined,
+          environment: options.environment
+            ? { in: [options.environment, "ANY"] }
+            : undefined,
+          equipment: {
+            every: {
+              equipment: {
+                name: {
+                  in: [...normalizedEquipment, ...equipmentNames],
+                },
+              },
+            },
+          },
+        },
+        include: {
+          muscles: { include: { muscle: true } },
+          equipment: { include: { equipment: true } },
+          split: true,
+        },
+      });
+
+      console.log(`[ExerciseSelector] Muscle fallback returned ${muscleExercises.length} results`);
+      return muscleExercises;
     }
 
     // Sort: Compound first

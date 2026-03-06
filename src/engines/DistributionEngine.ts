@@ -43,9 +43,20 @@ export class DistributionEngine {
 
       let remainingSets = totalSets;
 
-      // Determine target days based on focus or all training days
-      const focusDays = trainingDays.filter((d) => d.focus?.includes(muscle));
-      let targetDays = focusDays.length > 0 ? focusDays : trainingDays;
+      // Determine target days based on focus or all training days.
+      // Priority: (1) days where this muscle is in focus, (2) FULL_BODY days
+      // (which are designed to catch all muscles), (3) all training days as last resort.
+      const focusDays = trainingDays.filter((d) =>
+        d.focus?.some(f => f.toUpperCase() === muscle.toUpperCase())
+      );
+      const fullBodyDays = trainingDays.filter(
+        (d) => (d as any).category?.toUpperCase() === "FULL_BODY"
+      );
+      let targetDays = focusDays.length > 0
+        ? focusDays
+        : fullBodyDays.length > 0
+          ? fullBodyDays
+          : trainingDays;
 
       // Rule: Spread across days if exceeding cap
       const minDaysRequired = Math.ceil(totalSets / SET_CAP_PER_SESSION);
@@ -115,17 +126,17 @@ export class DistributionEngine {
 
   private static mapMuscleToDefaultPattern(muscle: string): string {
     const map: Record<string, string> = {
-      CHEST: "Horizontal Push",
-      BACK: "Horizontal Pull", // Fallback to horizontal if vertical isn't found
-      QUADS: "Squat",
-      HAMSTRINGS: "Hinge",
-      GLUTES: "Hinge",
-      SHOULDERS: "Vertical Push",
-      BICEPS: "Bicep Curl Arc",
-      TRICEPS: "Overhead Arc", // Often triceps dominant in the arc or isolation
-      CORE: "Spinal Flexion",
-      CALVES: "Plantar Flexion",
+      CHEST: "HORIZONTAL_PUSH",
+      BACK: "HORIZONTAL_PULL",
+      QUADS: "SQUAT",
+      HAMSTRINGS: "HINGE",
+      GLUTES: "HINGE",
+      SHOULDERS: "VERTICAL_PUSH",
+      BICEPS: "BICEP_CURL_ARC",
+      TRICEPS: "OVERHEAD_ARC",
+      CORE: "SPINAL_FLEXION",
+      CALVES: "PLANTAR_FLEXION",
     };
-    return map[muscle] || "Horizontal Push"; // Safe fallback
+    return map[muscle] || "HORIZONTAL_PUSH"; // Safe fallback
   }
 }

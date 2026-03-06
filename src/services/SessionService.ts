@@ -3,6 +3,7 @@ import { BlockEvaluationService } from "./BlockEvaluationService";
 import { PlanEvolutionEngine } from "../engines/PlanEvolutionEngine";
 import { ActivityService } from "./ActivityService";
 import { MuscleAggregationService } from "./MuscleAggregationService";
+import { PersonalRecordService } from "./PersonalRecordService";
 
 const prisma = new PrismaClient();
 
@@ -127,6 +128,16 @@ export class SessionService {
         });
       }
 
+      // 1.5 Update Personal Records
+      // We pass the newly created logs or just the input exercises if we want to be safe, 
+      // but passing the input is easier as we already have them mapped.
+      await PersonalRecordService.updatePRsFromSession(
+        userId,
+        input.exercises,
+        end,
+        tx
+      );
+
       const avgRPE =
         allRpes.length > 0
           ? allRpes.reduce((a, b) => a + b, 0) / allRpes.length
@@ -165,10 +176,11 @@ export class SessionService {
         },
       });
 
-      // 4. Update Daily Activity via dedicated service
+      // 4. Update Daily Activity and User Aggregates via dedicated service
       await ActivityService.recordActivity(
         userId,
         totalTimeSec,
+        totalActualVolume,
         performanceScore,
         end,
         tx,

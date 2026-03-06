@@ -5,22 +5,26 @@ const prisma = new PrismaClient();
 export class ActivityService {
   /**
    * Records or updates daily activity based on a completed session.
-   * Accepts an optional transaction client to ensure atomicity.
+   * Also updates user-level aggregate metrics (total hours, streaks).
    */
   static async recordActivity(
     userId: string,
     totalTimeSec: number,
+    totalTonnage: number,
     performanceScore: number,
     date?: Date,
     tx?: any,
   ) {
     const db = tx || prisma;
     const activityDate = new Date(date || Date.now());
+    const originalDate = new Date(activityDate);
     activityDate.setHours(0, 0, 0, 0);
 
     const activeMinutes = Math.floor(totalTimeSec / 60);
+    const activeHours = totalTimeSec / 3600;
 
-    return db.dailyActivity.upsert({
+    // 1. Update DailyActivity record
+    const daily = await db.dailyActivity.upsert({
       where: {
         userId_date: {
           userId,
@@ -30,8 +34,8 @@ export class ActivityService {
       update: {
         activeMinutes: { increment: activeMinutes },
         workoutsCount: { increment: 1 },
-        // We'll store a cumulative success score and divide by workoutsCount in the getter if needed,
-        // or just keep it as a running average. Let's do a running average for now.
+        totalTonnage: { increment: totalTonnage },
+        caloriesBurned: { increment: Math.round((totalTimeSec / 60) * 5) },
         successScore: {
           set: await this.calculateRunningSuccessScore(
             userId,
@@ -46,9 +50,111 @@ export class ActivityService {
         date: activityDate,
         activeMinutes: activeMinutes,
         workoutsCount: 1,
+        totalTonnage: totalTonnage,
+        caloriesBurned: Math.round((totalTimeSec / 60) * 5),
         successScore: performanceScore,
       },
     });
+
+    // 2. Update User-level aggregates
+    // We calculate streak by fetching recent activity dates
+    const streakData = await this.calculateStreak(userId, db);
+
+    await db.user.update({
+      where: { id: userId },
+      data: {
+        totalActiveHours: { increment: activeHours },
+        lastActiveAt: originalDate,
+        streakCount: streakData.currentStreak,
+        longestStreak: {
+          set: streakData.currentStreak > streakData.longestStreak
+            ? streakData.currentStreak
+            : streakData.longestStreak
+        }
+      },
+    });
+
+    return daily;
+  }
+
+  /**
+   * Logs user body weight and updates the profile.
+   */
+  static async logWeight(userId: string, weight: number, date?: Date, tx?: any) {
+    const db = tx || prisma;
+    const logDate = new Date(date || Date.now());
+    logDate.setHours(0, 0, 0, 0);
+
+    await db.weightHistory.upsert({
+      where: {
+        userId_date: {
+          userId,
+          date: logDate,
+        },
+      },
+      update: { weight },
+      create: { userId, weight, date: logDate },
+    });
+
+    return db.user.update({
+      where: { id: userId },
+      data: { weight },
+    });
+  }
+
+  /**
+   * Calculates current streak based on daily activity records.
+   */
+  private static async calculateStreak(userId: string, tx: any) {
+    const activities = await tx.dailyActivity.findMany({
+      where: { userId },
+      orderBy: { date: "desc" },
+      select: { date: true },
+      take: 100, // Reasonable window for streak
+    });
+
+    if (activities.length === 0) return { currentStreak: 0, longestStreak: 0 };
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const user = await tx.user.findUnique({
+      where: { id: userId },
+      select: { longestStreak: true },
+    });
+
+    let currentStreak = 0;
+    const dates = activities.map((a: any) => {
+      const d = new Date(a.date);
+      d.setHours(0, 0, 0, 0);
+      return d.getTime();
+    });
+
+    // Check if the most recent activity is today or yesterday
+    const lastActivityTime = dates[0];
+    const diffDays = Math.round((today.getTime() - lastActivityTime) / (1000 * 3600 * 24));
+
+    if (diffDays <= 1) {
+      currentStreak = 1;
+      for (let i = 1; i < dates.length; i++) {
+        const prevTime = dates[i - 1];
+        const currTime = dates[i];
+        const diff = Math.round((prevTime - currTime) / (1000 * 3600 * 24));
+
+        if (diff === 1) {
+          currentStreak++;
+        } else if (diff === 0) {
+          continue; // Same day multiple workouts
+        } else {
+          break;
+        }
+      }
+    }
+
+    return {
+      currentStreak,
+      longestStreak: user?.longestStreak || 0
+    };
   }
 
   /**

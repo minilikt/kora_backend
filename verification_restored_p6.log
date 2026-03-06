@@ -1,0 +1,330 @@
+[dotenv@17.3.1] injecting env (0) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+🚀 Starting Registration & Plan Verification...
+📝 Registering user: testuser_1772622063539@example.com
+👤 UserService: Registering user testuser_1772622063539@example.com...
+📅 UserService: Automatically generating plan for user cmmbxerey0000ijka17xieitt...
+🤖 PlanService: Generating optimized plan for user cmmbxerey0000ijka17xieitt...
+🔨 Compiling plan (v2) for user cmmbxerey0000ijka17xieitt...
+[SplitEngine] No UPPER_LOWER split found for 4 days, falling back to any split.
+[ExerciseSelector] Searching for pattern: "Horizontal Pull"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 6 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Reverse Grip Incline Bench Row, Barbell Incline Row, Smith Bent Over Row
+✅ [PlanCompiler] Selected "Barbell Reverse Grip Incline Bench Row" for pattern "Horizontal Pull"
+📚 [PlanCompiler] Adding "Barbell Reverse Grip Incline Bench Row" to exercise library
+[ExerciseSelector] Searching for pattern: "Horizontal Push"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 6 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Wide Reverse Grip Bench Press, Barbell Lying Close-Grip Press, Dumbbell Bench Press
+✅ [PlanCompiler] Selected "Barbell Wide Reverse Grip Bench Press" for pattern "Horizontal Push"
+📚 [PlanCompiler] Adding "Barbell Wide Reverse Grip Bench Press" to exercise library
+[ExerciseSelector] Searching for pattern: "Squat"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 6 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Speed Squat, Barbell Full Squat (Back POV), Smith Chair Squat
+✅ [PlanCompiler] Selected "Barbell Speed Squat" for pattern "Squat"
+📚 [PlanCompiler] Adding "Barbell Speed Squat" to exercise library
+[ExerciseSelector] Searching for pattern: "Bicep Curl Arc"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying Bicep Curl Arc without type restriction...
+[ExerciseSelector] Searching for pattern: "Bicep Curl Arc"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 8 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Drag Curl, Dumbbell Incline Biceps Curl, Barbell Standing Close Grip Curl
+✅ [PlanCompiler] Selected "Barbell Drag Curl" for pattern "Bicep Curl Arc"
+📚 [PlanCompiler] Adding "Barbell Drag Curl" to exercise library
+[ExerciseSelector] Searching for pattern: "Plantar Flexion"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying Plantar Flexion without type restriction...
+[ExerciseSelector] Searching for pattern: "Plantar Flexion"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 3 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Standing Calf Raise, Barbell Floor Calf Raise, Sled Calf Press on Leg Press
+✅ [PlanCompiler] Selected "Barbell Standing Calf Raise" for pattern "Plantar Flexion"
+📚 [PlanCompiler] Adding "Barbell Standing Calf Raise" to exercise library
+[ExerciseSelector] Searching for pattern: "Hinge"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 4 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Romanian Deadlift, Barbell Stiff Leg Good Morning, Dumbbell Straight Leg Deadlift
+✅ [PlanCompiler] Selected "Barbell Romanian Deadlift" for pattern "Hinge"
+📚 [PlanCompiler] Adding "Barbell Romanian Deadlift" to exercise library
+[ExerciseSelector] Searching for pattern: "Overhead Arc"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 1 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Front Raise and Pullover
+✅ [PlanCompiler] Selected "Barbell Front Raise and Pullover" for pattern "Overhead Arc"
+📚 [PlanCompiler] Adding "Barbell Front Raise and Pullover" to exercise library
+[ExerciseSelector] Searching for pattern: "Vertical Push"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 2 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Standing Close Grip Military Press, Dumbbell Standing Alternate Overhead Press
+✅ [PlanCompiler] Selected "Barbell Standing Close Grip Military Press" for pattern "Vertical Push"
+📚 [PlanCompiler] Adding "Barbell Standing Close Grip Military Press" to exercise library
+[ExerciseSelector] Searching for pattern: "Hinge"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 4 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Romanian Deadlift, Barbell Stiff Leg Good Morning, Dumbbell Straight Leg Deadlift
+✅ [PlanCompiler] Selected "Barbell Stiff Leg Good Morning" for pattern "Hinge"
+📚 [PlanCompiler] Adding "Barbell Stiff Leg Good Morning" to exercise library
+[ExerciseSelector] Searching for pattern: "Horizontal Pull"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"ISOLATION","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "Horizontal Pull" (Type: ISOLATION, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "Horizontal Push"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"ISOLATION","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "Horizontal Push" (Type: ISOLATION, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "Horizontal Pull"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 6 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Reverse Grip Incline Bench Row, Barbell Incline Row, Smith Bent Over Row
+✅ [PlanCompiler] Selected "Barbell Reverse Grip Incline Bench Row" for pattern "Horizontal Pull"
+[ExerciseSelector] Searching for pattern: "Horizontal Push"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 6 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Wide Reverse Grip Bench Press, Barbell Lying Close-Grip Press, Dumbbell Bench Press
+✅ [PlanCompiler] Selected "Barbell Wide Reverse Grip Bench Press" for pattern "Horizontal Push"
+[ExerciseSelector] Searching for pattern: "Squat"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 6 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Speed Squat, Barbell Full Squat (Back POV), Smith Chair Squat
+✅ [PlanCompiler] Selected "Barbell Speed Squat" for pattern "Squat"
+[ExerciseSelector] Searching for pattern: "Bicep Curl Arc"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying Bicep Curl Arc without type restriction...
+[ExerciseSelector] Searching for pattern: "Bicep Curl Arc"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 8 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Drag Curl, Dumbbell Incline Biceps Curl, Barbell Standing Close Grip Curl
+✅ [PlanCompiler] Selected "Barbell Drag Curl" for pattern "Bicep Curl Arc"
+[ExerciseSelector] Searching for pattern: "Plantar Flexion"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying Plantar Flexion without type restriction...
+[ExerciseSelector] Searching for pattern: "Plantar Flexion"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 3 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Standing Calf Raise, Barbell Floor Calf Raise, Sled Calf Press on Leg Press
+✅ [PlanCompiler] Selected "Barbell Standing Calf Raise" for pattern "Plantar Flexion"
+[ExerciseSelector] Searching for pattern: "Hinge"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 4 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Romanian Deadlift, Barbell Stiff Leg Good Morning, Dumbbell Straight Leg Deadlift
+✅ [PlanCompiler] Selected "Barbell Romanian Deadlift" for pattern "Hinge"
+[ExerciseSelector] Searching for pattern: "Overhead Arc"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 1 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Front Raise and Pullover
+✅ [PlanCompiler] Selected "Barbell Front Raise and Pullover" for pattern "Overhead Arc"
+[ExerciseSelector] Searching for pattern: "Vertical Push"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 2 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Standing Close Grip Military Press, Dumbbell Standing Alternate Overhead Press
+✅ [PlanCompiler] Selected "Barbell Standing Close Grip Military Press" for pattern "Vertical Push"
+[ExerciseSelector] Searching for pattern: "Hinge"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 4 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Romanian Deadlift, Barbell Stiff Leg Good Morning, Dumbbell Straight Leg Deadlift
+✅ [PlanCompiler] Selected "Barbell Stiff Leg Good Morning" for pattern "Hinge"
+[ExerciseSelector] Searching for pattern: "Horizontal Pull"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"ISOLATION","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "Horizontal Pull" (Type: ISOLATION, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "Horizontal Pull"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 6 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Reverse Grip Incline Bench Row, Barbell Incline Row, Smith Bent Over Row
+✅ [PlanCompiler] Selected "Barbell Reverse Grip Incline Bench Row" for pattern "Horizontal Pull"
+[ExerciseSelector] Searching for pattern: "Horizontal Push"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 6 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Wide Reverse Grip Bench Press, Barbell Lying Close-Grip Press, Dumbbell Bench Press
+✅ [PlanCompiler] Selected "Barbell Wide Reverse Grip Bench Press" for pattern "Horizontal Push"
+[ExerciseSelector] Searching for pattern: "Squat"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 6 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Speed Squat, Barbell Full Squat (Back POV), Smith Chair Squat
+✅ [PlanCompiler] Selected "Barbell Speed Squat" for pattern "Squat"
+[ExerciseSelector] Searching for pattern: "Bicep Curl Arc"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying Bicep Curl Arc without type restriction...
+[ExerciseSelector] Searching for pattern: "Bicep Curl Arc"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 8 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Drag Curl, Dumbbell Incline Biceps Curl, Barbell Standing Close Grip Curl
+✅ [PlanCompiler] Selected "Barbell Drag Curl" for pattern "Bicep Curl Arc"
+[ExerciseSelector] Searching for pattern: "Plantar Flexion"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying Plantar Flexion without type restriction...
+[ExerciseSelector] Searching for pattern: "Plantar Flexion"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 3 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Standing Calf Raise, Barbell Floor Calf Raise, Sled Calf Press on Leg Press
+✅ [PlanCompiler] Selected "Barbell Standing Calf Raise" for pattern "Plantar Flexion"
+[ExerciseSelector] Searching for pattern: "Hinge"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 4 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Romanian Deadlift, Barbell Stiff Leg Good Morning, Dumbbell Straight Leg Deadlift
+✅ [PlanCompiler] Selected "Barbell Romanian Deadlift" for pattern "Hinge"
+[ExerciseSelector] Searching for pattern: "Overhead Arc"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 1 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Front Raise and Pullover
+✅ [PlanCompiler] Selected "Barbell Front Raise and Pullover" for pattern "Overhead Arc"
+[ExerciseSelector] Searching for pattern: "Vertical Push"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 2 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Standing Close Grip Military Press, Dumbbell Standing Alternate Overhead Press
+✅ [PlanCompiler] Selected "Barbell Standing Close Grip Military Press" for pattern "Vertical Push"
+[ExerciseSelector] Searching for pattern: "Hinge"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 4 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Romanian Deadlift, Barbell Stiff Leg Good Morning, Dumbbell Straight Leg Deadlift
+✅ [PlanCompiler] Selected "Barbell Stiff Leg Good Morning" for pattern "Hinge"
+[ExerciseSelector] Searching for pattern: "Horizontal Pull"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"ISOLATION","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "Horizontal Pull" (Type: ISOLATION, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "Horizontal Pull"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 6 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Reverse Grip Incline Bench Row, Barbell Incline Row, Smith Bent Over Row
+✅ [PlanCompiler] Selected "Barbell Reverse Grip Incline Bench Row" for pattern "Horizontal Pull"
+[ExerciseSelector] Searching for pattern: "Horizontal Push"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 6 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Wide Reverse Grip Bench Press, Barbell Lying Close-Grip Press, Dumbbell Bench Press
+✅ [PlanCompiler] Selected "Barbell Wide Reverse Grip Bench Press" for pattern "Horizontal Push"
+[ExerciseSelector] Searching for pattern: "Squat"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 6 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Speed Squat, Barbell Full Squat (Back POV), Smith Chair Squat
+✅ [PlanCompiler] Selected "Barbell Speed Squat" for pattern "Squat"
+[ExerciseSelector] Searching for pattern: "Bicep Curl Arc"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying Bicep Curl Arc without type restriction...
+[ExerciseSelector] Searching for pattern: "Bicep Curl Arc"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 8 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Drag Curl, Dumbbell Incline Biceps Curl, Barbell Standing Close Grip Curl
+✅ [PlanCompiler] Selected "Barbell Drag Curl" for pattern "Bicep Curl Arc"
+[ExerciseSelector] Searching for pattern: "Hinge"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 4 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Romanian Deadlift, Barbell Stiff Leg Good Morning, Dumbbell Straight Leg Deadlift
+✅ [PlanCompiler] Selected "Barbell Romanian Deadlift" for pattern "Hinge"
+[ExerciseSelector] Searching for pattern: "Overhead Arc"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 1 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Front Raise and Pullover
+✅ [PlanCompiler] Selected "Barbell Front Raise and Pullover" for pattern "Overhead Arc"
+[ExerciseSelector] Searching for pattern: "Vertical Push"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 2 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Standing Close Grip Military Press, Dumbbell Standing Alternate Overhead Press
+✅ [PlanCompiler] Selected "Barbell Standing Close Grip Military Press" for pattern "Vertical Push"
+[ExerciseSelector] Searching for pattern: "Hinge"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 4 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Romanian Deadlift, Barbell Stiff Leg Good Morning, Dumbbell Straight Leg Deadlift
+✅ [PlanCompiler] Selected "Barbell Stiff Leg Good Morning" for pattern "Hinge"
+[ExerciseSelector] Searching for pattern: "Plantar Flexion"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"ISOLATION","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 3 total possible exercises
+[ExerciseSelector] First 3 results: Barbell Standing Calf Raise, Barbell Floor Calf Raise, Sled Calf Press on Leg Press
+✅ [PlanCompiler] Selected "Barbell Standing Calf Raise" for pattern "Plantar Flexion"
+✅ [PlanCompiler] Plan compilation complete for user cmmbxerey0000ijka17xieitt
+✅ PlanService: Created optimized plan cmmbxg3hp0002ijkaboj79is1 with 16 sessions.
+✅ UserService: Auto-plan generated for user cmmbxerey0000ijka17xieitt
+✅ User registered with ID: cmmbxerey0000ijka17xieitt
+🔍 Checking for generated plan...
+✅ Plan found! ID: cmmbxg3hp0002ijkaboj79is1
+📅 Plan Period: 2026-03-04T11:02:07.585Z to 2026-04-01T11:02:07.585Z
+✅ 16 sessions were pre-populated.
+
+--- Plan JSON Structure Preview ---
+Version: 2
+Keys in Plan JSON: input, weeks, version, basePlan, exerciseLibrary
+
+Sample Week 1 (Day 1) Exercises:
+[
+  {
+    "rpe": 7,
+    "note": "Initial session - find your baseline load.",
+    "reps": "6-10",
+    "sets": 3,
+    "weight": 0,
+    "muscleId": 12,
+    "intensity": 72.5,
+    "patternId": 30,
+    "exerciseId": "61"
+  },
+  {
+    "rpe": 7,
+    "note": "Initial session - find your baseline load.",
+    "reps": "6-10",
+    "sets": 3,
+    "weight": 0,
+    "muscleId": 11,
+    "intensity": 72.5,
+    "patternId": 3,
+    "exerciseId": "3"
+  }
+]
+
+--- API Info ---
+Endpoint: GET /api/plans/active
+Authentication: Required (Bearer Token)

@@ -1,6 +1,7 @@
 import { UserTrainingProfile, BlockEvaluation, TrainingGoal, ExperienceLevel } from "@prisma/client";
 import prisma from "../lib/prisma";
 import { VolumeProfileSchema } from "./validation";
+import { AppError } from "../middlewares/error.middleware";
 
 export class VolumeEngine {
   static async getProfile(
@@ -12,16 +13,22 @@ export class VolumeEngine {
       evaluation?: BlockEvaluation | null;
     }
   ) {
-    const profile = await (prisma.volumeProfile as any).findFirst({
-      where: {
-        goal: goal as TrainingGoal,
-        experienceLevel: level as ExperienceLevel
-      },
+    let profile = await prisma.volumeProfile.findFirst({
+      where: { goal: goal as TrainingGoal, experienceLevel: level as ExperienceLevel },
     });
 
+    // Fallback logic for missing goal profiles
+    if (!profile && (goal === "STRENGTH" || goal === "POWERBUILDING")) {
+      console.warn(`[VolumeEngine] No profile for ${goal}, falling back to HYPERTROPHY`);
+      profile = await prisma.volumeProfile.findFirst({
+        where: { goal: TrainingGoal.HYPERTROPHY, experienceLevel: level as ExperienceLevel },
+      });
+    }
+
     if (!profile) {
-      throw new Error(
+      throw new AppError(
         `No volume profile found for goal: ${goal} and level: ${level}.`,
+        404
       );
     }
 

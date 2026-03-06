@@ -21,6 +21,9 @@ export const MovementBlockSchema = z.object({
 
 export const SplitDaySchema = z.object({
   day: z.number().int().positive(),
+  category: z.string().optional(),
+  primaryMuscles: z.array(z.string()).optional(),
+  secondaryMuscles: z.array(z.string()).optional(),
   focus: z.array(z.string()).optional(),
   blocks: z.array(MovementBlockSchema).optional(),
   rest: z.boolean().default(false),

@@ -56,59 +56,50 @@ export const getSummary = async (
     const { start, end } = getDateRange(String(filter));
     const userId = req.user.userId;
 
-    const sessions = await prisma.userSession.findMany({
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { streakCount: true, totalActiveHours: true }
+    });
+
+    const streakCount = user?.streakCount || 0;
+    const totalActiveHours = user?.totalActiveHours || 0;
+
+    // Use DailyActivity aggregation for tonnage and calories (much faster than scanning sessions)
+    const stats = await prisma.dailyActivity.aggregate({
       where: {
         userId,
-        completedStatus: true,
-        completedAt: { gte: start, lte: end },
+        date: { gte: start, lte: end },
       },
-      include: { exercises: { include: { exercise: true } } },
-    });
-
-    const totalWorkouts = sessions.length;
-    const totalDuration = sessions.reduce(
-      (sum, s) => sum + (s.totalTimeSec || 0),
-      0,
-    );
-    const caloriesBurned = Math.round((totalDuration / 60) * 5); // ~5 cal/min estimate
-    const totalTonnage = sessions.reduce((sum, s) => sum + (s.totalTonnage || 0), 0);
-
-    // Streak
-    const allSessions = await prisma.userSession.findMany({
-      where: { userId, completedStatus: true },
-      orderBy: { completedAt: "desc" },
-      select: { completedAt: true },
-    });
-
-    let currentStreak = 0;
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const seen = new Set<string>();
-    for (const s of allSessions) {
-      if (!s.completedAt) continue;
-      const d = new Date(s.completedAt);
-      d.setHours(0, 0, 0, 0);
-      const key = d.toISOString();
-      if (!seen.has(key)) {
-        seen.add(key);
-        const diff = Math.round((today.getTime() - d.getTime()) / 86400000);
-        if (diff === currentStreak) currentStreak++;
-        else break;
+      _sum: {
+        totalTonnage: true,
+        caloriesBurned: true,
+        activeMinutes: true,
+        workoutsCount: true,
       }
-    }
+    });
+
+    const totalTonnage = stats._sum.totalTonnage || 0;
+    const caloriesBurned = stats._sum.caloriesBurned || 0;
+    const totalDuration = (stats._sum.activeMinutes || 0) * 60;
+    const totalWorkouts = stats._sum.workoutsCount || 0;
 
     // Remaining sessions in active plan
     const activePlan = await prisma.userPlan.findFirst({
       where: { userId },
       orderBy: { createdAt: "desc" },
-      include: { sessions: { where: { completedStatus: false } } },
+      include: {
+        _count: {
+          select: { sessions: true }
+        }
+      }
     });
-    const remainingCount = activePlan?.sessions.length ?? 0;
 
-    const totalSessions = activePlan
-      ? await prisma.userSession.count({ where: { planId: activePlan.id } })
+    const uncompletedSessionsCount = activePlan
+      ? await prisma.userSession.count({ where: { planId: activePlan.id, completedStatus: false } })
       : 0;
-    const completedInPlan = totalSessions - remainingCount;
+
+    const totalSessions = activePlan?._count.sessions ?? 0;
+    const completedInPlan = totalSessions - uncompletedSessionsCount;
     const progressPercent =
       totalSessions > 0
         ? Math.round((completedInPlan / totalSessions) * 100)
@@ -118,13 +109,14 @@ export const getSummary = async (
       status: "success",
       data: {
         summary: {
-          currentStreak,
+          currentStreak: streakCount,
           progressPercent,
           totalTonnage: Math.round(totalTonnage),
-          remainingCount,
+          remainingCount: uncompletedSessionsCount,
           caloriesBurned,
           totalDuration,
           totalWorkouts,
+          totalActiveHours,
         },
       },
     });
@@ -146,40 +138,38 @@ export const getTrends = async (
     const { start, end } = getDateRange(String(filter));
     const userId = req.user.userId;
 
-    const sessions = await prisma.userSession.findMany({
-      where: {
-        userId,
-        completedStatus: true,
-        completedAt: { gte: start, lte: end },
-      },
-      orderBy: { completedAt: "asc" },
-    });
-
-    // Group by date to avoid multiple points for the same day
-    const groupedData: Record<string, number> = {};
     const m = String(metric).toLowerCase();
 
-    for (const s of sessions) {
-      if (!s.completedAt) continue;
-      const dateKey = new Date(s.completedAt).toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
+    if (m === "bodyweight") {
+      const weights = await (prisma as any).weightHistory.findMany({
+        where: { userId, date: { gte: start, lte: end } },
+        orderBy: { date: "asc" }
       });
-
-      let value = 0;
-      if (m === "weight" || m === "tonnage") {
-        value = s.totalTonnage || 0;
-      } else if (m === "calories") {
-        value = Math.round(((s.totalTimeSec || 0) / 60) * 5);
-      } else if (m === "time") {
-        value = Math.round((s.totalTimeSec || 0) / 60);
-      }
-
-      groupedData[dateKey] = (groupedData[dateKey] || 0) + value;
+      const labels = weights.map((w: any) => new Date(w.date).toLocaleDateString("en-US", { month: "short", day: "numeric" }));
+      const dataPoints = weights.map((w: any) => w.weight);
+      return res.status(200).json({ status: "success", data: { labels, datasets: [{ data: dataPoints }] } });
     }
 
-    const labels = Object.keys(groupedData);
-    const dataPoints = Object.values(groupedData).map(v => Math.round(v));
+    // Pull directly from DailyActivity (much more efficient than session iteration)
+    const activities = await prisma.dailyActivity.findMany({
+      where: {
+        userId,
+        date: { gte: start, lte: end },
+      },
+      orderBy: { date: "asc" },
+    });
+
+    const labels = activities.map(a => new Date(a.date).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    }));
+
+    const dataPoints = activities.map(a => {
+      if (m === "weight" || m === "tonnage") return Math.round(a.totalTonnage);
+      if (m === "calories") return a.caloriesBurned;
+      if (m === "time") return a.activeMinutes;
+      return 0;
+    });
 
     res.status(200).json({
       status: "success",
@@ -276,44 +266,45 @@ export const getProfileSummary = async (
 
     const user = await prisma.user.findUnique({
       where: { id: userId },
-      include: { trainingProfile: true },
+      include: {
+        trainingProfile: true,
+        _count: {
+          select: { userSessions: { where: { completedStatus: true } } }
+        }
+      },
     });
     if (!user) throw new AppError("User not found", 404);
 
-    const totalWorkouts = await prisma.userSession.count({
-      where: { userId, completedStatus: true },
-    });
+    const totalWorkouts = user._count.userSessions;
 
-    const totalTimeSec = await prisma.userSession.aggregate({
-      where: { userId, completedStatus: true },
-      _sum: { totalTimeSec: true },
+    const totalTimeAgg = await prisma.dailyActivity.aggregate({
+      where: { userId },
+      _sum: { activeMinutes: true }
     });
 
     const totalExercises = await prisma.userExerciseLog.count({
       where: { session: { userId, completedStatus: true } },
     });
 
-    // Streak
-    const allSessions = await prisma.userSession.findMany({
-      where: { userId, completedStatus: true },
-      orderBy: { completedAt: "desc" },
-      select: { completedAt: true },
-    });
-    let currentStreak = 0;
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const seen = new Set<string>();
-    for (const s of allSessions) {
-      if (!s.completedAt) continue;
-      const d = new Date(s.completedAt);
-      d.setHours(0, 0, 0, 0);
-      const key = d.toISOString();
-      if (!seen.has(key)) {
-        seen.add(key);
-        const diff = Math.round((today.getTime() - d.getTime()) / 86400000);
-        if (diff === currentStreak) currentStreak++;
-        else break;
+    // Progress Calculation
+    const activePlan = await prisma.userPlan.findFirst({
+      where: { userId },
+      orderBy: { createdAt: "desc" },
+      include: {
+        _count: {
+          select: { sessions: true }
+        }
       }
+    });
+
+    let progressPercent = 0;
+    if (activePlan) {
+      const totalSessions = activePlan._count.sessions;
+      const completedSessions = await prisma.userSession.count({
+        where: { planId: activePlan.id, completedStatus: true },
+      });
+      progressPercent =
+        totalSessions > 0 ? Math.round((completedSessions / totalSessions) * 100) : 0;
     }
 
     const consistency = user.trainingProfile?.consistencyScore ?? 0;
@@ -327,43 +318,34 @@ export const getProfileSummary = async (
             ? "Overweight"
             : "Obese";
 
-    // Best lifts (top 3 by weight - using max weight from any log)
-    const topExercises = await prisma.userExerciseLog.findMany({
-      where: { session: { userId, completedStatus: true } },
+    // Best lifts - Querying the dedicated table (much faster)
+    const bestPRs = await prisma.userPersonalRecord.findMany({
+      where: { userId },
       include: { exercise: true },
+      orderBy: { weight: "desc" },
+      take: 3
     });
 
-    // We need to sort manually or find a way to get max from JSON in query (easier to fetch and sort for now)
-    const bestOf = topExercises
-      .map((log: any) => {
-        const weights = (log.weightsPerSet as number[]) || [];
-        const maxWeight = weights.length > 0 ? Math.max(...weights) : 0;
-        const reps = (log.repsPerSet as number[]) || [];
-        const maxWeightIndex = weights.indexOf(maxWeight);
-        return {
-          name: log.exercise.name,
-          weight: maxWeight,
-          reps: reps[maxWeightIndex] || 0,
-          icon: "🏆",
-        };
-      })
-      .sort((a, b) => b.weight - a.weight)
-      .slice(0, 3);
+    const bestOf = bestPRs.map(pr => ({
+      name: pr.exercise.name,
+      weight: pr.weight,
+      reps: pr.reps,
+      icon: "🏆",
+    }));
 
     res.status(200).json({
       status: "success",
       data: {
         stats: {
           totalWorkouts,
-          totalHours:
-            Math.round(((totalTimeSec._sum.totalTimeSec || 0) / 3600) * 10) /
-            10,
+          totalHours: Math.round(((totalTimeAgg._sum.activeMinutes || 0) / 60) * 10) / 10,
           totalExercises,
-          currentStreak,
+          currentStreak: user.streakCount,
           consistency: Math.round(consistency * 100),
           bmi: Math.round(bmi * 10) / 10,
           bmiStatus,
           goalWeight: user.targetWeight ?? 0,
+          progress: progressPercent,
         },
         bestOf,
       },
@@ -431,37 +413,20 @@ export const getPersonalRecords = async (
     if (!req.user) throw new AppError("Unauthorized", 401);
     const userId = req.user.userId;
 
-    // Get best weight per exercise using max weight from JSON
-    const logs = await prisma.userExerciseLog.findMany({
-      where: { session: { userId, completedStatus: true } },
-      include: { exercise: true, session: { select: { completedAt: true, createdAt: true } } },
+    const prs = await prisma.userPersonalRecord.findMany({
+      where: { userId },
+      include: { exercise: true },
+      orderBy: { updatedAt: "desc" },
+      take: 20
     });
 
-    const bestByExercise: Record<string, any> = {};
-    for (const log of logs) {
-      const weights = (log.weightsPerSet as number[]) || [];
-      const reps = (log.repsPerSet as number[]) || [];
-      const maxWeight = weights.length > 0 ? Math.max(...weights) : 0;
-      const maxWeightIndex = weights.indexOf(maxWeight);
-
-      if (
-        maxWeight > 0 &&
-        (!bestByExercise[log.exerciseId] ||
-          maxWeight > bestByExercise[log.exerciseId].weight)
-      ) {
-        bestByExercise[log.exerciseId] = {
-          exerciseName: log.exercise.name,
-          weight: maxWeight,
-          reps: reps[maxWeightIndex] || 0,
-          date: log.session.completedAt || log.session.createdAt,
-          icon: "🏅",
-        };
-      }
-    }
-
-    const records = Object.values(bestByExercise)
-      .sort((a, b) => b.weight - a.weight)
-      .slice(0, 10);
+    const records = prs.map(pr => ({
+      exerciseName: pr.exercise.name,
+      weight: pr.weight,
+      reps: pr.reps,
+      date: pr.date,
+      icon: "🏅",
+    }));
 
     res.status(200).json({ status: "success", data: { records } });
   } catch (error) {
@@ -480,64 +445,18 @@ export const getStreak = async (
     if (!req.user) throw new AppError("Unauthorized", 401);
     const userId = req.user.userId;
 
-    const sessions = await prisma.userSession.findMany({
-      where: { userId, completedStatus: true },
-      orderBy: { completedAt: "desc" },
-      select: { completedAt: true },
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { streakCount: true, longestStreak: true, lastActiveAt: true }
     });
-
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const uniqueDays: Date[] = [];
-    const seen = new Set<string>();
-    for (const s of sessions) {
-      if (!s.completedAt) continue;
-      const d = new Date(s.completedAt);
-      d.setHours(0, 0, 0, 0);
-      const key = d.toISOString();
-      if (!seen.has(key)) {
-        seen.add(key);
-        uniqueDays.push(d);
-      }
-    }
-
-    let currentStreak = 0;
-    let longestStreak = 0;
-    let tempStreak = 0;
-    const lastWorkoutDate = uniqueDays[0] ? uniqueDays[0].toISOString() : "";
-
-    // Calculate current streak (must have workout today or yesterday)
-    if (uniqueDays.length > 0) {
-      const diffSinceLast = Math.round((today.getTime() - uniqueDays[0].getTime()) / 86400000);
-      if (diffSinceLast <= 1) {
-        currentStreak = 1;
-        for (let i = 1; i < uniqueDays.length; i++) {
-          const diff = Math.round((uniqueDays[i - 1].getTime() - uniqueDays[i].getTime()) / 86400000);
-          if (diff === 1) currentStreak++;
-          else break;
-        }
-      }
-    }
-
-    // Calculate longest streak in history
-    if (uniqueDays.length > 0) {
-      tempStreak = 1;
-      longestStreak = 1;
-      for (let i = 1; i < uniqueDays.length; i++) {
-        const diff = Math.round((uniqueDays[i - 1].getTime() - uniqueDays[i].getTime()) / 86400000);
-        if (diff === 1) {
-          tempStreak++;
-        } else {
-          tempStreak = 1;
-        }
-        longestStreak = Math.max(longestStreak, tempStreak);
-      }
-    }
 
     res.status(200).json({
       status: "success",
-      data: { currentStreak, longestStreak, lastWorkoutDate },
+      data: {
+        currentStreak: user?.streakCount || 0,
+        longestStreak: user?.longestStreak || 0,
+        lastWorkoutDate: user?.lastActiveAt || ""
+      },
     });
   } catch (error) {
     next(error);
@@ -589,6 +508,108 @@ export const getLastWorkout = async (
     };
 
     res.status(200).json({ status: "success", data: { workout } });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// ─── GET /analytics/exercise/:exerciseId/history ────────────────────────────
+
+export const getExerciseHistory = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    if (!req.user) throw new AppError("Unauthorized", 401);
+    const { exerciseId } = req.params;
+    const userId = req.user.userId;
+
+    const logs = await prisma.userExerciseLog.findMany({
+      where: {
+        exerciseId: String(exerciseId),
+        session: { userId, completedStatus: true },
+      },
+      orderBy: { createdAt: "desc" },
+      include: {
+        session: {
+          select: { completedAt: true, performanceScore: true }
+        }
+      },
+      take: 20
+    });
+
+    const history = logs.map((log: any) => {
+      const weights = (log.weightsPerSet as number[]) || [];
+      const reps = (log.repsPerSet as number[]) || [];
+      const volume = weights.reduce((sum, w, i) => sum + w * (reps[i] || 0), 0);
+      const maxWeight = weights.length > 0 ? Math.max(...weights) : 0;
+
+      return {
+        date: log.session.completedAt,
+        volume,
+        maxWeight,
+        reps: reps.reduce((a, b) => a + b, 0),
+        sets: log.actualSets,
+        performanceScore: log.performanceScore,
+        sessionPerformance: log.session.performanceScore
+      };
+    });
+
+    res.status(200).json({
+      status: "success",
+      data: { history }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// ─── GET /analytics/done-exercises ──────────────────────────────────────────
+
+export const getDoneExercises = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    if (!req.user) throw new AppError("Unauthorized", 401);
+    const userId = req.user.userId;
+
+    // Get unique exercise IDs performed by the user
+    const logs = await prisma.userExerciseLog.findMany({
+      where: {
+        session: { userId, completedStatus: true },
+      },
+      select: {
+        exercise: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+        createdAt: true,
+      },
+      orderBy: { createdAt: "desc" },
+    });
+
+    // Group by exercise ID to get unique list with last done date
+    const uniqueExercises: Record<string, { id: string; name: string; lastDone: Date }> = {};
+
+    for (const log of logs) {
+      if (!uniqueExercises[log.exercise.id]) {
+        uniqueExercises[log.exercise.id] = {
+          id: log.exercise.id,
+          name: log.exercise.name,
+          lastDone: log.createdAt,
+        };
+      }
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: { exercises: Object.values(uniqueExercises) },
+    });
   } catch (error) {
     next(error);
   }

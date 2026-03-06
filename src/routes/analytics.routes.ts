@@ -16,5 +16,7 @@ router.get("/history", analyticsController.getHistory);
 router.get("/personal-records", analyticsController.getPersonalRecords);
 router.get("/streak", analyticsController.getStreak);
 router.get("/last-workout", analyticsController.getLastWorkout);
+router.get("/done-exercises", analyticsController.getDoneExercises);
+router.get("/exercise/:exerciseId/history", analyticsController.getExerciseHistory);
 
 export default router;

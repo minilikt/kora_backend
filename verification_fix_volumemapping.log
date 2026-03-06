@@ -1,0 +1,402 @@
+[dotenv@17.3.1] injecting env (0) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+🚀 Starting Registration & Plan Verification...
+📝 Registering user: testuser_1772622852920@example.com
+👤 UserService: Registering user testuser_1772622852920@example.com...
+📅 UserService: Automatically generating plan for user cmmbxvohm0000ijpbtzm315jy...
+🤖 PlanService: Generating optimized plan for user cmmbxvohm0000ijpbtzm315jy...
+🔨 Compiling plan (v2) for user cmmbxvohm0000ijpbtzm315jy...
+[SplitEngine] No UPPER_LOWER split found for 4 days, falling back to any split.
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PULL"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HORIZONTAL_PULL without type restriction...
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PULL"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HORIZONTAL_PULL" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HORIZONTAL_PUSH without type restriction...
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HORIZONTAL_PUSH" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "SQUAT"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying SQUAT without type restriction...
+[ExerciseSelector] Searching for pattern: "SQUAT"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "SQUAT" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "BICEP_CURL_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying BICEP_CURL_ARC without type restriction...
+[ExerciseSelector] Searching for pattern: "BICEP_CURL_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "BICEP_CURL_ARC" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "PLANTAR_FLEXION"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying PLANTAR_FLEXION without type restriction...
+[ExerciseSelector] Searching for pattern: "PLANTAR_FLEXION"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "PLANTAR_FLEXION" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HINGE without type restriction...
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HINGE" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "OVERHEAD_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying OVERHEAD_ARC without type restriction...
+[ExerciseSelector] Searching for pattern: "OVERHEAD_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "OVERHEAD_ARC" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "VERTICAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying VERTICAL_PUSH without type restriction...
+[ExerciseSelector] Searching for pattern: "VERTICAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "VERTICAL_PUSH" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HINGE without type restriction...
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HINGE" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PULL"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"ISOLATION","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HORIZONTAL_PULL" (Type: ISOLATION, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"ISOLATION","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HORIZONTAL_PUSH" (Type: ISOLATION, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PULL"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HORIZONTAL_PULL without type restriction...
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PULL"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HORIZONTAL_PULL" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HORIZONTAL_PUSH without type restriction...
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HORIZONTAL_PUSH" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "SQUAT"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying SQUAT without type restriction...
+[ExerciseSelector] Searching for pattern: "SQUAT"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "SQUAT" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "BICEP_CURL_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying BICEP_CURL_ARC without type restriction...
+[ExerciseSelector] Searching for pattern: "BICEP_CURL_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "BICEP_CURL_ARC" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "PLANTAR_FLEXION"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying PLANTAR_FLEXION without type restriction...
+[ExerciseSelector] Searching for pattern: "PLANTAR_FLEXION"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "PLANTAR_FLEXION" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HINGE without type restriction...
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HINGE" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "OVERHEAD_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying OVERHEAD_ARC without type restriction...
+[ExerciseSelector] Searching for pattern: "OVERHEAD_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "OVERHEAD_ARC" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "VERTICAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying VERTICAL_PUSH without type restriction...
+[ExerciseSelector] Searching for pattern: "VERTICAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "VERTICAL_PUSH" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HINGE without type restriction...
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HINGE" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PULL"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"ISOLATION","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HORIZONTAL_PULL" (Type: ISOLATION, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PULL"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HORIZONTAL_PULL without type restriction...
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PULL"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HORIZONTAL_PULL" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HORIZONTAL_PUSH without type restriction...
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HORIZONTAL_PUSH" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "SQUAT"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying SQUAT without type restriction...
+[ExerciseSelector] Searching for pattern: "SQUAT"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "SQUAT" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "BICEP_CURL_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying BICEP_CURL_ARC without type restriction...
+[ExerciseSelector] Searching for pattern: "BICEP_CURL_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "BICEP_CURL_ARC" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "PLANTAR_FLEXION"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying PLANTAR_FLEXION without type restriction...
+[ExerciseSelector] Searching for pattern: "PLANTAR_FLEXION"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "PLANTAR_FLEXION" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HINGE without type restriction...
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HINGE" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "OVERHEAD_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying OVERHEAD_ARC without type restriction...
+[ExerciseSelector] Searching for pattern: "OVERHEAD_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "OVERHEAD_ARC" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "VERTICAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying VERTICAL_PUSH without type restriction...
+[ExerciseSelector] Searching for pattern: "VERTICAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "VERTICAL_PUSH" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HINGE without type restriction...
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HINGE" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PULL"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"ISOLATION","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HORIZONTAL_PULL" (Type: ISOLATION, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PULL"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HORIZONTAL_PULL without type restriction...
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PULL"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HORIZONTAL_PULL" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HORIZONTAL_PUSH without type restriction...
+[ExerciseSelector] Searching for pattern: "HORIZONTAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HORIZONTAL_PUSH" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "SQUAT"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying SQUAT without type restriction...
+[ExerciseSelector] Searching for pattern: "SQUAT"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "SQUAT" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "BICEP_CURL_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying BICEP_CURL_ARC without type restriction...
+[ExerciseSelector] Searching for pattern: "BICEP_CURL_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "BICEP_CURL_ARC" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HINGE without type restriction...
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HINGE" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "OVERHEAD_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying OVERHEAD_ARC without type restriction...
+[ExerciseSelector] Searching for pattern: "OVERHEAD_ARC"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "OVERHEAD_ARC" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "VERTICAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying VERTICAL_PUSH without type restriction...
+[ExerciseSelector] Searching for pattern: "VERTICAL_PUSH"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "VERTICAL_PUSH" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"COMPOUND","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+[ExerciseSelector] Retrying HINGE without type restriction...
+[ExerciseSelector] Searching for pattern: "HINGE"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "HINGE" (Type: COMPOUND, Level: INTERMEDIATE, Env: GYM)
+[ExerciseSelector] Searching for pattern: "PLANTAR_FLEXION"
+[ExerciseSelector] Equipment allowed: ["Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar","Barbell","Dumbbells","Kettlebells","Cable Machine","Flat Bench","Incline Bench","Decline Bench","Pull-up Bar","Squat Rack","Leg Press Machine","Smith Machine","Lat Pulldown Machine","Dip Bar"]
+[ExerciseSelector] Options: {"type":"ISOLATION","level":"INTERMEDIATE","environment":"GYM"}
+[ExerciseSelector] Query returned 0 total possible exercises
+⚠️ [PlanCompiler] No exercises found for pattern "PLANTAR_FLEXION" (Type: ISOLATION, Level: INTERMEDIATE, Env: GYM)
+✅ [PlanCompiler] Plan compilation complete for user cmmbxvohm0000ijpbtzm315jy
+✅ PlanService: Created optimized plan cmmbxw8og0002ijpb6fktp4ne with 16 sessions.
+✅ UserService: Auto-plan generated for user cmmbxvohm0000ijpbtzm315jy
+✅ User registered with ID: cmmbxvohm0000ijpbtzm315jy
+🔍 Checking for generated plan...
+✅ Plan found! ID: cmmbxw8og0002ijpb6fktp4ne
+📅 Plan Period: 2026-03-04T11:14:40.594Z to 2026-04-01T11:14:40.594Z
+✅ 16 sessions were pre-populated.
+
+--- Plan JSON Structure Preview ---
+Version: 2
+Keys in Plan JSON: input, weeks, version, basePlan, exerciseLibrary
+
+Sample Week 1 (Day 1) Exercises:
+[]
+
+--- API Info ---
+Endpoint: GET /api/plans/active
+Authentication: Required (Bearer Token)

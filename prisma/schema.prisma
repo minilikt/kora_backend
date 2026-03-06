@@ -36,6 +36,8 @@ model User {
   plans               UserPlan[]
   userSessions        UserSession[]
   trainingProfile     UserTrainingProfile?
+  weightHistory       WeightHistory[]
+  personalRecords     UserPersonalRecord[]
 
   @@index([email])
   @@map("users")
@@ -174,6 +176,8 @@ model DailyActivity {
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
   hourlyDistribution Json?
+  totalTonnage       Float    @default(0)
+  caloriesBurned     Int      @default(0)
   user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, date])
@@ -194,6 +198,35 @@ model MuscleVolumeHistory {
   @@unique([userId, date, muscleId])
   @@index([userId, date])
   @@map("muscle_volume_history")
+}
+
+model WeightHistory {
+  id        String   @id @default(cuid())
+  userId    String
+  weight    Float
+  date      DateTime @default(now()) @db.Date
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, date])
+  @@map("weight_history")
+}
+
+model UserPersonalRecord {
+  id           String   @id @default(cuid())
+  userId       String
+  exerciseId   String
+  weight       Float
+  reps         Int
+  date         DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exercise     Exercise @relation(fields: [exerciseId], references: [id])
+
+  @@unique([userId, exerciseId])
+  @@index([userId])
+  @@index([exerciseId])
+  @@map("user_personal_records")
 }
 
 model SplitTemplate {
@@ -263,6 +296,7 @@ model Exercise {
   movementPattern   MovementPattern?      @relation(fields: [movementPatternId], references: [id])
   split             Split?                @relation(fields: [splitId], references: [id])
   userExerciseLogs  UserExerciseLog[]
+  personalRecords   UserPersonalRecord[]
 
   @@map("exercises")
 }

@@ -1,0 +1,24 @@
+warn The configuration property `package.json#prisma` is deprecated and will be removed in Prisma 7. Please migrate to a Prisma config file (e.g., `prisma.config.ts`).
+For more information, see: https://pris.ly/prisma-config
+
+Environment variables loaded from .env
+Running seed command `ts-node prisma/seed.ts` ...
+🌱 Starting database seeding...
+
+🏋️ Seeding Exercises and Ontology...
+✅ Ontology seeded
+✅ Seeded exercises 1-50
+✅ Seeded exercises 51-100
+✅ Seeded exercises 101-150
+✅ Seeded exercises 151-196
+✅ Join tables seeded
+📊 Seeding Volume Profiles...
+✅ VolumeProfiles seeded
+📋 Seeding Split Templates...
+✅ SplitTemplates seeded
+📈 Seeding Progression Models...
+✅ ProgressionModels seeded
+
+🎉 All data seeded successfully!
+
+🌱  The seed command has been executed.

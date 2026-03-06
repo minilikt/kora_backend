@@ -61,19 +61,19 @@ async function seedExercises() {
 
   // Map names → IDs for fast reference
   const musclesMap = Object.fromEntries(
-    (await prisma.muscle.findMany()).map((m) => [m.name, m.id]),
+    (await prisma.muscle.findMany()).map((m: any) => [m.name, m.id]),
   );
   const equipmentMap = Object.fromEntries(
-    (await prisma.equipment.findMany()).map((e) => [e.name, e.id]),
+    (await prisma.equipment.findMany()).map((e: any) => [e.name, e.id]),
   );
   const categoriesMap = Object.fromEntries(
-    (await prisma.category.findMany()).map((c) => [c.name, c.id]),
+    (await prisma.category.findMany()).map((c: any) => [c.name, c.id]),
   );
   const movementPatternsMap = Object.fromEntries(
-    (await prisma.movementPattern.findMany()).map((m) => [m.name, m.id]),
+    (await prisma.movementPattern.findMany()).map((m: any) => [m.name, m.id]),
   );
   const splitsMap = Object.fromEntries(
-    (await prisma.split.findMany()).map((s) => [s.name, s.id]),
+    (await prisma.split.findMany()).map((s: any) => [s.name, s.id]),
   );
 
   // 2️⃣ Seed Exercises
@@ -173,17 +173,18 @@ async function seedExercises() {
 async function seedVolumes() {
   console.log("📊 Seeding Volume Profiles...");
   for (const vp of volumeProfiles) {
+    const mappedGoal =
+      vp.goal === "MUSCLE_GAIN" ? "HYPERTROPHY" :
+        vp.goal === "MUSCLE_LOSE" ? "FAT_LOSS" :
+          vp.goal === "MAINTAIN" ? "MAINTENANCE" :
+            vp.goal;
+
     await prisma.volumeProfile.upsert({
       where: { id: vp.id },
       update: {},
       create: {
         id: vp.id,
-        goal: (() => {
-          if (vp.goal === "MUSCLE_GAIN") return TrainingGoal.HYPERTROPHY;
-          if (vp.goal === "MAINTAIN") return TrainingGoal.MAINTENANCE;
-          if (vp.goal === "MUSCLE_LOSE") return TrainingGoal.FAT_LOSS;
-          return vp.goal as TrainingGoal;
-        })(),
+        goal: mappedGoal as TrainingGoal,
         priority: vp.priority as TrainingPriority,
         experienceLevel: vp.experienceLevel as ExperienceLevel,
         weeklySets: vp.weeklySets,
@@ -200,7 +201,12 @@ async function seedSplitTemplates() {
   for (const s of splits) {
     await prisma.splitTemplate.upsert({
       where: { id: s.id },
-      update: {},
+      update: {
+        // Apply any changes from split_type.json to existing rows
+        structure: s.structure as any,
+        constraints: s.constraints as any,
+        version: { increment: 1 },
+      },
       create: {
         id: s.id,
         name: s.id,

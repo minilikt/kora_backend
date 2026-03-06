@@ -11,6 +11,10 @@ import { DistributionEngine } from "./DistributionEngine";
 import { ExerciseSelector } from "./ExerciseSelector";
 import { SplitDay, ProgressionWeek } from "./validation";
 
+// Split categories that don't have dedicated split tags in the exercises DB.
+// For these, we skip the split filter so exercises are selected by pattern/muscle only.
+const SKIP_SPLIT_CATEGORIES = new Set(["FULL_BODY", "UPPER", "LOWER"]);
+
 export interface PlanInput {
   userId: string;
   days: number;
@@ -32,16 +36,40 @@ export class PlanCompiler {
       prisma.movementPattern.findMany(),
     ]);
 
-    const muscleMap = new Map(muscles.map((m: any) => [m.name, m.id]));
-    const patternMap = new Map(patterns.map((p: any) => [p.name, p.id]));
+    // Normalize keys: Remove special chars, spaces, and uppercase
+    const normalize = (s: string) => s.toUpperCase().replace(/[^A-Z0-9]/g, "_").replace(/_+/g, "_");
+
+    const muscleMap = new Map(muscles.map((m: any) => [normalize(m.name), m.id]));
+    const patternMap = new Map(patterns.map((p: any) => [normalize(p.name), p.id]));
+
+    // Fuzzy matcher for muscles that might have (Clavicular Head) etc.
+    const findMuscleFuzzy = (target: string) => {
+      const normalizedTarget = normalize(target);
+      const exact = muscleMap.get(normalizedTarget);
+      if (exact) return exact;
+
+      // Try startsWith fuzzy match (e.g. "PECTORALIS_MAJOR" matches "PECTORALIS_MAJOR_CLAVICULAR_HEAD")
+      for (const [name, id] of muscleMap.entries() as IterableIterator<[string, string]>) {
+        if (name.startsWith(normalizedTarget)) return id;
+      }
+      return undefined;
+    };
 
     // 2. Select rule modules
     let preferredSplitType: string | undefined;
-    if (input.days <= 3) preferredSplitType = "FULL_BODY";
+    if (input.days <= 1) preferredSplitType = "FULL_BODY";
+    else if (input.days <= 3) preferredSplitType = "FULL_BODY";
     else if (input.days === 4) preferredSplitType = "UPPER_LOWER";
-    else if (input.days >= 5) preferredSplitType = "PUSH_PULL_LEGS";
+    else if (input.days >= 5) preferredSplitType = "HYBRID"; // Hypertrophy/Strength usually Hybrid for 5+ days
 
-    const split = await SplitEngine.select(input.days, { type: preferredSplitType });
+    // Resilient split selection
+    let split;
+    try {
+      split = await SplitEngine.select(input.days, { type: preferredSplitType });
+    } catch (e) {
+      console.warn(`[PlanCompiler] Failed to pick preferred split ${preferredSplitType}, trying generic search`);
+      split = await SplitEngine.select(input.days);
+    }
 
     // Fetch user context for personalization
     const user = await prisma.user.findUnique({
@@ -110,9 +138,14 @@ export class PlanCompiler {
           block.pattern,
           input.equipment,
           {
+            muscleName: block.muscle,
             type: block.type as any,
             level: input.level as any,
             environment: input.environment as any,
+            // Don't filter by split tag for categories not indexed in DB (FULL_BODY, UPPER, LOWER)
+            splitCategory: dayStructure?.category && !SKIP_SPLIT_CATEGORIES.has(dayStructure.category.toUpperCase())
+              ? dayStructure.category
+              : undefined,
           },
         );
 
@@ -149,11 +182,18 @@ export class PlanCompiler {
           (intensityRange[0] + intensityRange[1]) / 2,
         );
 
+        const targetMuscle = muscleTranslator[block.muscle.toUpperCase()] || block.muscle;
+        const muscleId = findMuscleFuzzy(targetMuscle);
+        const patternId = patternMap.get(normalize(block.pattern));
+
+        if (!muscleId || !patternId) {
+          console.error(`❌ [PlanCompiler] Mapping failure! Muscle: ${targetMuscle} -> ${muscleId}, Pattern: ${block.pattern} -> ${patternId}`);
+          continue; // Avoid pushing invalid records to DB
+        }
+
         sessionExercises.push({
-          muscleId: muscleMap.get(
-            muscleTranslator[block.muscle] || block.muscle,
-          ),
-          patternId: patternMap.get(block.pattern),
+          muscleId,
+          patternId,
           sets: block.sets,
           exerciseId: selected.id,
           reps: progressionResult.reps, // Dynamic reps from progression engine
